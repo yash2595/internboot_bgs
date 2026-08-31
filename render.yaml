@@ -1,0 +1,9 @@
+# Render.com Infrastructure-as-Code Blueprint Specification
+# Project: Bridge Group Solutions
+
+services:
+  - type: web
+    name: internboot-bgs-final
+    env: static
+    buildCommand: python build2.py
+    staticPublishPath: ./build-output
