@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bridge Group Solutions – Outsource Smarter</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#111111;
+  --teal:#5C939F;
+  --teal-light:#7ab5c2;
+  --teal-dark:#3d6870;
+  --silver:#DADADA;
+  --silver-dim:#a8a8a8;
+  --white:#ffffff;
+  --glass:rgba(92,147,159,0.08);
+  --glass-border:rgba(92,147,159,0.22);
+  --font-display:'Bebas Neue',sans-serif;
+  --font-body:'Outfit',sans-serif;
+  --r:16px;
+}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--black);
+  color:var(--silver);
+  font-family:var(--font-body);
+  overflow-x:hidden;
+  cursor:none;
+}
+
+/* ── CUSTOM CURSOR ── */
+#cursor{position:fixed;width:12px;height:12px;border-radius:50%;background:var(--teal);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,width .2s,height .2s,background .2s;}
+#cursor-ring{position:fixed;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--teal);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .12s ease;opacity:0.6;}
+body:has(a:hover) #cursor,body:has(button:hover) #cursor{width:20px;height:20px;background:var(--teal-light);}
+
+/* ── MOVING BACKGROUND ── */
+.bg-wrap{position:fixed;inset:0;z-index:0;overflow:hidden;background:var(--black);}
+
+/* Morphing blobs */
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:0.13;mix-blend-mode:screen;}
+.b1{width:700px;height:700px;background:var(--teal);top:-200px;left:-150px;animation:blobMorph1 18s ease-in-out infinite;}
+.b2{width:500px;height:500px;background:#3d8a98;bottom:-100px;right:-100px;animation:blobMorph2 22s ease-in-out infinite;}
+.b3{width:350px;height:350px;background:var(--teal-light);top:40%;left:55%;animation:blobMorph3 15s ease-in-out infinite;}
+@keyframes blobMorph1{
+  0%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%;transform:translate(0,0) scale(1);}
+  33%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%;transform:translate(40px,30px) scale(1.05);}
+  66%{border-radius:70% 30% 40% 60%/30% 70% 60% 40%;transform:translate(-20px,50px) scale(0.97);}
+  100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%;transform:translate(0,0) scale(1);}
+}
+@keyframes blobMorph2{
+  0%{border-radius:40% 60% 60% 40%/70% 30% 50% 60%;transform:translate(0,0);}
+  50%{border-radius:60% 40% 30% 70%/40% 70% 60% 30%;transform:translate(-60px,-40px);}
+  100%{border-radius:40% 60% 60% 40%/70% 30% 50% 60%;transform:translate(0,0);}
+}
+@keyframes blobMorph3{
+  0%,100%{transform:translate(0,0) scale(1);}
+  50%{transform:translate(-80px,60px) scale(1.12);}
+}
+
+/* Hex grid */
+.hex-grid{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='92'%3E%3Cpolygon points='40,2 75,21 75,71 40,90 5,71 5,21' fill='none' stroke='rgba(92,147,159,0.06)' stroke-width='1'/%3E%3C/svg%3E");background-size:80px 92px;animation:hexDrift 60s linear infinite;}
+@keyframes hexDrift{from{background-position:0 0;}to{background-position:160px 184px;}}
+
+/* Scanlines */
+.scanlines{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);pointer-events:none;}
+
+/* Floating line beams */
+.beam{position:absolute;width:1px;background:linear-gradient(to bottom,transparent,var(--teal),transparent);animation:beamDrop linear infinite;opacity:0;}
+@keyframes beamDrop{0%{top:-20%;opacity:0;}10%{opacity:0.5;}80%{opacity:0.3;}100%{top:110%;opacity:0;}}
+
+/* ── PAGE ── */
+.page{position:relative;z-index:1;}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.1rem 5vw;
+  backdrop-filter:blur(20px);
+  background:rgba(17,17,17,0.75);
+  border-bottom:1px solid var(--glass-border);
+}
+.logo{font-family:var(--font-display);font-size:1.6rem;letter-spacing:1px;color:var(--white);display:flex;align-items:center;gap:10px;}
+.logo-mark{width:34px;height:34px;border:2px solid var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.logo-mark::before{content:'';position:absolute;inset:0;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.logo:hover .logo-mark::before{transform:scaleX(1);}
+.logo-mark svg{position:relative;z-index:1;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--silver-dim);text-decoration:none;font-size:0.85rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--teal);transition:width .3s;}
+.nav-links a:hover{color:var(--teal-light);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{background:transparent;border:1.5px solid var(--teal);color:var(--teal);padding:.55rem 1.4rem;border-radius:4px;font-family:var(--font-body);font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:none;transition:background .25s,color .25s,box-shadow .25s;}
+.nav-cta:hover{background:var(--teal);color:var(--black);box-shadow:0 0 24px rgba(92,147,159,0.5);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--silver);transition:transform .3s;}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:4rem;
+  padding:5rem 5vw;
+  position:relative;
+}
+.hero::after{content:'';position:absolute;bottom:0;left:5vw;right:5vw;height:1px;background:linear-gradient(90deg,transparent,var(--teal),transparent);}
+
+.hero-left{}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:1.8rem;
+}
+.eyebrow-line{width:40px;height:1px;background:var(--teal);}
+
+.hero h1{
+  font-family:var(--font-display);
+  font-size:clamp(3.5rem,6.5vw,7rem);
+  line-height:.95;
+  letter-spacing:1px;
+  color:var(--white);
+  margin-bottom:1.5rem;
+}
+.hero h1 .stroke{
+  -webkit-text-stroke:2px var(--teal);
+  color:transparent;
+}
+.hero h1 .fill{color:var(--teal);}
+
+.hero-desc{
+  font-size:clamp(.9rem,1.4vw,1.05rem);
+  color:var(--silver-dim);
+  line-height:1.8;
+  max-width:480px;
+  margin-bottom:2.5rem;
+  font-weight:300;
+}
+
+.hero-desc p{
+   font-size: 55px;
+}
+
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--teal);color:var(--black);
+  border:none;padding:.8rem 2rem;border-radius:4px;
+  font-family:var(--font-body);font-size:.9rem;font-weight:700;
+  cursor:none;letter-spacing:.04em;text-transform:uppercase;
+  transition:background .2s,box-shadow .2s,transform .15s;
+  position:relative;overflow:hidden;
+  text-decoration:none;display:inline-flex;align-items:center;justify-content:center;
+}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transform:translateX(-100%);transition:transform .5s;}
+.btn-primary:hover::before{transform:translateX(100%);}
+.btn-primary:hover{background:var(--teal-light);box-shadow:0 0 30px rgba(92,147,159,0.6);transform:translateY(-2px);}
+.btn-ghost{
+  background:transparent;color:var(--silver);
+  border:1px solid rgba(218,218,218,0.25);padding:.8rem 2rem;border-radius:4px;
+  font-family:var(--font-body);font-size:.9rem;font-weight:500;
+  cursor:none;letter-spacing:.04em;text-transform:uppercase;
+  transition:border-color .2s,color .2s;
+  text-decoration:none;display:inline-flex;align-items:center;justify-content:center;
+}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal);}
+
+.hero-metrics{display:flex;gap:2rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(218,218,218,0.1);}
+.metric{}
+.metric-num{font-family:var(--font-display);font-size:2rem;color:var(--teal);line-height:1;}
+.metric-label{font-size:.72rem;color:var(--silver-dim);letter-spacing:.06em;text-transform:uppercase;margin-top:2px;}
+
+/* ── ANIMATED ILLUSTRATION ── */
+.hero-right{display:flex;align-items:center;justify-content:center;position:relative;}
+.hero-illustration{width:100%;max-width:520px;position:relative;}
+
+/* ── TICKER ── */
+.ticker-wrap{overflow:hidden;border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border);background:rgba(92,147,159,0.04);padding:.7rem 0;}
+.ticker-track{display:flex;gap:4rem;white-space:nowrap;animation:tickerScroll 28s linear infinite;}
+.ticker-item{display:flex;align-items:center;gap:.6rem;font-size:.78rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--silver-dim);}
+.ticker-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);}
+
+/* ── SECTION SHARED ── */
+.section{padding:6rem 5vw;}
+.section-head{margin-bottom:3.5rem;}
+.section-tag{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem;}
+.section-tag::before{content:'▸ ';}
+.section-title{font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.8rem);color:var(--white);letter-spacing:.5px;line-height:1.05;}
+.section-title span{color:var(--teal);}
+.section-sub{font-size:clamp(.88rem,1.3vw,1rem);color:var(--silver-dim);max-width:520px;line-height:1.8;margin-top:.8rem;font-weight:300;}
+
+/* ── SERVICES ── */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5px;background:var(--glass-border);}
+.srv-card{
+  background:var(--black);
+  padding:2.5rem 2rem;
+  position:relative;overflow:hidden;
+  transition:background .3s;
+  cursor:none;
+}
+.srv-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(92,147,159,0.08),transparent);opacity:0;transition:opacity .4s;}
+.srv-card:hover{background:#161616;}
+.srv-card:hover::before{opacity:1;}
+.srv-num{font-family:var(--font-display);font-size:3.5rem;color:rgba(92,147,159,0.12);line-height:1;margin-bottom:1rem;transition:color .3s;}
+.srv-card:hover .srv-num{color:rgba(92,147,159,0.3);}
+.srv-icon{width:48px;height:48px;margin-bottom:1.2rem;}
+.srv-card h3{font-family:var(--font-display);font-size:1.8rem;color:var(--white);letter-spacing:2.5px;margin-bottom:.6rem;}
+.srv-card p{font-size:1.3rem;color:var(--silver-dim);line-height:1.75;font-weight:300;}
+.srv-tag{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(92,147,159,0.3);border-radius:2px;padding:.2rem .6rem;margin-top:1.2rem;}
+.srv-arrow{position:absolute;bottom:2rem;right:2rem;width:32px;height:32px;border:1px solid rgba(92,147,159,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transform:translate(8px,-8px);transition:opacity .3s,transform .3s;}
+.srv-card:hover .srv-arrow{opacity:1;transform:translate(0,0);}
+
+/* ── FEATURES BELT ── */
+.features-belt{padding:5rem 5vw;background:linear-gradient(180deg,var(--black) 0%,#141a1c 50%,var(--black) 100%);}
+.features-belt .section-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:3rem;}
+.feat-card{
+  padding:1.8rem;
+  border:1px solid var(--glass-border);
+  border-radius:var(--r);
+  position:relative;overflow:hidden;
+  transition:border-color .3s,transform .3s;
+  background:var(--glass);
+  backdrop-filter:blur(8px);
+}
+.feat-card::after{
+  content:'';position:absolute;inset:-1px;border-radius:var(--r);
+  background:linear-gradient(135deg,var(--teal),transparent,transparent);
+  opacity:0;transition:opacity .4s;z-index:0;padding:1px;
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+}
+.feat-card:hover{border-color:rgba(92,147,159,0.5);transform:translateY(-5px);}
+.feat-card:hover::after{opacity:1;}
+.feat-card>*{position:relative;z-index:1;}
+.feat-icon-wrap{width:44px;height:44px;background:rgba(92,147,159,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;}
+.feat-card h4{font-family:var(--font-display);font-size:1.2rem;color:var(--white);letter-spacing:2.3px;margin-bottom:.5rem;}
+.feat-card p{font-size:1.1rem;color:var(--silver-dim);line-height:1.7;font-weight:300;}
+.feat-pill{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(92,147,159,0.15);color:var(--teal);border-radius:50px;padding:.2rem .7rem;margin-top:.8rem;}
+
+/* ── WHY CHOOSE (visual horizontal scroll feel) ── */
+.why-section{padding:6rem 5vw;overflow:hidden;}
+.why-row{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.why-visual{position:relative;height:480px;}
+
+/* Concentric rings animation */
+.rings-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(92,147,159,0.15);animation:ringPulse 4s ease-in-out infinite;}
+.ring:nth-child(1){width:120px;height:120px;border-color:rgba(92,147,159,0.5);animation-delay:0s;}
+.ring:nth-child(2){width:200px;height:200px;animation-delay:.5s;}
+.ring:nth-child(3){width:300px;height:300px;animation-delay:1s;}
+.ring:nth-child(4){width:400px;height:400px;animation-delay:1.5s;}
+.ring:nth-child(5){width:480px;height:480px;animation-delay:2s;}
+@keyframes ringPulse{0%,100%{transform:scale(1);opacity:.6;}50%{transform:scale(1.04);opacity:1;}}
+
+
+.center-globe{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  /* background:linear-gradient(135deg,var(--teal-dark),var(--teal)); */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  z-index:2;
+  box-shadow:0 0 40px rgba(92,147,159,0.4);
+  animation:globeSpin 8s ease-in-out infinite;
+  overflow:hidden; important
+}
+
+/* CONTROL IMAGE SIZE */
+.center-globe img{
+  width: 110%;
+  height: 110%;
+  object-fit: contain;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+  .center-globe{
+    width:60px;
+    height:60px;
+  }
+}
+
+/* .center-globe{
+  width:100px;height:100px;border-radius:50%;
+  background:linear-gradient(135deg,var(--teal-dark),var(--teal));
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.2rem;position:relative;z-index:2;
+  box-shadow:0 0 40px rgba(92,147,159,0.4);
+  animation:globeSpin 8s ease-in-out infinite;
+}
+@keyframes globeSpin{0%,100%{box-shadow:0 0 40px rgba(92,147,159,0.4);}50%{box-shadow:0 0 70px rgba(92,147,159,0.7);}} */
+
+/* Orbiting dots */
+.orbit{position:absolute;border-radius:50%;animation:orbitSpin linear infinite;}
+.orbit-dot{width:10px;height:10px;border-radius:50%;background:var(--teal);position:absolute;top:-5px;left:50%;margin-left:-5px;box-shadow:0 0 8px var(--teal);}
+.o1{width:180px;height:180px;top:50%;left:50%;margin:-90px;animation-duration:6s;}
+.o2{width:260px;height:260px;top:50%;left:50%;margin:-130px;animation-duration:10s;animation-direction:reverse;}
+.o3{width:360px;height:360px;top:50%;left:50%;margin:-180px;animation-duration:15s;}
+@keyframes orbitSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+
+.why-points{display:flex;flex-direction:column;gap:1.2rem;}
+.why-pt{
+  display:flex;align-items:flex-start;gap:1.2rem;
+  padding:1.3rem 1.5rem;
+  border:1px solid var(--glass-border);border-radius:12px;
+  background:var(--glass);
+  transition:border-color .25s,background .25s,transform .25s;
+}
+.why-pt:hover{border-color:var(--teal);background:rgba(92,147,159,0.1);transform:translateX(8px);}
+.why-pt-num{font-family:var(--font-display);font-size:1.4rem;color:var(--teal);line-height:1;flex-shrink:0;width:28px;}
+.why-pt h4{font-size:1.25rem;font-weight:600;color:var(--white);margin-bottom:.3rem;}
+.why-pt p{font-size:1.1rem;color:var(--silver-dim);line-height:1.65;font-weight:300;}
+
+/* ── PROCESS TIMELINE ── */
+.process-section{padding:6rem 5vw;}
+.timeline{position:relative;padding-top:2rem;}
+.timeline::before{content:'';position:absolute;top:60px;left:30px;bottom:30px;width:1px;background:linear-gradient(to bottom,var(--teal),transparent);}
+.tl-item{display:flex;gap:2.5rem;margin-bottom:2.5rem;position:relative;}
+.tl-node{
+  flex-shrink:0;width:60px;height:60px;border-radius:50%;
+  background:var(--black);
+  border:1.5px solid var(--teal);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-size:1.2rem;color:var(--teal);
+  position:relative;z-index:1;
+  transition:background .3s,box-shadow .3s;
+}
+.tl-item:hover .tl-node{background:var(--teal);color:var(--black);box-shadow:0 0 20px rgba(92,147,159,0.5);}
+.tl-body{padding-top:.8rem;}
+.tl-body h3{font-family:var(--font-display);font-size:1.4rem;color:var(--white);letter-spacing:3.3px;margin-bottom:.4rem;}
+.tl-body p{font-size:1.1rem;color:var(--silver-dim);line-height:1.75;font-weight:300;max-width:500px;}
+.tl-badge{display:inline-block;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:rgba(92,147,159,0.1);border:1px solid rgba(92,147,159,0.2);color:var(--teal);border-radius:2px;padding:.2rem .6rem;margin-top:.6rem;}
+
+/* ── STATS ── */
+.stats-section{
+  padding:5rem 5vw;
+  background:linear-gradient(135deg,#141a1c,#111111);
+  border-top:1px solid var(--glass-border);
+  border-bottom:1px solid var(--glass-border);
+}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2px;background:var(--glass-border);border:1px solid var(--glass-border);}
+.stat-box{
+  background:#141a1c;padding:2.5rem 2rem;text-align:center;
+  transition:background .3s;
+}
+.stat-box:hover{background:#1a2224;}
+.stat-value{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4rem);color:var(--teal);line-height:1;}
+.stat-label{font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--silver-dim);margin-top:.5rem;}
+.stat-desc{font-size:.78rem;color:rgba(218,218,218,0.4);margin-top:.25rem;}
+
+/* ── MARQUEE TECH STRIP ── */
+.tech-strip{padding:2.5rem 0;border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border);overflow:hidden;}
+.marquee-track{display:flex;gap:3rem;animation:marqueeRoll 25s linear infinite;width:max-content;}
+.marquee-track:hover{animation-play-state:paused;}
+.tech-badge{
+  display:flex;align-items:center;gap:.6rem;
+  padding:.6rem 1.4rem;
+  border:1px solid var(--glass-border);border-radius:50px;
+  font-size:.78rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--silver-dim);white-space:nowrap;
+  transition:border-color .2s,color .2s;
+}
+.tech-badge:hover{border-color:var(--teal);color:var(--teal);}
+.tech-icon{color:var(--teal);font-size:1rem;}
+@keyframes marqueeRoll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ── ANIMATED COUNTER ── */
+.counter{display:inline-block;}
+
+/* ── CTA ── */
+.cta-section{
+  padding:7rem 5vw;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(92,147,159,0.12),transparent);
+}
+.cta-section>*{position:relative;z-index:1;}
+.cta-eyebrow{font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;display:block;}
+.cta-title{font-family:var(--font-display);font-size:clamp(3rem,6vw,5.5rem);color:var(--white);line-height:.95;margin-bottom:1.5rem;letter-spacing:1px;}
+.cta-sub{font-size:clamp(.9rem,1.5vw,1.1rem);color:var(--silver-dim);max-width:500px;margin:0 auto 3rem;font-weight:300;line-height:1.8;}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+
+/* CTA dashed border box */
+.cta-box{
+  max-width:760px;margin:0 auto;
+  border:1px dashed rgba(92,147,159,0.3);border-radius:20px;
+  padding:4rem 3rem;position:relative;
+}
+.cta-box::before,.cta-box::after{
+  content:'';position:absolute;width:12px;height:12px;border-radius:50%;
+  background:var(--teal);box-shadow:0 0 10px var(--teal);
+}
+.cta-box::before{top:-6px;left:-6px;}
+.cta-box::after{bottom:-6px;right:-6px;}
+
+/* ── FOOTER ── */
+footer{
+  padding:2rem 5vw;
+  border-top:1px solid var(--glass-border);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+  font-size:.78rem;color:var(--silver-dim);
+}
+.footer-links{display:flex;gap:1.5rem;}
+.footer-links a{color:var(--silver-dim);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--teal);}
+
+/* ── MOBILE NAV PANEL ── */
+.mobile-nav{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(17,17,17,0.97);backdrop-filter:blur(20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
+  transform:translateX(100%);transition:transform .4s cubic-bezier(.77,0,.18,1);
+}
+.mobile-nav.open{transform:translateX(0);}
+.mobile-nav a{font-family:var(--font-display);font-size:2.5rem;color:var(--white);text-decoration:none;letter-spacing:1px;}
+.mobile-nav a:hover{color:var(--teal);}
+.mobile-close{position:absolute;top:1.5rem;right:5vw;background:none;border:none;color:var(--silver);font-size:1.5rem;cursor:none;}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.in{opacity:1;transform:none;}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-left.in{opacity:1;transform:none;}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-right.in{opacity:1;transform:none;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:auto;padding-top:4rem;}
+  .hero-right{display:none;}
+  .why-row{grid-template-columns:1fr;}
+  .why-visual{display:none;}
+  .timeline::before{left:28px;}
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+}
+@media(max-width:600px){
+  .services-grid{grid-template-columns:1fr;}
+  .feat-grid{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .hero-metrics{flex-wrap:wrap;gap:1.2rem;}
+  .why-row{gap:2rem;}
+  .cta-box{padding:2.5rem 1.5rem;}
+  .features-belt .section-head{flex-direction:column;align-items:flex-start;}
+  footer{flex-direction:column;text-align:center;}
+}
+</style>
+	<script>
+		(function() {
+			var h = window.location.hostname;
+			console.log("[CookieYes Loader] Current hostname:", h);
+			if (h !== "localhost" && h !== "127.0.0.1" && !h.includes("127.0.0")) {
+				var s = document.createElement("script");
+				s.id = "cookieyes";
+				s.type = "text/javascript";
+				s.src = "https://cdn-cookieyes.com/client_data/e13805ca0237c863c297140fa9f82f7e/script.js";
+				document.head.appendChild(s);
+			} else {
+				console.log("[CookieYes Loader] Skipped CookieYes script on local dev environment:", h);
+			}
+		})();
+	</script>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- ── BG ── -->
+<div class="bg-wrap" aria-hidden="true">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="hex-grid"></div>
+  <div class="scanlines"></div>
+  <!-- beam elements injected by JS -->
+</div>
+
+<!-- Mobile nav -->
+<nav id="mob-nav" class="mobile-nav">
+  <button class="mobile-close" id="close-mob">✕</button>
+  <a href="../index.html">Home</a>
+  <a href="../about.html">About</a>
+  <a href="../why-bgs.html">Why BGS</a>
+  <a href="../portfolio.html">Portfolio</a>
+  <a href="../gallery.html">Gallery</a>
+  <a href="#services">Services</a>
+  <a href="#features">Features</a>
+  <a href="../contact.html">Contact</a>
+</nav>
+
+<div class="page">
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="logo" href="../index.html" style="text-decoration:none;display:inline-flex;align-items:center;color:inherit;">
+    <img src="../assets/logo.webp" alt="Bridge Group Solutions" style="height:26px;margin-right:8px;">
+    Bridge Group Solutions
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../why-bgs.html">Why BGS</a></li>
+    <li><a href="../portfolio.html">Portfolio</a></li>
+    <li><a href="../gallery.html">Gallery</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="../contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ── TICKER ── -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker">
+    <span class="ticker-item"><span class="ticker-dot"></span>IT Project Outsourcing</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Dedicated Dev Teams</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Offshore Development</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Agile Delivery</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>End-to-End Management</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Quality Assurance</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Data Analytics</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>App Development</span>
+    <!-- duplicated for seamless loop -->
+    <span class="ticker-item"><span class="ticker-dot"></span>IT Project Outsourcing</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Dedicated Dev Teams</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Offshore Development</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Agile Delivery</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>End-to-End Management</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Quality Assurance</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Data Analytics</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>App Development</span>
+  </div>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-left reveal-left">
+    <div class="eyebrow"><span class="eyebrow-line"></span>Global Outsourcing Partner</div>
+    <h1>OUT<br/><span class="stroke">SOURCE</span><br/><span class="fill">SMARTER</span></h1>
+    <p class="hero-desc">Bridge Group Solutions eliminates the overhead of in-house hiring. We deliver enterprise-grade IT projects — web platforms, mobile apps, data analytics — with transparent communication and zero compromise on quality.</p>
+    <div class="hero-btns">
+      <a href="../contact.html" class="btn-primary">Start Your Project</a>
+      <a href="#services" class="btn-ghost">View Services ↓</a>
+    </div>
+    <div class="hero-metrics">
+      <div class="metric">
+        <div class="metric-num"><span class="counter" data-target="500">0</span>+</div>
+        <div class="metric-label">Projects Delivered</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num"><span class="counter" data-target="98">0</span>%</div>
+        <div class="metric-label">On-Time Rate</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num"><span class="counter" data-target="30">0</span>+</div>
+        <div class="metric-label">Countries</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HERO SVG ILLUSTRATION ── -->
+  <div class="hero-right reveal-right">
+    <svg class="hero-illustration" viewBox="0 0 520 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#5C939F" stop-opacity=".3"/>
+          <stop offset="100%" stop-color="#5C939F" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="tealGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#3d6870"/>
+          <stop offset="100%" stop-color="#7ab5c2"/>
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- Background glow -->
+      <ellipse cx="260" cy="240" rx="220" ry="200" fill="url(#glow1)"/>
+
+      <!-- Grid floor perspective -->
+      <g opacity="0.2">
+        <line x1="60" y1="400" x2="260" y2="280" stroke="#5C939F" stroke-width=".5"/>
+        <line x1="110" y1="420" x2="260" y2="280" stroke="#5C939F" stroke-width=".5"/>
+        <line x1="160" y1="435" x2="260" y2="280" stroke="#5C939F" stroke-width=".5"/>
+        <line x1="210" y1="445" x2="260" y2="280" stroke="#5C939F" stroke-width=".5"/>
+        <line x1="260" y1="448" x2="260" y2="280" stroke="#5C939F" stroke-width=".5"/>
+        <line x1="310" y1="445" x2="260" y2="280" stroke="#5C939F" stroke-width=".5"/>
+        <line x1="360" y1="435" x2="260" y2="280" stroke="#5C939F" stroke-width=".5"/>
+        <line x1="410" y1="420" x2="260" y2="280" stroke="#5C939F" stroke-width=".5"/>
+        <line x1="460" y1="400" x2="260" y2="280" stroke="#5C939F" stroke-width=".5"/>
+        <!-- horizontal lines -->
+        <line x1="60" y1="400" x2="460" y2="400" stroke="#5C939F" stroke-width=".5"/>
+        <line x1="90" y1="380" x2="430" y2="380" stroke="#5C939F" stroke-width=".5"/>
+        <line x1="130" y1="360" x2="390" y2="360" stroke="#5C939F" stroke-width=".5"/>
+        <line x1="170" y1="340" x2="350" y2="340" stroke="#5C939F" stroke-width=".5"/>
+        <line x1="200" y1="320" x2="320" y2="320" stroke="#5C939F" stroke-width=".5"/>
+        <line x1="225" y1="300" x2="295" y2="300" stroke="#5C939F" stroke-width=".5"/>
+      </g>
+
+      <!-- Main hexagon structure -->
+      <g filter="url(#glow)">
+        <polygon points="260,80 340,125 340,215 260,260 180,215 180,125" fill="none" stroke="url(#tealGrad)" stroke-width="1.5" opacity="0.8">
+          <animateTransform attributeName="transform" type="rotate" from="0 260 170" to="360 260 170" dur="30s" repeatCount="indefinite"/>
+        </polygon>
+        <polygon points="260,100 330,140 330,205 260,245 190,205 190,140" fill="rgba(92,147,159,0.04)" stroke="rgba(92,147,159,0.3)" stroke-width="1">
+          <animateTransform attributeName="transform" type="rotate" from="360 260 172" to="0 260 172" dur="20s" repeatCount="indefinite"/>
+        </polygon>
+      </g>
+
+      <!-- Center icon -->
+      <circle cx="260" cy="172" r="38" fill="rgba(92,147,159,0.12)" stroke="#5C939F" stroke-width="1.5">
+        <animate attributeName="r" values="38;42;38" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="260" cy="172" r="28" fill="rgba(92,147,159,0.2)" stroke="#7ab5c2" stroke-width="1"/>
+      <text x="260" y="178" text-anchor="middle" font-size="18" fill="#5C939F">⬡</text>
+
+      <!-- Floating UI cards -->
+      <!-- Card 1: Cost Savings -->
+      <g transform="translate(30,90)" class="svg-card">
+        <rect width="130" height="70" rx="8" fill="rgba(17,17,17,0.9)" stroke="rgba(92,147,159,0.4)" stroke-width="1"/>
+        <rect width="130" height="3" rx="1.5" fill="#5C939F" opacity="0.6"/>
+        <text x="12" y="22" font-size="7" fill="#5C939F" font-family="Outfit,sans-serif" font-weight="500" letter-spacing="1">COST SAVED</text>
+        <text x="12" y="42" font-size="18" fill="#DADADA" font-family="Bebas Neue,sans-serif" letter-spacing="1">$48,200</text>
+        <text x="12" y="57" font-size="7" fill="rgba(218,218,218,0.4)" font-family="Outfit,sans-serif">per month avg.</text>
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="4s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="30,90;30,84;30,90" dur="5s" repeatCount="indefinite"/>
+      </g>
+
+      <!-- Card 2: Delivery -->
+      <g transform="translate(355,60)">
+        <rect width="120" height="65" rx="8" fill="rgba(17,17,17,0.9)" stroke="rgba(92,147,159,0.4)" stroke-width="1"/>
+        <rect width="120" height="3" rx="1.5" fill="#5C939F" opacity="0.6"/>
+        <text x="12" y="21" font-size="7" fill="#5C939F" font-family="Outfit,sans-serif" font-weight="500" letter-spacing="1">ON-TIME RATE</text>
+        <text x="12" y="40" font-size="18" fill="#DADADA" font-family="Bebas Neue,sans-serif">98.4%</text>
+        <!-- mini bar -->
+        <rect x="12" y="50" width="95" height="4" rx="2" fill="rgba(92,147,159,0.15)"/>
+        <rect x="12" y="50" width="93" height="4" rx="2" fill="#5C939F"/>
+        <animate attributeName="opacity" values="1;0.7;1" dur="3.5s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="355,60;355,66;355,60" dur="4.5s" repeatCount="indefinite"/>
+      </g>
+
+      <!-- Card 3: Team -->
+      <g transform="translate(370,260)">
+        <rect width="115" height="75" rx="8" fill="rgba(17,17,17,0.9)" stroke="rgba(92,147,159,0.4)" stroke-width="1"/>
+        <rect width="115" height="3" rx="1.5" fill="#5C939F" opacity="0.6"/>
+        <text x="12" y="21" font-size="7" fill="#5C939F" font-family="Outfit,sans-serif" font-weight="500" letter-spacing="1">ACTIVE TEAMS</text>
+        <text x="12" y="42" font-size="18" fill="#DADADA" font-family="Bebas Neue,sans-serif">24 SQUADS</text>
+        <!-- team dots -->
+        <circle cx="12" cy="60" r="5" fill="#3d6870"/>
+        <circle cx="24" cy="60" r="5" fill="#5C939F"/>
+        <circle cx="36" cy="60" r="5" fill="#7ab5c2"/>
+        <circle cx="48" cy="60" r="5" fill="rgba(92,147,159,0.4)"/>
+        <text x="56" y="64" font-size="7" fill="rgba(218,218,218,0.5)" font-family="Outfit,sans-serif">+20 more</text>
+        <animateTransform attributeName="transform" type="translate" values="370,260;370,266;370,260" dur="6s" repeatCount="indefinite"/>
+      </g>
+
+      <!-- Connecting lines -->
+      <line x1="160" y1="125" x2="95" y2="125" stroke="rgba(92,147,159,0.25)" stroke-width="1" stroke-dasharray="4,3">
+        <animate attributeName="stroke-dashoffset" values="0;-14" dur="1s" repeatCount="indefinite"/>
+      </line>
+      <line x1="340" y1="115" x2="380" y2="95" stroke="rgba(92,147,159,0.25)" stroke-width="1" stroke-dasharray="4,3">
+        <animate attributeName="stroke-dashoffset" values="0;14" dur="1s" repeatCount="indefinite"/>
+      </line>
+      <line x1="340" y1="200" x2="395" y2="270" stroke="rgba(92,147,159,0.25)" stroke-width="1" stroke-dasharray="4,3">
+        <animate attributeName="stroke-dashoffset" values="0;-14" dur="1s" repeatCount="indefinite"/>
+      </line>
+
+      <!-- Data flow dots on lines -->
+      <circle r="3" fill="#5C939F" filter="url(#glow)">
+        <animateMotion dur="2s" repeatCount="indefinite" path="M160,125 L95,125"/>
+      </circle>
+      <circle r="3" fill="#5C939F" filter="url(#glow)">
+        <animateMotion dur="2.5s" repeatCount="indefinite" path="M340,115 L380,95"/>
+      </circle>
+      <circle r="3" fill="#7ab5c2" filter="url(#glow)">
+        <animateMotion dur="3s" repeatCount="indefinite" path="M340,200 L395,270"/>
+      </circle>
+
+      <!-- Scattered data particles -->
+      <circle cx="120" cy="200" r="2" fill="#5C939F" opacity="0.4">
+        <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="400" cy="160" r="1.5" fill="#7ab5c2" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="1.8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="200" cy="310" r="2" fill="#5C939F" opacity="0.3">
+        <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="340" cy="310" r="1.5" fill="#7ab5c2" opacity="0.4">
+        <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="section" id="services">
+  <div class="section-head reveal">
+    <div class="section-tag">What We Offer</div>
+    <h2 class="section-title">Our Core <span>Services</span></h2>
+    <p class="section-sub">End-to-end outsourcing built for businesses that need speed, quality, and flexibility — all in one partner.</p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="srv-card">
+      <div class="srv-num">01</div>
+      <svg class="srv-icon" viewBox="0 0 48 48" fill="none"><rect x="4" y="8" width="40" height="28" rx="3" stroke="#5C939F" stroke-width="1.5"/><path d="M16 44h16M24 36v8" stroke="#5C939F" stroke-width="1.5" stroke-linecap="round"/><path d="M12 20l5 5 9-9" stroke="#7ab5c2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h3>IT Project Outsourcing</h3>
+      <p>Full-cycle delivery of technology projects — enterprise platforms, custom tools, API integrations, and web systems built precisely to your specifications.</p>
+      <div class="srv-tag">Development</div>
+      <div class="srv-arrow">→</div>
+    </div>
+    <div class="srv-card">
+      <div class="srv-num">02</div>
+      <svg class="srv-icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="7" stroke="#5C939F" stroke-width="1.5"/><circle cx="10" cy="34" r="5" stroke="#5C939F" stroke-width="1.5"/><circle cx="38" cy="34" r="5" stroke="#5C939F" stroke-width="1.5"/><path d="M17 34c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="#7ab5c2" stroke-width="1.5" stroke-linecap="round"/><path d="M5 44c0-2.8 2.2-5 5-5M38 39c2.8 0 5 2.2 5 5" stroke="#5C939F" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <h3>Dedicated Dev Teams</h3>
+      <p>Handpicked engineering squads embedded directly into your workflow. Aligned with your stack, culture, and velocity — scaling up or down on demand.</p>
+      <div class="srv-tag">Team Augmentation</div>
+      <div class="srv-arrow">→</div>
+    </div>
+    <div class="srv-card">
+      <div class="srv-num">03</div>
+      <svg class="srv-icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="#5C939F" stroke-width="1.5"/><ellipse cx="24" cy="24" rx="8" ry="18" stroke="#5C939F" stroke-width="1.5"/><line x1="6" y1="24" x2="42" y2="24" stroke="#7ab5c2" stroke-width="1.5"/><line x1="9" y1="15" x2="39" y2="15" stroke="#5C939F" stroke-width="1" opacity="0.5"/><line x1="9" y1="33" x2="39" y2="33" stroke="#5C939F" stroke-width="1" opacity="0.5"/></svg>
+      <h3>Offshore Development</h3>
+      <p>Access world-class engineering talent globally — without the overhead of local hiring. Enterprise quality at offshore economics, zero compromise.</p>
+      <div class="srv-tag">Offshore</div>
+      <div class="srv-arrow">→</div>
+    </div>
+    <div class="srv-card">
+      <div class="srv-num">04</div>
+      <svg class="srv-icon" viewBox="0 0 48 48" fill="none"><rect x="6" y="6" width="14" height="14" rx="2" stroke="#5C939F" stroke-width="1.5"/><rect x="28" y="6" width="14" height="14" rx="2" stroke="#5C939F" stroke-width="1.5"/><rect x="6" y="28" width="14" height="14" rx="2" stroke="#5C939F" stroke-width="1.5"/><rect x="28" y="28" width="14" height="14" rx="2" stroke="#7ab5c2" stroke-width="1.5"/><line x1="20" y1="13" x2="28" y2="13" stroke="#5C939F" stroke-width="1" opacity="0.6"/><line x1="13" y1="20" x2="13" y2="28" stroke="#5C939F" stroke-width="1" opacity="0.6"/><line x1="35" y1="20" x2="35" y2="28" stroke="#5C939F" stroke-width="1" opacity="0.6"/></svg>
+      <h3>End-to-End Management</h3>
+      <p>From requirements gathering and architecture to QA and deployment — our PMs own the full delivery lifecycle so you never have to chase status.</p>
+      <div class="srv-tag">Management</div>
+      <div class="srv-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TECH MARQUEE ── -->
+<div class="tech-strip">
+  <div class="marquee-track" id="marquee">
+    <span class="tech-badge"><span class="tech-icon">⬡</span>React</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>Node.js</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>Python</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>Flutter</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>AWS</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>PostgreSQL</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>Docker</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>Kubernetes</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>Vue.js</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>Swift</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>Kotlin</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>GraphQL</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>React</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>Node.js</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>Python</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>Flutter</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>AWS</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>PostgreSQL</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>Docker</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>Kubernetes</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>Vue.js</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>Swift</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>Kotlin</span>
+    <span class="tech-badge"><span class="tech-icon">⬡</span>GraphQL</span>
+  </div>
+</div>
+
+<!-- ── FEATURES ── -->
+<section class="features-belt" id="features">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-tag">Key Features</div>
+      <h2 class="section-title">Built for <span>Results</span></h2>
+      <p class="section-sub">Every engagement is engineered around your specific goals, budget, and quality expectations.</p>
+    </div>
+    <a href="#features" class="btn-primary">See All Features</a>
+  </div>
+  <div class="feat-grid reveal">
+    <div class="feat-card">
+      <div class="feat-icon-wrap">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="#5C939F" stroke-width="1.5"/><path d="M7 11l3 3 5-5" stroke="#7ab5c2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h4>Cost-Effective Models</h4>
+      <p>Fixed-price, time & material, or dedicated retainer — pick the model that matches your project stage and budget horizon.</p>
+      <span class="feat-pill">Save 30–60%</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-wrap">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="4" width="18" height="14" rx="2" stroke="#5C939F" stroke-width="1.5"/><path d="M7 9h8M7 13h5" stroke="#7ab5c2" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <h4>Agile Execution</h4>
+      <p>Two-week sprints, daily standups, and continuous delivery pipelines keep momentum high and surprises low across every project.</p>
+      <span class="feat-pill">Sprint-Based</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-wrap">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2v4M11 16v4M2 11h4M16 11h4" stroke="#5C939F" stroke-width="1.5" stroke-linecap="round"/><circle cx="11" cy="11" r="4" stroke="#7ab5c2" stroke-width="1.5"/></svg>
+      </div>
+      <h4>Skilled Professionals</h4>
+      <p>Rigorously vetted developers, designers, QA engineers, and PMs with proven track records across 15+ industries.</p>
+      <span class="feat-pill">Top 5% Talent</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-wrap">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><polyline points="3,15 8,10 13,14 19,7" stroke="#5C939F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h4>Timely Delivery + QA</h4>
+      <p>Strict milestone management, automated regression testing, and dedicated QA teams ensure production-ready code every release.</p>
+      <span class="feat-pill">98.4% On-Time</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-wrap">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M2 6h18M2 11h18M2 16h12" stroke="#5C939F" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <h4>Transparent Reporting</h4>
+      <p>Real-time dashboards, weekly delivery reports, and dedicated Slack channels — you always know exactly where your project stands.</p>
+      <span class="feat-pill">Full Visibility</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon-wrap">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="#5C939F" stroke-width="1.5"/><rect x="12" y="3" width="7" height="7" rx="1" stroke="#5C939F" stroke-width="1.5"/><rect x="3" y="12" width="7" height="7" rx="1" stroke="#5C939F" stroke-width="1.5"/><rect x="12" y="12" width="7" height="7" rx="1" stroke="#7ab5c2" stroke-width="1.5"/></svg>
+      </div>
+      <h4>Flexible Scaling</h4>
+      <p>Grow from one developer to a full delivery center in weeks. Adjust team size, scope, and timelines without penalty or friction.</p>
+      <span class="feat-pill">Elastic Teams</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY CHOOSE ── -->
+<section class="why-section" id="why">
+  <div class="section-head reveal">
+    <div class="section-tag">Why Bridge Group</div>
+    <h2 class="section-title">The Difference <span>You'll Feel</span></h2>
+  </div>
+  <div class="why-row">
+    <div class="why-visual reveal-left" aria-hidden="true">
+      <div class="rings-wrap">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="center-globe">
+          <img src="/assets/logo.webp" alt="" srcset="">
+        </div>
+        <div class="orbit o1"><div class="orbit-dot"></div></div>
+        <div class="orbit o2"><div class="orbit-dot" style="background:#7ab5c2;box-shadow:0 0 8px #7ab5c2;"></div></div>
+        <div class="orbit o3"><div class="orbit-dot" style="background:#DADADA;box-shadow:0 0 6px #DADADA;width:6px;height:6px;top:-3px;"></div></div>
+      </div>
+    </div>
+    <div class="why-points reveal-right">
+      <div class="why-pt">
+        <div class="why-pt-num">01</div>
+        <div>
+          <h4>Global Client Experience</h4>
+          <p>30+ countries. Startups to Fortune 500. We navigate international business dynamics, time zones, and compliance standards with ease.</p>
+        </div>
+      </div>
+      <div class="why-pt">
+        <div class="why-pt-num">02</div>
+        <div>
+          <h4>Transparent Communication</h4>
+          <p>No black-box updates. Dedicated PMs, real-time project portals, and proactive escalations mean you're never left guessing.</p>
+        </div>
+      </div>
+      <div class="why-pt">
+        <div class="why-pt-num">03</div>
+        <div>
+          <h4>High-Quality Deliverables</h4>
+          <p>Multi-layer code reviews, automated testing suites, and senior architect sign-off on every project ensure production-grade output.</p>
+        </div>
+      </div>
+      <div class="why-pt">
+        <div class="why-pt-num">04</div>
+        <div>
+          <h4>IP & Security Protection</h4>
+          <p>NDA-first engagements, SOC 2-aligned practices, and isolated development environments protect your codebase and data at every stage.</p>
+        </div>
+      </div>
+      <div class="why-pt">
+        <div class="why-pt-num">05</div>
+        <div>
+          <h4>Rapid Team Onboarding</h4>
+          <p>Your dedicated team is fully integrated into your tools and workflow within 5 business days — not weeks. Momentum never stalls.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-section" id="stats">
+  <div class="section-head reveal" style="text-align:center;max-width:600px;margin:0 auto 3rem;">
+    <div class="section-tag">By the Numbers</div>
+    <h2 class="section-title">Results That <span>Speak</span></h2>
+  </div>
+  <div class="stats-grid reveal">
+    <div class="stat-box">
+      <div class="stat-value"><span class="counter" data-target="500">0</span>+</div>
+      <div class="stat-label">Projects Delivered</div>
+      <div class="stat-desc">Across 15+ industries</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value"><span class="counter" data-target="98">0</span>%</div>
+      <div class="stat-label">On-Time Delivery</div>
+      <div class="stat-desc">Industry avg: 72%</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value"><span class="counter" data-target="40">0</span>%</div>
+      <div class="stat-label">Cost Reduction</div>
+      <div class="stat-desc">vs. in-house hiring</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value"><span class="counter" data-target="30">0</span>+</div>
+      <div class="stat-label">Countries Served</div>
+      <div class="stat-desc">Global delivery reach</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value"><span class="counter" data-target="4">0</span>.9</div>
+      <div class="stat-label">Client Satisfaction</div>
+      <div class="stat-desc">Average rating / 5.0</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value"><span class="counter" data-target="5">0</span> days</div>
+      <div class="stat-label">Team Onboarding</div>
+      <div class="stat-desc">From brief to active</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PROCESS ── -->
+<section class="process-section" id="process">
+  <div class="section-head reveal">
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-title">From Brief to <span>Launch</span></h2>
+    <p class="section-sub">A lean, proven engagement process that gets things moving fast and keeps delivery on track.</p>
+  </div>
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-node">01</div>
+      <div class="tl-body">
+        <h3>Discovery Call</h3>
+        <p>We learn your goals, technical requirements, budget, and timeline in a focused 30-minute session. No sales fluff — just clarity.</p>
+        <span class="tl-badge">30 Minutes</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-node">02</div>
+      <div class="tl-body">
+        <h3>Proposal & Team Match</h3>
+        <p>Within 48 hours, you receive a detailed proposal with tailored engagement models and hand-matched team profiles for your review.</p>
+        <span class="tl-badge">48 Hours</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-node">03</div>
+      <div class="tl-body">
+        <h3>Kickoff & Integration</h3>
+        <p>Your team integrates into your Jira, GitHub, Slack, and communication stack. Architecture review, sprint planning, and Day 1 execution.</p>
+        <span class="tl-badge">5 Business Days</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-node">04</div>
+      <div class="tl-body">
+        <h3>Agile Delivery</h3>
+        <p>Two-week sprints with live demos, stakeholder reviews, and continuous deployment. Full visibility into every milestone and decision.</p>
+        <span class="tl-badge">Ongoing</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-node">05</div>
+      <div class="tl-body">
+        <h3>Scale or Handoff</h3>
+        <p>Post-launch, scale the team up for new features, transition to your in-house team with full documentation, or retain us for ongoing support.</p>
+        <span class="tl-badge">Your Choice</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section" id="cta">
+  <div class="cta-box reveal">
+    <span class="cta-eyebrow">Ready to Begin?</span>
+    <h2 class="cta-title">OUTSOURCE<br/>SMARTER,<br/><span style="color:var(--teal)">GROW FASTER</span></h2>
+    <p class="cta-sub">Join 200+ companies that trust Bridge Group Solutions to deliver world-class technology projects — on time, on budget, without compromise.</p>
+    <div class="cta-btns">
+      <a href="../contact.html" class="btn-primary">Get a Free Consultation</a>
+      <a href="#services" class="btn-ghost">View Services ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="logo" style="font-size:1.1rem;">
+    <a href="../index.html" style="text-decoration:none;color:inherit;display:inline-flex;align-items:center;">
+      <img src="../assets/logo.webp" alt="Bridge Group Solutions" style="height:22px;margin-right:8px;">
+      Bridge Group Solutions
+    </a>
+  </div>
+  <p style="font-size:.75rem;">© 2026 Bridge Group Solutions. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../why-bgs.html">Why BGS</a>
+    <a href="../portfolio.html">Portfolio</a>
+    <a href="../gallery.html">Gallery</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</footer>
+
+</div><!-- /page -->
+
+<script>
+// ── CURSOR ──
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+animRing();
+
+// ── LIGHT BEAMS ──
+const bgWrap = document.querySelector('.bg-wrap');
+for(let i=0;i<8;i++){
+  const b=document.createElement('div');
+  b.className='beam';
+  b.style.left=Math.random()*100+'vw';
+  b.style.height=(120+Math.random()*200)+'px';
+  b.style.animationDuration=(4+Math.random()*8)+'s';
+  b.style.animationDelay=(Math.random()*10)+'s';
+  bgWrap.appendChild(b);
+}
+
+// ── MOBILE NAV ──
+const ham = document.getElementById('ham');
+const closeMob = document.getElementById('close-mob');
+const mobNav = document.getElementById('mob-nav');
+if (ham && mobNav) ham.addEventListener('click', () => mobNav.classList.add('open'));
+if (closeMob && mobNav) closeMob.addEventListener('click', () => mobNav.classList.remove('open'));
+if (mobNav) document.querySelectorAll('#mob-nav a').forEach(a => a.addEventListener('click', () => mobNav.classList.remove('open')));
+
+// ── SCROLL REVEAL ──
+const revEls = document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const ro = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}
+  });
+},{threshold:0.12});
+revEls.forEach((el,i)=>{el.style.transitionDelay=(i%4)*0.1+'s';ro.observe(el);});
+
+// ── COUNTERS ──
+const counters = document.querySelectorAll('.counter');
+const co = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target;
+      const target=parseInt(el.dataset.target);
+      let current=0;
+      const step=Math.ceil(target/50);
+      const timer=setInterval(()=>{
+        current=Math.min(current+step,target);
+        el.textContent=current;
+        if(current>=target)clearInterval(timer);
+      },30);
+      co.unobserve(el);
+    }
+  });
+},{threshold:0.5});
+counters.forEach(c=>co.observe(c));
+
+// ── PARALLAX BLOBS on mouse ──
+document.addEventListener('mousemove',e=>{
+  const xP=(e.clientX/window.innerWidth-.5)*20;
+  const yP=(e.clientY/window.innerHeight-.5)*20;
+  const b1 = document.querySelector('.b1');
+  const b2 = document.querySelector('.b2');
+  const b3 = document.querySelector('.b3');
+  if (b1) b1.style.transform=`translate(${xP*1.2}px,${yP*1.2}px)`;
+  if (b2) b2.style.transform=`translate(${-xP}px,${-yP}px)`;
+  if (b3) b3.style.transform=`translate(${xP*.6}px,${yP*.6}px)`;
+});
+</script>
+</body>
+</html>

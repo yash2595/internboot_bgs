@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridge Group Solutions – ERP Custom Software & Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #111111;
+    --orange: #ED6D40;
+    --teal: #5C939F;
+    --silver: #DBDBDB;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--silver);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* ── Custom Cursor ── */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--orange);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform .1s, background .3s;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    width: 40px; height: 40px;
+    border: 1px solid var(--teal);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform .25s ease, border-color .3s;
+    opacity: .6;
+  }
+
+  /* ── Animated Canvas Background ── */
+  #bg-canvas {
+    position: fixed; inset: 0; z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ── Floating geometric shapes ── */
+  .shape {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    animation: floatShape linear infinite;
+  }
+  @keyframes floatShape {
+    0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    5%   { opacity: .18; }
+    95%  { opacity: .18; }
+    100% { transform: translateY(-20vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(17,17,17,.8);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(92,147,159,.18);
+    animation: slideDown .8s ease forwards;
+  }
+  @keyframes slideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: .04em;
+  }
+  .logo span { color: var(--orange); }
+  nav ul {
+    list-style: none; display: flex; gap: 2.5rem;
+  }
+  nav ul a {
+    text-decoration: none; color: var(--silver);
+    font-size: .85rem; font-weight: 500; letter-spacing: .08em;
+    text-transform: uppercase;
+    position: relative; transition: color .3s;
+  }
+  nav ul a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1px; background: var(--orange);
+    transform: scaleX(0); transform-origin: right;
+    transition: transform .35s ease;
+  }
+  nav ul a:hover { color: var(--orange); }
+  nav ul a:hover::after { transform: scaleX(1); transform-origin: left; }
+  .nav-cta {
+    background: var(--orange); color: var(--white) !important;
+    padding: .55rem 1.4rem; border-radius: 2px;
+    font-weight: 600 !important; letter-spacing: .06em;
+    transition: background .3s, transform .2s !important;
+  }
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: #d45a2e !important; transform: translateY(-1px) !important; }
+
+  /* Hamburger */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--silver); transition: .3s; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; z-index: 10;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 8rem 5% 4rem;
+    overflow: hidden;
+  }
+  .hero-eyebrow {
+    font-size: .75rem; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--teal); font-weight: 500;
+    opacity: 0; animation: fadeUp .8s .5s forwards;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 800; line-height: 1.05;
+    color: var(--white); margin: 1rem 0 .5rem;
+    opacity: 0; animation: fadeUp .9s .7s forwards;
+  }
+  .hero h1 em { color: var(--orange); font-style: normal; }
+  .hero h1 .line2 { color: var(--teal); }
+  .hero-sub {
+    max-width: 600px;
+    font-size: clamp(.95rem, 2vw, 1.1rem);
+    line-height: 1.75; color: #aaa;
+    margin: 1.5rem auto 2.5rem;
+    opacity: 0; animation: fadeUp .9s .95s forwards;
+  }
+  .hero-btns {
+    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    opacity: 0; animation: fadeUp .9s 1.1s forwards;
+  }
+  .btn-primary {
+    background: var(--orange); color: var(--white);
+    padding: .85rem 2.2rem; border: none; border-radius: 2px;
+    font-family: 'DM Sans', sans-serif; font-size: .9rem;
+    font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+    cursor: pointer; transition: background .3s, transform .2s, box-shadow .3s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover {
+    background: #d45a2e; transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(237,109,64,.35);
+  }
+  .btn-outline {
+    background: transparent; color: var(--silver);
+    padding: .85rem 2.2rem; border: 1px solid rgba(219,219,219,.3); border-radius: 2px;
+    font-family: 'DM Sans', sans-serif; font-size: .9rem;
+    font-weight: 500; letter-spacing: .07em; text-transform: uppercase;
+    cursor: pointer; transition: border-color .3s, color .3s, transform .2s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-outline:hover {
+    border-color: var(--teal); color: var(--teal); transform: translateY(-3px);
+  }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: .5rem;
+    opacity: 0; animation: fadeIn 1s 1.8s forwards;
+  }
+  .scroll-line {
+    width: 1px; height: 60px; background: linear-gradient(to bottom, var(--teal), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: .3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+  .scroll-label {
+    font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: #666;
+  }
+
+  /* ── SECTION GENERAL ── */
+  section { position: relative; z-index: 10; padding: 6rem 5%; }
+  .section-label {
+    font-size: 1.2rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--orange); font-weight: 600; margin-bottom: .75rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800; color: var(--white); line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+  .section-title span { color: var(--teal); }
+  .section-desc {
+    max-width: 600px; font-size: 1rem; line-height: 1.8; color: #999;
+  }
+
+  /* ── ABOUT STRIP ── */
+  .about-strip {
+    background: linear-gradient(135deg, rgba(92,147,159,.08), rgba(237,109,64,.05));
+    border: 1px solid rgba(92,147,159,.15);
+    border-radius: 4px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0; overflow: hidden;
+  }
+  .about-text { padding: 4rem; }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-left: 1px solid rgba(92,147,159,.15);
+  }
+  .stat-box {
+    padding: 2rem;
+    border-bottom: 1px solid rgba(92,147,159,.1);
+    border-right: 1px solid rgba(92,147,159,.1);
+    display: flex; flex-direction: column; justify-content: center;
+    transition: background .3s;
+  }
+  .stat-box:hover { background: rgba(237,109,64,.06); }
+  .stat-box:nth-child(even) { border-right: none; }
+  .stat-box:nth-child(3), .stat-box:nth-child(4) { border-bottom: none; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 600; color: var(--orange); line-height: 1;
+  }
+  .stat-label { font-size: .8rem; color: #888; margin-top: .4rem; letter-spacing: .05em; }
+
+  /* ── SERVICES GRID ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem; margin-top: 3.5rem;
+  }
+  .service-card {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(219,219,219,.08);
+    border-radius: 4px; padding: 2.5rem 2rem;
+    transition: transform .35s, border-color .35s, box-shadow .35s;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: linear-gradient(to right, var(--orange), var(--teal));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .4s ease;
+  }
+  .service-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(92,147,159,.3);
+    box-shadow: 0 24px 60px rgba(0,0,0,.4);
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .card-icon {
+    width: 52px; height: 52px;
+    background: rgba(237,109,64,.12);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+  }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-weight: 600; color: var(--white);
+    margin-bottom: .75rem;
+  }
+  .card-desc { font-size: 1.10rem; line-height: 1.7; color: #888; }
+
+  /* ── FEATURES ── */
+  .features-section {
+    background: rgba(92,147,159,.04);
+    border-top: 1px solid rgba(92,147,159,.12);
+    border-bottom: 1px solid rgba(92,147,159,.12);
+  }
+  .features-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .features-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+  .feature-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    background: rgba(255,255,255,.02); border: 1px solid rgba(219,219,219,.07);
+    border-radius: 3px; transition: border-color .3s, transform .3s;
+  }
+  .feature-item:hover { border-color: rgba(237,109,64,.3); transform: translateX(6px); }
+  .feature-dot {
+    width: 8px; height: 8px; min-width: 8px; min-height: 8px;
+    border-radius: 50%; background: var(--orange); margin-top: .45rem;
+  }
+  .feature-text { font-size: 1.0rem; color: #bbb; line-height: 1.6; }
+  .feature-text strong { color: var(--white); display: block; font-size: 1.20rem; margin-bottom: .2rem; }
+
+  /* Visual side */
+  .features-visual {
+    position: relative; height: 440px;
+  }
+  .vis-card {
+    position: absolute; border-radius: 6px; padding: 1.5rem 2rem;
+    backdrop-filter: blur(12px);
+  }
+  .vis-card-main {
+    inset: 0;
+    background: linear-gradient(145deg, rgba(92,147,159,.15), rgba(17,17,17,.9));
+    border: 1px solid rgba(92,147,159,.25);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .vis-card-main h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; color: var(--white); margin-bottom: 1rem;
+  }
+  .vis-progress { margin-bottom: 1.1rem; }
+  .vis-progress-label {
+    display: flex; justify-content: space-between;
+    font-size: .78rem; color: #888; margin-bottom: .4rem;
+  }
+  .vis-bar { height: 4px; background: rgba(255,255,255,.08); border-radius: 2px; overflow: hidden; }
+  .vis-fill {
+    height: 100%; border-radius: 2px;
+    background: linear-gradient(to right, var(--orange), var(--teal));
+    animation: barGrow 2s ease forwards;
+    width: 0;
+  }
+  @keyframes barGrow { to { width: var(--w); } }
+  .vis-badge {
+    position: absolute; bottom: 1.5rem; right: -1.5rem;
+    background: var(--orange); color: var(--white);
+    border-radius: 4px; padding: .8rem 1.2rem;
+    font-size: .8rem; font-weight: 600; letter-spacing: .05em;
+    box-shadow: 0 12px 40px rgba(237,109,64,.4);
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+  }
+
+  /* ── WHY CHOOSE US ── */
+  .why-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem; margin-top: 3.5rem;
+  }
+  .why-card {
+    text-align: center; padding: 3rem 1.5rem;
+    background: rgba(255,255,255,.02);
+    border: 1px solid rgba(219,219,219,.07);
+    border-radius: 4px; transition: transform .3s, border-color .3s;
+  }
+  .why-card:hover { transform: translateY(-6px); border-color: var(--teal); }
+  .why-icon {
+    font-size: 2.2rem; margin-bottom: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .why-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; color: var(--white); margin-bottom: .6rem;
+  }
+  .why-desc { font-size: 1.10rem; color: #888; line-height: 1.7; }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(237,109,64,.1), rgba(92,147,159,.08));
+    border-top: 1px solid rgba(237,109,64,.15);
+    border-bottom: 1px solid rgba(237,109,64,.15);
+  }
+  .cta-section .section-title { font-size: clamp(2.2rem, 5vw, 4rem); margin-bottom: 1rem; }
+  .cta-section .section-desc { margin: 0 auto 2.5rem; max-width: 560px; }
+  .cta-pulse {
+    display: inline-block;
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(237,109,64,.4); }
+    50%       { box-shadow: 0 0 0 16px rgba(237,109,64,0); }
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative; z-index: 10;
+    padding: 3rem 5% 2rem;
+    border-top: 1px solid rgba(219,219,219,.08);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; color: var(--white); font-weight: 600;
+  }
+  .footer-logo span { color: var(--orange); }
+  .footer-copy { font-size: .8rem; color: #555; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a {
+    font-size: .8rem; color: #666; text-decoration: none; transition: color .3s;
+  }
+  .footer-links a:hover { color: var(--teal); }
+
+  /* ── ANIMATIONS UTILITY ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: .1s; }
+  .reveal-delay-2 { transition-delay: .2s; }
+  .reveal-delay-3 { transition-delay: .3s; }
+  .reveal-delay-4 { transition-delay: .4s; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    .about-strip { grid-template-columns: 1fr; }
+    .about-stats { border-left: none; border-top: 1px solid rgba(92,147,159,.15); }
+    .features-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .features-visual { height: 320px; }
+    .vis-badge { right: 0; }
+  }
+  @media (max-width: 700px) {
+    nav ul { display: none; }
+    .hamburger { display: flex; }
+    nav ul.open {
+      display: flex; flex-direction: column;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: rgba(17,17,17,.97);
+      padding: 1.5rem 5%; gap: 1.2rem;
+      border-bottom: 1px solid rgba(92,147,159,.15);
+    }
+    .hero h1 { font-size: 2.8rem; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; align-items: flex-start; }
+    body { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
+  }
+</style>
+	<script>
+		(function() {
+			var h = window.location.hostname;
+			console.log("[CookieYes Loader] Current hostname:", h);
+			if (h !== "localhost" && h !== "127.0.0.1" && !h.includes("127.0.0")) {
+				var s = document.createElement("script");
+				s.id = "cookieyes";
+				s.type = "text/javascript";
+				s.src = "https://cdn-cookieyes.com/client_data/e13805ca0237c863c297140fa9f82f7e/script.js";
+				document.head.appendChild(s);
+			} else {
+				console.log("[CookieYes Loader] Skipped CookieYes script on local dev environment:", h);
+			}
+		})();
+	</script>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Animated Canvas -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- Floating shapes -->
+<div class="shape" id="s1" style="left:8%; width:40px; height:40px; border:1px solid rgba(237,109,64,.4); animation-duration:14s; animation-delay:0s;"></div>
+<div class="shape" id="s2" style="left:25%; width:20px; height:20px; background:rgba(92,147,159,.25); animation-duration:18s; animation-delay:3s;"></div>
+<div class="shape" id="s3" style="left:60%; width:60px; height:60px; border:1px solid rgba(92,147,159,.3); border-radius:50%; animation-duration:22s; animation-delay:6s;"></div>
+<div class="shape" id="s4" style="left:80%; width:30px; height:30px; background:rgba(237,109,64,.2); animation-duration:16s; animation-delay:1s;"></div>
+<div class="shape" id="s5" style="left:45%; width:15px; height:15px; background:rgba(219,219,219,.15); border-radius:50%; animation-duration:20s; animation-delay:9s;"></div>
+<div class="shape" id="s6" style="left:92%; width:50px; height:50px; border:1px solid rgba(237,109,64,.2); border-radius:2px; animation-duration:25s; animation-delay:4s;"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="../index.html" style="text-decoration:none;display:inline-flex;align-items:center;color:inherit;">
+    <img src="../assets/logo.webp" alt="Bridge Group Solutions" style="height:28px;margin-right:8px;">
+    <span>Bridge<span>Group</span> Solutions</span>
+  </a>
+  <ul id="navLinks">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../why-bgs.html">Why BGS</a></li>
+    <li><a href="../portfolio.html">Portfolio</a></li>
+    <li><a href="../gallery.html">Gallery</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="../contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <p class="hero-eyebrow">Enterprise Resource Planning</p>
+  <h1>
+    Intelligent <em>ERP</em><br>
+    <span class="line2">for Modern Business</span>
+  </h1>
+  <p class="hero-sub">We provide powerful, customized ERP solutions that integrate all your business processes—HR, finance, inventory, and sales—into a single, smart system.</p>
+  <div class="hero-btns">
+    <a href="#services" class="btn-primary">Explore Solutions</a>
+    <a href="#contact" class="btn-outline">Talk to Us</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span class="scroll-label">Scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="padding-top: 4rem; padding-bottom: 4rem;">
+  <div class="section-label reveal">Who We Are</div>
+  <div class="section-title reveal reveal-delay-1">Built for <span>Performance</span></div>
+  <div class="about-strip reveal reveal-delay-2">
+    <div class="about-text">
+      <p class="section-desc" style="max-width:100%">
+        Bridge Group Solutions specializes in end-to-end ERP development, delivering systems that reduce manual work, improve operational visibility, and drive smarter decisions through real-time automation. We tailor every solution to your unique business needs.
+      </p>
+      <div style="margin-top: 2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="#services" class="btn-primary">Our Services</a>
+        <a href="#features" class="btn-outline">Core Features</a>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div class="stat-box">
+        <div class="stat-num">200+</div>
+        <div class="stat-label">Projects Delivered</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Years of Experience</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Integrations Built</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label reveal">What We Offer</div>
+  <div class="section-title reveal reveal-delay-1">Our <span>Services</span></div>
+  <p class="section-desc reveal reveal-delay-2">Every module, every workflow, every report—designed around your business.</p>
+  <div class="services-grid">
+    <div class="service-card reveal reveal-delay-1">
+      <div class="card-icon">⚙️</div>
+      <div class="card-title">Custom ERP Development</div>
+      <p class="card-desc">Fully bespoke ERP systems architected around your workflows. From scoping to deployment, we build software that fits your operations exactly.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="card-icon">👥</div>
+      <div class="card-title">HRMS, Inventory & Finance</div>
+      <p class="card-desc">Purpose-built modules for human resources, stock management, and financial operations—seamlessly connected in one unified platform.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="card-icon">🔗</div>
+      <div class="card-title">ERP Integration & Migration</div>
+      <p class="card-desc">Smooth migration from legacy systems and integration with third-party tools, APIs, and cloud services—zero disruption to your daily operations.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-4">
+      <div class="card-icon">🛡️</div>
+      <div class="card-title">ERP Support & Maintenance</div>
+      <p class="card-desc">Ongoing monitoring, performance tuning, updates, and dedicated support—keeping your ERP running at peak efficiency long-term.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="features-section">
+  <div class="features-inner">
+    <div>
+      <div class="section-label reveal">Core Capabilities</div>
+      <h2 class="section-title reveal reveal-delay-1">Key <span>Features</span></h2>
+      <div class="features-list">
+        <div class="feature-item reveal reveal-delay-1">
+          <div class="feature-dot"></div>
+          <div class="feature-text"><strong>End-to-End Process Integration</strong>Unify every department under one data layer—no silos, no blind spots.</div>
+        </div>
+        <div class="feature-item reveal reveal-delay-2">
+          <div class="feature-dot"></div>
+          <div class="feature-text"><strong>Real-Time Reporting & Analytics</strong>Live dashboards and drill-down reports that inform decisions as they happen.</div>
+        </div>
+        <div class="feature-item reveal reveal-delay-3">
+          <div class="feature-dot"></div>
+          <div class="feature-text"><strong>Workflow Automation</strong>Eliminate repetitive tasks with rule-based automation across departments.</div>
+        </div>
+        <div class="feature-item reveal reveal-delay-4">
+          <div class="feature-dot"></div>
+          <div class="feature-text"><strong>Secure & Scalable Architecture</strong>Enterprise-grade security with multi-user access control that scales as you grow.</div>
+        </div>
+      </div>
+    </div>
+    <div class="features-visual reveal reveal-delay-2">
+      <div class="vis-card vis-card-main">
+        <h3>Business Performance</h3>
+        <div class="vis-progress">
+          <div class="vis-progress-label"><span>Operational Efficiency</span><span>94%</span></div>
+          <div class="vis-bar"><div class="vis-fill" style="--w:94%"></div></div>
+        </div>
+        <div class="vis-progress">
+          <div class="vis-progress-label"><span>Data Accuracy</span><span>99%</span></div>
+          <div class="vis-bar"><div class="vis-fill" style="--w:99%; animation-delay:.3s"></div></div>
+        </div>
+        <div class="vis-progress">
+          <div class="vis-progress-label"><span>Process Automation</span><span>87%</span></div>
+          <div class="vis-bar"><div class="vis-fill" style="--w:87%; animation-delay:.6s"></div></div>
+        </div>
+        <div class="vis-progress">
+          <div class="vis-progress-label"><span>Cost Reduction</span><span>76%</span></div>
+          <div class="vis-bar"><div class="vis-fill" style="--w:76%; animation-delay:.9s"></div></div>
+        </div>
+      </div>
+      <div class="vis-badge">✦ Live Analytics</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div style="text-align:center">
+    <div class="section-label reveal">Why Choose Us</div>
+    <h2 class="section-title reveal reveal-delay-1">The Bridge Group <span>Advantage</span></h2>
+    <p class="section-desc reveal reveal-delay-2" style="margin: 0 auto">We don't sell off-the-shelf. We engineer solutions that match your exact business reality.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal reveal-delay-1">
+      <div class="why-icon">🏭</div>
+      <div class="why-title">Industry-Specific Solutions</div>
+      <p class="why-desc">Deep domain expertise across manufacturing, retail, services, and logistics—solutions that speak your industry's language.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-2">
+      <div class="why-icon">🎛️</div>
+      <div class="why-title">High Customization</div>
+      <p class="why-desc">Every feature, module, and workflow is built to your specification. No compromise, no bloated one-size-fits-all software.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-3">
+      <div class="why-icon">🔄</div>
+      <div class="why-title">Reliable Upgrades</div>
+      <p class="why-desc">Proactive maintenance cycles and regular feature upgrades ensure your ERP evolves with your business and technology landscape.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-4">
+      <div class="why-icon">💬</div>
+      <div class="why-title">Dedicated Support</div>
+      <p class="why-desc">A named support team for your account—responsive, knowledgeable, and invested in your success from day one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="section-label reveal">Get Started</div>
+  <h2 class="section-title reveal reveal-delay-1">Transform Your Business <span>Operations</span></h2>
+  <p class="section-desc reveal reveal-delay-2">Join the businesses already operating smarter with Bridge Group ERP. Let's build the system your business deserves.</p>
+  <div class="cta-pulse reveal reveal-delay-3">
+    <a href="mailto:hello@bridgegroupsolutions.com" class="btn-primary" style="font-size:1rem; padding:1rem 3rem;">Start Your ERP Journey</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <a href="../index.html" style="text-decoration:none;color:inherit;display:inline-flex;align-items:center;">
+      <img src="../assets/logo.webp" alt="Bridge Group Solutions" style="height:24px;margin-right:8px;">
+      <span>Bridge<span>Group</span> Solutions</span>
+    </a>
+  </div>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../why-bgs.html">Why BGS</a>
+    <a href="../portfolio.html">Portfolio</a>
+    <a href="../gallery.html">Gallery</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 Bridge Group Solutions. All rights reserved.</div>
+</footer>
+
+<script>
+  /* ── Custom Cursor ── */
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top  = e.clientY + 'px';
+    setTimeout(() => {
+      ring.style.left = e.clientX + 'px';
+      ring.style.top  = e.clientY + 'px';
+    }, 80);
+  });
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(2.5)'; ring.style.borderColor = 'var(--orange)'; });
+    el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; ring.style.borderColor = 'var(--teal)'; });
+  });
+
+  /* ── Canvas Particle Network ── */
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x  = Math.random() * W;
+      this.y  = Math.random() * H;
+      this.vx = (Math.random() - .5) * .4;
+      this.vy = (Math.random() - .5) * .4;
+      this.r  = Math.random() * 1.8 + .5;
+      const palette = ['rgba(237,109,64,', 'rgba(92,147,159,', 'rgba(219,219,219,'];
+      this.color = palette[Math.floor(Math.random() * palette.length)];
+    }
+    update() {
+      this.x += this.vx; this.y += this.vy;
+      if (this.x < 0 || this.x > W) this.vx *= -1;
+      if (this.y < 0 || this.y > H) this.vy *= -1;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = this.color + '.7)';
+      ctx.fill();
+    }
+  }
+
+  function init() {
+    resize();
+    particles = Array.from({ length: 80 }, () => new Particle());
+  }
+
+  function drawConnections() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 130) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          const alpha = (1 - dist / 130) * .15;
+          ctx.strokeStyle = `rgba(92,147,159,${alpha})`;
+          ctx.lineWidth = .5;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  let mouse = { x: -999, y: -999 };
+  document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+  function drawMouseConnect() {
+    particles.forEach(p => {
+      const dx = p.x - mouse.x, dy = p.y - mouse.y;
+      const d = Math.sqrt(dx*dx + dy*dy);
+      if (d < 160) {
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(mouse.x, mouse.y);
+        const a = (1 - d / 160) * .3;
+        ctx.strokeStyle = `rgba(237,109,64,${a})`;
+        ctx.lineWidth = .7;
+        ctx.stroke();
+      }
+    });
+  }
+
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+    drawConnections();
+    drawMouseConnect();
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('resize', () => { resize(); });
+  init();
+  loop();
+
+  /* ── Scroll Reveal ── */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* ── Hamburger ── */
+  const hb = document.getElementById('hamburger');
+  const nl = document.getElementById('navLinks');
+  if (hb && nl) {
+    hb.addEventListener('click', () => nl.classList.toggle('open'));
+  }
+
+  /* ── Smooth active nav ── */
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    document.querySelectorAll('nav ul a').forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--orange)' : '';
+    });
+  });
+</script>
+</body>
+</html>

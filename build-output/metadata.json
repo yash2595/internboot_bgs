@@ -1,0 +1,139 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Bridge Group Solutions - Canonical Site Metadata Registry",
+    "description": "Central Source of Truth for SEO, OpenGraph, Twitter Cards, and canonical URL metadata across Bridge Group Solutions web properties.",
+    "site_name": "Bridge Group Solutions",
+    "canonical_domain": "https://www.bridgegroupsolutions.com",
+    "default_og_image": "assets/logo.webp",
+    "templates": {
+        "main_page": {
+            "title_pattern": "{Page Title} | Bridge Group Solutions",
+            "og_type": "website",
+            "twitter_card": "summary_large_image"
+        },
+        "service_page": {
+            "title_pattern": "{Service Name} Solutions | Bridge Group Solutions",
+            "og_type": "website",
+            "twitter_card": "summary_large_image"
+        },
+        "legal_page": {
+            "title_pattern": "{Document Title} | Bridge Group Solutions",
+            "og_type": "website",
+            "twitter_card": "summary_large_image"
+        }
+    },
+    "pages": {
+        "index.html": {
+            "type": "main_page",
+            "title": "Building Technology that Drives the Future Forward | Bridge Group Solutions",
+            "description": "Bridge Group Solutions delivers cutting-edge digital transformation, custom software development, ERP systems, data analytics, and cloud solutions to empower growing businesses.",
+            "url": "https://www.bridgegroupsolutions.com/",
+            "og_image": "assets/logo.webp"
+        },
+        "about.html": {
+            "type": "main_page",
+            "title": "Meet Our Experts and Advisors | About Bridge Group Solutions",
+            "description": "Learn more about Bridge Group Solutions, our leadership, expert advisors, and our mission to deliver transformative digital solutions worldwide.",
+            "url": "https://www.bridgegroupsolutions.com/about.html",
+            "og_image": "assets/logo.webp"
+        },
+        "why-bgs.html": {
+            "type": "main_page",
+            "title": "Why Choose Us | Bridge Group Solutions",
+            "description": "Discover why forward-thinking organizations choose Bridge Group Solutions for enterprise digital transformation, scalable tech, and long-term partnership.",
+            "url": "https://www.bridgegroupsolutions.com/why-bgs.html",
+            "og_image": "assets/logo.webp"
+        },
+        "portfolio.html": {
+            "type": "main_page",
+            "title": "Our Portfolio & Projects | Bridge Group Solutions",
+            "description": "Explore our featured client projects, enterprise solutions, custom web applications, and data-driven systems built by Bridge Group Solutions.",
+            "url": "https://www.bridgegroupsolutions.com/portfolio.html",
+            "og_image": "assets/logo.webp"
+        },
+        "gallery.html": {
+            "type": "main_page",
+            "title": "Gallery | Bridge Group Solutions",
+            "description": "Explore our gallery capturing the spirit of our team, workplace culture, and milestones at Bridge Group Solutions.",
+            "url": "https://www.bridgegroupsolutions.com/gallery.html",
+            "og_image": "assets/logo.webp"
+        },
+        "contact.html": {
+            "type": "main_page",
+            "title": "Contact Us | Bridge Group Solutions",
+            "description": "Get in touch with Bridge Group Solutions. Talk to our team to discuss technology consulting, enterprise solutions, digital transformation, and custom web applications.",
+            "url": "https://www.bridgegroupsolutions.com/contact.html",
+            "og_image": "assets/logo.webp"
+        },
+        "services/erp.html": {
+            "type": "service_page",
+            "title": "ERP & Custom Software Solutions | Bridge Group Solutions",
+            "description": "Tailored ERP and custom software solutions that streamline operations, improve efficiency, and support scalable business growth.",
+            "url": "https://www.bridgegroupsolutions.com/services/erp.html",
+            "og_image": "assets/logo.webp"
+        },
+        "services/web.html": {
+            "type": "service_page",
+            "title": "Web Development Services",
+            "description": "",
+            "url": "https://www.bridgegroupsolutions.com/services/web.html",
+            "og_image": "assets/logo.webp"
+        },
+        "services/app.html": {
+            "type": "service_page",
+            "title": "Bridge Group Solutions \u00e2\u20ac\u201c App Development",
+            "description": "",
+            "url": "https://www.bridgegroupsolutions.com/services/app.html",
+            "og_image": "assets/logo.webp"
+        },
+        "services/crm.html": {
+            "type": "service_page",
+            "title": "CRM Pro \u00e2\u20ac\u201d Custom CRM Solutions",
+            "description": "",
+            "url": "https://www.bridgegroupsolutions.com/services/crm.html",
+            "og_image": "assets/logo.webp"
+        },
+        "services/data.html": {
+            "type": "service_page",
+            "title": "Bridge Group Solutions \u00e2\u20ac\u201d Data-Driven Intelligence",
+            "description": "",
+            "url": "https://www.bridgegroupsolutions.com/services/data.html",
+            "og_image": "assets/logo.webp"
+        },
+        "services/project.html": {
+            "type": "service_page",
+            "title": "Bridge Group Solutions \u00e2\u20ac\u201c Outsource Smarter",
+            "description": "",
+            "url": "https://www.bridgegroupsolutions.com/services/project.html",
+            "og_image": "assets/logo.webp"
+        },
+        "legal/privacy-policy.html": {
+            "type": "legal_page",
+            "title": "Privacy Policy | Bridge Group Solutions",
+            "description": "Read the official Privacy Policy of Bridge Group Solutions detailing how we protect and process your data.",
+            "url": "https://www.bridgegroupsolutions.com/legal/privacy-policy.html",
+            "og_image": "assets/logo.webp"
+        },
+        "legal/terms-and-conditions.html": {
+            "type": "legal_page",
+            "title": "Terms and Conditions | Bridge Group Solutions",
+            "description": "Review the official Terms and Conditions governing use of Bridge Group Solutions services and website.",
+            "url": "https://www.bridgegroupsolutions.com/legal/terms-and-conditions.html",
+            "og_image": "assets/logo.webp"
+        },
+        "legal/cookie-policy.html": {
+            "type": "legal_page",
+            "title": "Cookie Policy | Bridge Group Solutions",
+            "description": "Read the official Cookie Policy of Bridge Group Solutions detailing how and why we use cookies on our website.",
+            "url": "https://www.bridgegroupsolutions.com/legal/cookie-policy.html",
+            "og_image": "assets/logo.webp"
+        },
+        "legal/disclaimer.html": {
+            "type": "legal_page",
+            "title": "Disclaimer | Bridge Group Solutions",
+            "description": "Read the legal disclaimer and terms of use for Bridge Group Solutions.",
+            "url": "https://www.bridgegroupsolutions.com/legal/disclaimer.html",
+            "og_image": "assets/logo.webp"
+        }
+    }
+}
