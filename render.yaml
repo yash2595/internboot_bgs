@@ -7,3 +7,22 @@ services:
     env: static
     buildCommand: python build2.py
     staticPublishPath: ./build-output
+    routes:
+      # Explicit rewrite rules for root-level pages.
+      # Render static CDN does not auto-serve /about.html at /about —
+      # these rules map the extensionless URL to the correct .html file.
+      - type: rewrite
+        source: /about
+        destination: /about.html
+      - type: rewrite
+        source: /contact
+        destination: /contact.html
+      - type: rewrite
+        source: /gallery
+        destination: /gallery.html
+      - type: rewrite
+        source: /portfolio
+        destination: /portfolio.html
+      - type: rewrite
+        source: /why-bgs
+        destination: /why-bgs.html
