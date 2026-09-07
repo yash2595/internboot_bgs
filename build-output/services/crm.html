@@ -8,31 +8,6 @@
 <link rel="preload" href="../assets/main.minc014.css?id=18ba35244216baa33eca27c02bf5db21" as="style">
 <link rel="stylesheet" href="../assets/main.minc014.css?id=18ba35244216baa33eca27c02bf5db21">
 <style>
-  /* ── Font-face declarations (same fonts used by main site) ── */
-  @font-face {
-    font-family: 'Roc Grotesk';
-    src: url('../assets/roc-grotesk-regular.woff2') format('woff2'),
-         url('../assets/roc-grotesk-regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Roc Grotesk';
-    src: url('../assets/roc-grotesk-medium.woff2') format('woff2'),
-         url('../assets/roc-grotesk-medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Azeret Mono';
-    src: url('../assets/azeret-mono-regular.otf') format('opentype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-
   /* ── DESIGN SYSTEM TOKENS ── */
   :root {
     --color-rich-carbon: #111111;
@@ -585,18 +560,7 @@
     font-weight: 600;
   }
 
-  .section-h, .sec-title {
-    font-family: var(--font-roc-grotesk);
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 700;
-    line-height: 1.1;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    color: var(--color-off-white);
-    margin-bottom: 1.25rem;
-  }
-
-  .section-h em, .sec-title em {
+  .section-title em {
     font-style: normal;
     color: var(--color-infrared);
   }
@@ -1064,7 +1028,7 @@ integration with your existing systems.</p>
 <section class="section" id="services">
   <div class="sr">
     <div class="chip">What We Offer</div>
-    <h2 class="section-h">Solutions That Drive Success</h2>
+    <h2 class="section-title">Solutions That Drive Success</h2>
     <p class="section-p">From development to deployment, we deliver end-to-end digital solutions.</p>
   </div>
   <div class="svc-grid">
@@ -1103,7 +1067,7 @@ integration with your existing systems.</p>
 <section class="section" id="pipeline" style="padding-top:0;">
   <div class="reveal">
     <div class="eyebrow">Why Choose Us</div>
-    <h2 class="sec-title">Why Choose <em>Us</em></h2>
+    <h2 class="section-title">Why Choose <em>Us</em></h2>
     <h3 style="font-size:1.15rem;color:var(--color-electric-teal);font-weight:600;margin-top:-0.5rem;text-transform:uppercase;">Smart Solutions, Real Results</h3>
   </div>
 
@@ -1123,14 +1087,14 @@ integration with your existing systems.</p>
 <!-- ═══ TESTIMONIALS / BANNER ═══ -->
 <section id="testimonials">
   <div class="reveal">
-    <h2 class="sec-title">Simplify your customer<br>management <em>today.</em></h2>
+    <h2 class="section-title">Simplify your customer<br>management <em>today.</em></h2>
   </div>
 </section>
 
 <!-- ═══ CTA SECTION ═══ -->
 <section id="cta">
   <div class="eyebrow reveal">// Get Started Today</div>
-  <h2 class="sec-title reveal">Ready to Transform<br>Your <em>Customer Relationships?</em></h2>
+    <h2 class="section-title reveal">Ready to Transform<br>Your <em>Customer Relationships?</em></h2>
   <p class="sec-desc reveal" style="margin:1rem auto 0;">Join 1,200+ companies using Bridge CRM to build deeper relationships and close more revenue. No credit card required.</p>
   <div class="cta-form reveal">
     <input class="cta-input" type="text" placeholder="Your full name"/>

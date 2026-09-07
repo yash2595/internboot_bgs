@@ -37,31 +37,6 @@
 
 <!-- Page-specific styles for service content layout -->
 <style>
-  /* ── Font-face declarations (same fonts used by main site) ── */
-  @font-face {
-    font-family: 'Roc Grotesk';
-    src: url('../assets/roc-grotesk-regular.woff2') format('woff2'),
-         url('../assets/roc-grotesk-regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Roc Grotesk';
-    src: url('../assets/roc-grotesk-medium.woff2') format('woff2'),
-         url('../assets/roc-grotesk-medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Azeret Mono';
-    src: url('../assets/azeret-mono-regular.otf') format('opentype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-
   
   /* ── Custom Cursor ── */
   .cursor {
@@ -431,14 +406,6 @@
     display: flex; align-items: center; gap: 8px;
   }
   .section-tag::before { content: ''; width: 28px; height: 1px; background: rgba(255, 255, 255, 0.35); }
-  .section-title {
-    font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif);
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.025em;
-    color: var(--color-off-white, #e7e7e7);
-  }
   .section-title em { font-style: normal; color: #ffffff; }
   .section-desc {
     color: rgba(218,218,218,0.6);

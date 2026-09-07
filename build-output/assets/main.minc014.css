@@ -3800,6 +3800,13 @@
   font-display: swap;
   font-family: Azeret Mono;
   font-style: normal;
+  font-weight: 400;
+  src: url(azeret-mono-regular.otf) format("opentype");
+}
+@font-face {
+  font-display: swap;
+  font-family: Azeret Mono;
+  font-style: normal;
   font-weight: 500;
   src: url(azeret-mono-regular.otf) format("opentype");
 }
@@ -6295,5 +6302,19 @@ a.plyr__control:before {
   clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
   border: 0 !important;
+}
+
+/* ==========================================================================
+   CANONICAL SERVICE PAGE SECTION HEADING
+   ========================================================================== */
+.section-title {
+  font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--color-off-white, #e7e7e7);
+  margin-bottom: 1.25rem;
 }
 

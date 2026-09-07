@@ -37,31 +37,6 @@
 
 <style>
 
-  /* ── Font-face declarations ── */
-  @font-face {
-    font-family: 'Roc Grotesk';
-    src: url('../assets/roc-grotesk-regular.woff2') format('woff2'),
-         url('../assets/roc-grotesk-regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Roc Grotesk';
-    src: url('../assets/roc-grotesk-medium.woff2') format('woff2'),
-         url('../assets/roc-grotesk-medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Azeret Mono';
-    src: url('../assets/azeret-mono-regular.otf') format('opentype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-
   *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -894,15 +869,6 @@
     content: '';
     width: 20px; height: 2px;
     background: var(--orange);
-  }
-
-  .section-title {
-    font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif); font-weight: 500;
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    margin-bottom: 1rem;
   }
 
   .section-title .hl { color: var(--teal); }
