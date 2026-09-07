@@ -19232,7 +19232,7 @@
                 this.slider = new Swiper(
                   n,
                   _u(
-                    _u({ keyboard: { enabled: !0, onlyInViewport: !0 } }, t),
+                    _u({ keyboard: { enabled: !0, onlyInViewport: !0 }, simulateTouch: !0, grabCursor: !0, allowTouchMove: !0, touchRatio: 1 }, t),
                     {},
                     {
                       observer: !0,
