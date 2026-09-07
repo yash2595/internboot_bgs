@@ -26,3 +26,6 @@ services:
       - type: rewrite
         source: /why-bgs
         destination: /why-bgs.html
+      - type: rewrite
+        source: /blogs
+        destination: /blogs.html

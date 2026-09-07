@@ -13,7 +13,7 @@ SRC_ROOT = os.path.abspath(os.path.dirname(__file__))
 DEST_ROOT = os.path.join(SRC_ROOT, 'build-output')
 
 # Root HTML pages that need extensionless directory aliases
-ROOT_PAGES = ['about', 'contact', 'gallery', 'portfolio', 'why-bgs']
+ROOT_PAGES = ['about', 'contact', 'gallery', 'portfolio', 'why-bgs', 'blogs']
 
 # Expected critical files required for deployment integrity verification
 CRITICAL_FILES = [
@@ -23,6 +23,7 @@ CRITICAL_FILES = [
     'gallery.html',
     'portfolio.html',
     'why-bgs.html',
+    'blogs.html',
     os.path.join('services', 'app.html'),
     os.path.join('services', 'web.html'),
     os.path.join('services', 'crm.html'),

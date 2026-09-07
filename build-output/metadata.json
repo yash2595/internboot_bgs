@@ -65,6 +65,13 @@
             "url": "https://www.bridgegroupsolutions.com/contact.html",
             "og_image": "assets/logo.webp"
         },
+        "blogs.html": {
+            "type": "main_page",
+            "title": "Insights & Updates | Bridge Group Solutions",
+            "description": "Explore insights, thought leadership, and digital transformation updates from Bridge Group Solutions.",
+            "url": "https://www.bridgegroupsolutions.com/blogs.html",
+            "og_image": "assets/logo.webp"
+        },
         "services/erp.html": {
             "type": "service_page",
             "title": "ERP & Custom Software Solutions | Bridge Group Solutions",

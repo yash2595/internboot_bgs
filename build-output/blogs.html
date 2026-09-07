@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="referrer" content="origin-when-cross-origin" />
+
+	<link rel="preload" href="assets/main.minc014.css?id=18ba35244216baa33eca27c02bf5db21" as="style" />
+	<link rel="stylesheet" href="assets/main.minc014.css?id=18ba35244216baa33eca27c02bf5db21" />
+
+	<script src="assets/three.min821a.js?id=43e86ec6d3bddadeaa0980c1dd2e9f7f" defer></script>
+	<script src="assets/swiper.mine501.js?id=73b3ce9caaee2c8cf8bc314a9cd8b5ee" defer></script>
+	<script src="assets/gsap.min4af2.js?id=e5d9d8dcf72b06d2a3cd8125cba04e36" defer></script>
+	<script src="assets/main.min3b67.js?id=5c7df0d47c91902b5cb665c2a0b20b7a" defer></script>
+
+	<link rel="icon" type="image/svg+xml" href="assets/logo.webp" />
+	<link rel="apple-touch-icon" sizes="180x180"
+		href="assets/apple-touch-icon8216.png?id=332f9344116ad0380ffb26db57fb259a" />
+	<link rel="manifest" href="assets/sitef47b.webmanifest?id=1235c67e59f55f12c208ca4238fede75" />
+	<link rel="mask-icon" href="assets/safari-pinned-tab9314.svg?id=3f3deda7eecc013c398d98e55e7c88de" color="#111111" />
+	<meta name="apple-mobile-web-app-title" content="BGS" />
+	<meta name="application-name" content="Bridge Group Solutions" />
+	<meta name="msapplication-TileColor" content="#111111" />
+	<meta name="theme-color" content="#111111" />
+
+	<script>
+		(function() {
+			var h = window.location.hostname;
+			if (h !== "localhost" && h !== "127.0.0.1" && !h.includes("127.0.0")) {
+				var s = document.createElement("script");
+				s.id = "cookieyes";
+				s.type = "text/javascript";
+				s.src = "https://cdn-cookieyes.com/client_data/e13805ca0237c863c297140fa9f82f7e/script.js";
+				document.head.appendChild(s);
+			}
+		})();
+	</script>
+
+	<title>Insights &amp; Updates | Blogs — Bridge Group Solutions</title>
+	<meta name="description" content="Explore insights, enterprise technology perspectives, and engineering updates from Bridge Group Solutions." />
+	<meta property="og:title" content="Insights & Updates | Blogs — Bridge Group Solutions" />
+	<meta property="og:description" content="Explore insights, enterprise technology perspectives, and engineering updates from Bridge Group Solutions." />
+	<meta property="og:url" content="https://www.bridgegroupsolutions.com/blogs.html" />
+	<meta property="og:image" content="assets/logo.webp" />
+	<meta property="og:type" content="website" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Insights & Updates | Blogs — Bridge Group Solutions" />
+	<meta name="twitter:description" content="Explore insights, enterprise technology perspectives, and engineering updates from Bridge Group Solutions." />
+	<meta name="twitter:image" content="assets/logo.webp" />
+	<link rel="canonical" href="https://www.bridgegroupsolutions.com/blogs.html" />
+
+	<style>
+		#blog-canvas {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1 !important;
+			pointer-events: none !important;
+		}
+
+		.blogs-hero-wrap {
+			position: relative;
+			min-height: 60vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding-top: 160px;
+			padding-bottom: 80px;
+			box-sizing: border-box;
+		}
+
+		@media (min-width: 768px) {
+			.blogs-hero-wrap {
+				min-height: 68vh;
+				padding-top: 210px;
+				padding-bottom: 120px;
+			}
+		}
+
+		.blogs-title {
+			font-family: var(--font-roc-grotesk, "Roc Grotesk", sans-serif);
+			font-size: clamp(2.6rem, 6.5vw, 5.2rem);
+			font-weight: 500;
+			letter-spacing: -0.02em;
+			line-height: 0.98;
+			text-transform: uppercase;
+			color: #dadada;
+			margin: 0;
+		}
+
+		.blogs-eyebrow-badge {
+			font-family: var(--font-azeret-mono, "Azeret Mono", monospace);
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			font-size: 13px;
+			color: rgba(218, 218, 218, 0.65);
+			margin-bottom: 24px;
+		}
+
+		.blogs-body-message {
+			font-family: var(--font-azeret-mono, "Azeret Mono", monospace);
+			color: rgba(218, 218, 218, 0.75);
+			font-size: clamp(1rem, 1.4vw, 1.25rem);
+			line-height: 1.6;
+			margin-top: 24px;
+			margin-bottom: 0;
+			max-width: 600px;
+		}
+
+		.blogs-pill {
+			font-family: var(--font-azeret-mono, "Azeret Mono", monospace);
+			margin-top: 36px;
+			display: inline-flex;
+			align-items: center;
+			gap: 12px;
+			padding: 8px 18px;
+			border-radius: 9999px;
+			background: rgba(218, 218, 218, 0.04);
+			border: 1px solid rgba(218, 218, 218, 0.12);
+			color: rgba(218, 218, 218, 0.65);
+			font-size: 12px;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+		}
+	</style>
+</head>
+
+<body class="bg-rich-carbon text-neural-fog font-roc-grotesk">
+
+	<div x-data="dragCursor()"
+		class="p3-mono bg-rich-carbon text-off-white pointer-events-none fixed top-0 left-0 z-1000 flex h-[32px] items-center justify-center overflow-hidden rounded-full px-[16px] uppercase opacity-0">
+		<div class="relative flex w-full flex-col overflow-hidden text-center" data-text-container>
+			<span class="whitespace-nowrap">Drag</span>
+			<span class="absolute top-full w-full whitespace-nowrap" aria-hidden="true">
+				Go to website
+			</span>
+		</div>
+	</div>
+	<div x-data="viewCursor()"
+		class="p3-mono bg-off-white text-rich-carbon pointer-events-none fixed z-50 flex h-[32px] -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full px-[16px] uppercase opacity-0">
+		<div class="relative flex w-full flex-col overflow-hidden text-center" data-text-container>
+			<span class="whitespace-nowrap">View</span>
+			<span class="absolute top-full w-full whitespace-nowrap" aria-hidden="true">
+				Hide
+			</span>
+		</div>
+	</div>
+
+	<a class="skip-link" href="#main">Skip to content</a>
+
+	<!-- Header Navigation -->
+	<header
+		class="layout--header group fixed top-0 isolate z-50 flex w-full items-center transition-transform duration-400 ease-(--easing) motion-reduce:duration-[0ms] lg:h-(--header-height) lg:overflow-hidden"
+		:class="{ '-scrolled': scrolled, '-mobile-menu-open': mobileMenuOpen, '-translate-y-full': hidden }" x-data="{
+		scrolled: false,
+		hidden: false,
+		lastScrollY: 0,
+		windowHeight: window.innerHeight,
+		mobileMenuOpen: false,
+		scrollThreshold: 50,
+		init() {
+			window.addEventListener('scroll', () => {
+				if (this.mobileMenuOpen) return;
+				const currentScrollY = window.scrollY;
+				const pastQuarterViewport = currentScrollY > this.windowHeight / 4;
+				const pastFullViewport = currentScrollY > this.windowHeight;
+				const scrollDelta = currentScrollY - this.lastScrollY;
+				const scrollingDown = scrollDelta > this.scrollThreshold;
+				const scrollingUp = scrollDelta < -this.scrollThreshold;
+				this.scrolled = pastQuarterViewport;
+				if (pastFullViewport) {
+					if (scrollingDown) { this.hidden = true; }
+					else if (scrollingUp) { this.hidden = false; }
+				} else {
+					this.hidden = false;
+				}
+				if (Math.abs(scrollDelta) > this.scrollThreshold) {
+					this.lastScrollY = currentScrollY;
+				}
+			});
+			this.$watch('mobileMenuOpen', (value) => {
+				if (value) { smoother.paused(true); }
+				else { smoother.paused(false); }
+			});
+		},
+		scrollToLink(link) {
+			this.mobileMenuOpen = false;
+			smoother.scrollTo(link, true);
+		},
+		scrollToTop() {
+			this.mobileMenuOpen = false;
+			smoother.scrollTo(0, true);
+		}
+	}" @resize.window="() => {
+		windowHeight = window.innerHeight;
+		if (mobileMenuOpen && window.innerWidth >= 1024) {
+			mobileMenuOpen = false;
+		}
+	}">
+		<div class="flex w-full lg:container">
+			<div
+				class="lg:group-[.-scrolled]:bg-urban-smoke group-[.-scrolled]:bg-rich-carbon group-[.-mobile-menu-open]:bg-rich-carbon relative isolate mx-auto flex h-(--header-height) w-fit grow items-center justify-between gap-[20px] bg-transparent px-[10px] transition-all duration-600 ease-(--easing) motion-reduce:duration-[0ms] lg:h-auto lg:px-0 lg:group-[.-scrolled]:w-fit lg:group-[.-scrolled]:grow-0 lg:group-[.-scrolled]:rounded-[8px] lg:group-[.-scrolled]:px-[12px] lg:group-[.-scrolled]:py-[4px]">
+				<a href="index.html"
+					class="relative isolate flex h-[30px] w-auto shrink-0 items-center gap-[8px]"
+					aria-label="Bridge Group Solutions">
+					<img src="./assets/logo.webp" alt="" width="28" height="28" decoding="async"
+						class="h-[28px] w-[28px] object-contain" />
+					<span
+						class="flex items-center h-full text-white font-semibold text-[15px] whitespace-nowrap">
+						Bridge Group Solutions
+					</span>
+				</a>
+
+				<!-- Desktop Links -->
+				<nav class="group/links relative isolate hidden lg:block" x-data="{
+					links: [],
+					activeLink: null,
+					width: 0,
+					offset: 0,
+					init() {
+						const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+						if (prefersReducedMotion) return;
+						this.links = this.$el.querySelectorAll('li');
+						this.links.forEach(link => {
+							link.addEventListener('mouseenter', () => {
+								this.width = link.offsetWidth;
+								this.offset = link.offsetLeft;
+							});
+						});
+					}
+				}">
+					<ul class="flex">
+						<li>
+							<a href="why-bgs.html"
+								class="group/link motion-safe:hover:animate-glitch-hover relative isolate">
+								<div class="flex h-[40px] items-center px-[20px]">
+									<div
+										class="bg-neural-fog size-[10px] -translate-x-[24px] rounded-[3px] opacity-0 blur-[20px] transition-all duration-400 ease-(--easing) group-hover/link:-translate-x-[5px] group-hover/link:opacity-100 group-hover/link:blur-[0px] motion-reduce:hidden">
+									</div>
+									<div
+										class="p2-mono relative isolate flex overflow-hidden transition-transform duration-400 ease-(--easing) motion-safe:-translate-x-[5px] motion-safe:group-hover/link:translate-x-[5px] motion-reduce:duration-[0ms]">
+										<span
+											class="transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:-translate-y-full motion-reduce:duration-[0ms]">
+											WHY BGS
+										</span>
+										<span
+											class="absolute inset-0 translate-y-full transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:translate-y-0 motion-reduce:duration-[0ms]"
+											aria-hidden="true">
+											WHY BGS
+										</span>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="portfolio.html"
+								class="group/link motion-safe:hover:animate-glitch-hover relative isolate">
+								<div class="flex h-[40px] items-center px-[20px]">
+									<div
+										class="bg-neural-fog size-[10px] -translate-x-[24px] rounded-[3px] opacity-0 blur-[20px] transition-all duration-400 ease-(--easing) group-hover/link:-translate-x-[5px] group-hover/link:opacity-100 group-hover/link:blur-[0px] motion-reduce:hidden">
+									</div>
+									<div
+										class="p2-mono relative isolate flex overflow-hidden transition-transform duration-400 ease-(--easing) motion-safe:-translate-x-[5px] motion-safe:group-hover/link:translate-x-[5px] motion-reduce:duration-[0ms]">
+										<span
+											class="transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:-translate-y-full motion-reduce:duration-[0ms]">
+											PORTFOLIO
+										</span>
+										<span
+											class="absolute inset-0 translate-y-full transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:translate-y-0 motion-reduce:duration-[0ms]"
+											aria-hidden="true">
+											PORTFOLIO
+										</span>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="about.html"
+								class="group/link motion-safe:hover:animate-glitch-hover relative isolate">
+								<div class="flex h-[40px] items-center px-[20px]">
+									<div
+										class="bg-neural-fog size-[10px] -translate-x-[24px] rounded-[3px] opacity-0 blur-[20px] transition-all duration-400 ease-(--easing) group-hover/link:-translate-x-[5px] group-hover/link:opacity-100 group-hover/link:blur-[0px] motion-reduce:hidden">
+									</div>
+									<div
+										class="p2-mono relative isolate flex overflow-hidden transition-transform duration-400 ease-(--easing) motion-safe:-translate-x-[5px] motion-safe:group-hover/link:translate-x-[5px] motion-reduce:duration-[0ms]">
+										<span
+											class="transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:-translate-y-full motion-reduce:duration-[0ms]">
+											ABOUT
+										</span>
+										<span
+											class="absolute inset-0 translate-y-full transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:translate-y-0 motion-reduce:duration-[0ms]"
+											aria-hidden="true">
+											ABOUT
+										</span>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="gallery.html"
+								class="group/link motion-safe:hover:animate-glitch-hover relative isolate">
+								<div class="flex h-[40px] items-center px-[20px]">
+									<div
+										class="bg-neural-fog size-[10px] -translate-x-[24px] rounded-[3px] opacity-0 blur-[20px] transition-all duration-400 ease-(--easing) group-hover/link:-translate-x-[5px] group-hover/link:opacity-100 group-hover/link:blur-[0px] motion-reduce:hidden">
+									</div>
+									<div
+										class="p2-mono relative isolate flex overflow-hidden transition-transform duration-400 ease-(--easing) motion-safe:-translate-x-[5px] motion-safe:group-hover/link:translate-x-[5px] motion-reduce:duration-[0ms]">
+										<span
+											class="transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:-translate-y-full motion-reduce:duration-[0ms]">
+											GALLERY
+										</span>
+										<span
+											class="absolute inset-0 translate-y-full transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:translate-y-0 motion-reduce:duration-[0ms]"
+											aria-hidden="true">
+											GALLERY
+										</span>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="blogs.html"
+								class="group/link motion-safe:hover:animate-glitch-hover relative isolate">
+								<div class="flex h-[40px] items-center px-[20px]">
+									<div
+										class="bg-neural-fog size-[10px] -translate-x-[24px] rounded-[3px] opacity-0 blur-[20px] transition-all duration-400 ease-(--easing) group-hover/link:-translate-x-[5px] group-hover/link:opacity-100 group-hover/link:blur-[0px] motion-reduce:hidden">
+									</div>
+									<div
+										class="p2-mono relative isolate flex overflow-hidden transition-transform duration-400 ease-(--easing) motion-safe:-translate-x-[5px] motion-safe:group-hover/link:translate-x-[5px] motion-reduce:duration-[0ms]">
+										<span
+											class="transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:-translate-y-full motion-reduce:duration-[0ms]">
+											BLOGS
+										</span>
+										<span
+											class="absolute inset-0 translate-y-full transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:translate-y-0 motion-reduce:duration-[0ms]"
+											aria-hidden="true">
+											BLOGS
+										</span>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#contact" @click.prevent="() => { 
+								mobileMenuOpen = false; 
+								$nextTick(() => {
+									$dispatch('contact-modal:open', '#contact')
+								}) 
+							}" class="group/link motion-safe:hover:animate-glitch-hover relative isolate">
+								<div class="flex h-[40px] items-center px-[20px]">
+									<div
+										class="bg-neural-fog size-[10px] -translate-x-[24px] rounded-[3px] opacity-0 blur-[20px] transition-all duration-400 ease-(--easing) group-hover/link:-translate-x-[5px] group-hover/link:opacity-100 group-hover/link:blur-[0px] motion-reduce:hidden">
+									</div>
+									<div
+										class="p2-mono relative isolate flex overflow-hidden transition-transform duration-400 ease-(--easing) motion-safe:-translate-x-[5px] motion-safe:group-hover/link:translate-x-[5px] motion-reduce:duration-[0ms]">
+										<span
+											class="transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:-translate-y-full motion-reduce:duration-[0ms]">
+											Contact
+										</span>
+										<span
+											class="absolute inset-0 translate-y-full transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:translate-y-0 motion-reduce:duration-[0ms]"
+											aria-hidden="true">
+											Contact
+										</span>
+									</div>
+								</div>
+							</a>
+						</li>
+					</ul>
+
+					<div class="pointer-events-none absolute top-0 left-0 h-full w-full opacity-0 transition-[width,left,opacity] duration-400 ease-(--easing) group-hover/links:opacity-40 group-has-active/links:opacity-100 motion-reduce:hidden"
+						:style="`width: ${width}px; left: ${offset}px;`">
+						<svg class="size-[9px] corner-accent" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M0.5 0.2L0.5 9.2M0.2 0.5L9.2 0.5" stroke="currentColor"/></svg>
+						<svg class="size-[9px] corner-accent" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M0.5 0.2L0.5 9.2M0.2 0.5L9.2 0.5" stroke="currentColor"/></svg>
+						<svg class="size-[9px] corner-accent" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M0.5 0.2L0.5 9.2M0.2 0.5L9.2 0.5" stroke="currentColor"/></svg>
+						<svg class="size-[9px] corner-accent" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M0.5 0.2L0.5 9.2M0.2 0.5L9.2 0.5" stroke="currentColor"/></svg>
+					</div>
+				</nav>
+
+				<!-- Mobile Hamburger Button -->
+				<button class="relative isolate flex size-[40px] items-center justify-center lg:hidden"
+					@click="mobileMenuOpen = !mobileMenuOpen" aria-label="Toggle mobile menu"
+					:aria-expanded="mobileMenuOpen.toString()">
+					<div class="bg-neural-fog size-[10px] rounded-[3px]"></div>
+				</button>
+
+				<!-- Mobile Menu Dropdown -->
+				<div class="bg-rich-carbon/1 absolute top-full left-0 h-[calc(100dvh-var(--header-height))] w-full backdrop-blur-[10px] lg:hidden"
+					x-trap.noscroll.noautofocus="mobileMenuOpen" x-show="mobileMenuOpen" x-cloak
+					x-transition.opacity.duration.400ms>
+					<ul class="bg-rich-carbon border-off-white/20 grid grid-cols-2 border-b px-[10px] py-[12px]"
+						@click.outside="mobileMenuOpen = false" x-show="mobileMenuOpen">
+						<li class="relative isolate">
+							<a class="w-full text-center" href="why-bgs.html">
+								<div class="flex h-[60px] items-center justify-center text-center"><span class="p3-mono">WHY BGS</span></div>
+							</a>
+						</li>
+						<li class="relative isolate">
+							<a class="w-full text-center" href="portfolio.html">
+								<div class="flex h-[60px] items-center justify-center text-center"><span class="p3-mono">PORTFOLIO</span></div>
+							</a>
+						</li>
+						<li class="relative isolate">
+							<a class="w-full text-center" href="about.html">
+								<div class="flex h-[60px] items-center justify-center text-center"><span class="p3-mono">ABOUT</span></div>
+							</a>
+						</li>
+						<li class="relative isolate">
+							<a class="w-full text-center" href="gallery.html">
+								<div class="flex h-[60px] items-center justify-center text-center"><span class="p3-mono">GALLERY</span></div>
+							</a>
+						</li>
+						<li class="relative isolate">
+							<a class="w-full text-center" href="blogs.html">
+								<div class="flex h-[60px] items-center justify-center text-center"><span class="p3-mono">BLOGS</span></div>
+							</a>
+						</li>
+						<li class="relative isolate col-span-2 mt-[12px]">
+							<a class="w-full text-center" href="#contact" @click.prevent="mobileMenuOpen = false; $nextTick(() => { $dispatch('contact-modal:open', '#contact') })">
+								<div class="flex h-[60px] items-center justify-center text-center"><span class="p3-mono">Contact</span></div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Contact Modal -->
+	<div id="contact" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title"
+		class="bg-rich-carbon/40 fixed inset-0 z-50 flex backdrop-blur-[10px]" x-data="{ open: false }"
+		@contact-modal:open.window="open = true" x-trap.noscroll.noautofocus="open" x-show="open" x-cloak
+		x-transition.opacity.duration.400ms>
+		<div class="bg-neural-fog text-rich-carbon relative isolate h-full w-full max-w-[700px] overflow-y-auto px-[24px] pt-[32px] md:rounded-r-[20px] md:p-[40px]"
+			@click.outside="open = false" x-show="open">
+			<button class="text-rich-carbon/60 hover:text-rich-carbon absolute top-[20px] right-[20px]" @click="open = false" aria-label="Close">
+				<span class="p2-mono text-[1.2rem]">&times;</span>
+			</button>
+			<h2 id="contact-modal-title" class="h3 uppercase text-rich-carbon mb-[20px]">Talk to the BGS Team</h2>
+			<p class="p2 text-rich-carbon/80 mb-[24px]">Have a project in mind or want to discuss enterprise solutions? Reach out directly.</p>
+			<div class="flex flex-col gap-[16px]">
+				<a href="contact.html" class="p2-mono underline font-semibold text-rich-carbon hover:text-black">Open Dedicated Contact Page &rarr;</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- Background Animated Canvas -->
+	<canvas id="blog-canvas"></canvas>
+
+	<!-- Main Smooth Content Wrapper -->
+	<div id="smooth-wrapper">
+		<div id="smooth-content">
+			<main id="main">
+				<!-- Hero / Placeholder Section -->
+				<section class="blogs-hero-wrap">
+					<div class="container mx-auto px-[20px] max-w-[1400px]">
+						<div class="max-w-[1020px]">
+							<!-- Eyebrow Tag -->
+							<div class="blogs-eyebrow-badge">
+								<span class="bg-neural-fog size-[10px] rounded-[3px]"></span>
+								OUR BLOG
+							</div>
+
+							<!-- Main Headline -->
+							<h1 class="blogs-title">
+								Insights &amp; Updates
+							</h1>
+
+							<!-- Coming Soon Body Message -->
+							<p class="blogs-body-message">
+								New articles coming soon.
+							</p>
+
+							<!-- Subtle Status Indicator -->
+							<div class="blogs-pill">
+								<span class="size-[7px] rounded-full bg-[#ED6D40] animate-pulse"></span>
+								Editorial in progress &bull; Check back shortly
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+
+			<!-- Site Footer -->
+			<footer class="bg-neural-fog text-rich-carbon overflow-hidden pt-[60px] pb-[32px] md:pt-[80px]">
+				<div class="container flex flex-col gap-[48px]">
+					<nav class="flex flex-col justify-between gap-[32px] md:flex-row md:items-start">
+						<ul class="flex flex-col gap-[12px]">
+							<li>
+								<a href="why-bgs.html" class="group/button h5 relative isolate flex items-center gap-[8px] uppercase">
+									<div class="relative isolate flex overflow-hidden">
+										<span>WHY BGS</span>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="portfolio.html" class="group/button h5 relative isolate flex items-center gap-[8px] uppercase">
+									<div class="relative isolate flex overflow-hidden">
+										<span>PORTFOLIO</span>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="about.html" class="group/button h5 relative isolate flex items-center gap-[8px] uppercase">
+									<div class="relative isolate flex overflow-hidden">
+										<span>ABOUT</span>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="gallery.html" class="group/button h5 relative isolate flex items-center gap-[8px] uppercase">
+									<div class="relative isolate flex overflow-hidden">
+										<span>GALLERY</span>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="blogs.html" class="group/button h5 relative isolate flex items-center gap-[8px] uppercase font-bold text-[#111]">
+									<div class="relative isolate flex overflow-hidden">
+										<span>BLOGS</span>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="contact.html" class="group/button h5 relative isolate flex items-center gap-[8px] uppercase">
+									<div class="relative isolate flex overflow-hidden">
+										<span>CONTACT</span>
+									</div>
+								</a>
+							</li>
+						</ul>
+
+						<ul class="flex flex-col items-start gap-[8px] p2-mono">
+							<li><a href="legal/disclaimer.html" class="hover:underline">Disclaimer</a></li>
+							<li><a href="legal/privacy-policy.html" class="hover:underline">Privacy Policy</a></li>
+							<li><a href="legal/terms-and-conditions.html" class="hover:underline">Terms and Conditions</a></li>
+							<li><a href="legal/cookie-policy.html" class="hover:underline">Cookie Policy</a></li>
+							<li><a href="legal/whistleblower-protection-statement.html" class="hover:underline">Whistleblower Protection</a></li>
+						</ul>
+					</nav>
+
+					<div class="border-t border-rich-carbon/10 pt-[24px] flex flex-col md:flex-row items-center justify-between gap-[16px]">
+						<p class="p3-mono text-rich-carbon/60">
+							Copyright &copy; 2026 Bridge Group Solutions. All rights reserved.
+						</p>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+
+	<!-- Custom Cursor -->
+	<div class="cursor" id="cursor"></div>
+	<div class="cursor-ring" id="cursorRing"></div>
+
+	<!-- Ambient Background Particles and Wave Lines Script -->
+	<script>
+		const canvas = document.getElementById('blog-canvas');
+		if (canvas) {
+			const ctx = canvas.getContext('2d');
+			let W, H, particles = [];
+
+			function resize() {
+				W = canvas.width = window.innerWidth;
+				H = canvas.height = window.innerHeight;
+			}
+			resize();
+			window.addEventListener('resize', resize);
+
+			class Particle {
+				constructor() { this.reset(); }
+				reset() {
+					this.x = Math.random() * W;
+					this.y = Math.random() * H;
+					this.vx = (Math.random() - 0.5) * 0.3;
+					this.vy = (Math.random() - 0.5) * 0.3;
+					this.r = Math.random() * 1.5 + 0.5;
+					this.alpha = Math.random() * 0.4 + 0.1;
+					this.color = Math.random() > 0.5 ? 'rgba(92,147,159,' : 'rgba(237,109,64,';
+				}
+				update() {
+					this.x += this.vx;
+					this.y += this.vy;
+					if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
+				}
+				draw() {
+					ctx.beginPath();
+					ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+					ctx.fillStyle = this.color + this.alpha + ')';
+					ctx.fill();
+				}
+			}
+
+			const count = Math.min(Math.floor(W * H / 9000), 100);
+			particles = Array.from({ length: count }, () => new Particle());
+
+			function drawConnections() {
+				const maxDist = 140;
+				for (let i = 0; i < particles.length; i++) {
+					for (let j = i + 1; j < particles.length; j++) {
+						const dx = particles[i].x - particles[j].x;
+						const dy = particles[i].y - particles[j].y;
+						const dist = Math.sqrt(dx * dx + dy * dy);
+						if (dist < maxDist) {
+							const alpha = (1 - dist / maxDist) * 0.09;
+							ctx.beginPath();
+							ctx.moveTo(particles[i].x, particles[i].y);
+							ctx.lineTo(particles[j].x, particles[j].y);
+							ctx.strokeStyle = `rgba(92,147,159,${alpha})`;
+							ctx.lineWidth = 0.5;
+							ctx.stroke();
+						}
+					}
+				}
+			}
+
+			function animate() {
+				ctx.clearRect(0, 0, W, H);
+				particles.forEach(p => { p.update(); p.draw(); });
+				drawConnections();
+				requestAnimationFrame(animate);
+			}
+			animate();
+		}
+	</script>
+</body>
+
+</html>

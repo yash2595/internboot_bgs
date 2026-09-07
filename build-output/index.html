@@ -14,6 +14,54 @@
 	<link rel="preload" href="assets/main.minc014.css?id=18ba35244216baa33eca27c02bf5db21" as="style" />
 	<link rel="stylesheet" href="assets/main.minc014.css?id=18ba35244216baa33eca27c02bf5db21" />
 
+	<style id="bgs-motion-styles">
+		@keyframes waveDash {
+			to { stroke-dashoffset: -40; }
+		}
+		@keyframes waveDashRev {
+			to { stroke-dashoffset: 40; }
+		}
+		@keyframes waveFloat {
+			0%, 100% { transform: translateY(0); }
+			50% { transform: translateY(-5px); }
+		}
+		@keyframes ambientDrift {
+			0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.65; }
+			50% { transform: translate(-6px, -10px) scale(1.03); opacity: 0.95; }
+		}
+
+		.ethos-bridge-wrap {
+			animation: waveFloat 7s ease-in-out infinite;
+			will-change: transform;
+		}
+		.ethos-wave-1 {
+			animation: waveDash 7s linear infinite;
+		}
+		.ethos-wave-2 {
+			animation: waveDashRev 9s linear infinite;
+		}
+		.ethos-wave-3 {
+			animation: waveDash 11s linear infinite;
+		}
+		.ambient-particle-constellation {
+			display: block;
+			position: absolute;
+			left: 33%;
+			top: 140px;
+			width: 230px;
+			pointer-events: none;
+			z-index: 1;
+			opacity: 0.8;
+			animation: ambientDrift 12s ease-in-out infinite;
+			will-change: transform, opacity;
+		}
+		@media (max-width: 767px) {
+			.ambient-particle-constellation {
+				display: none;
+			}
+		}
+	</style>
+
 	<script src="assets/three.min821a.js?id=43e86ec6d3bddadeaa0980c1dd2e9f7f" defer></script>
 	<script src="assets/swiper.mine501.js?id=73b3ce9caaee2c8cf8bc314a9cd8b5ee" defer></script>
 	<script src="assets/gsap.min4af2.js?id=e5d9d8dcf72b06d2a3cd8125cba04e36" defer></script>
@@ -224,18 +272,18 @@
 </svg>
 			</a> -->
 					<a href="index.html"
-						class="relative isolate h-[30px] w-[180px] shrink-0 overflow-hidden transition-[width] duration-600 ease-(--easing) group-[.-scrolled]:w-[40px]">
+						class="relative isolate flex h-[30px] w-auto shrink-0 items-center gap-[8px]"
+						aria-label="Bridge Group Solutions">
 
-						<!-- BIG TEXT LOGO -->
+						<!-- ICON LOGO -->
+						<img src="./assets/logo.webp" alt="" width="28" height="28" decoding="async"
+							class="h-[28px] w-[28px] object-contain" />
+
+						<!-- TEXT LOGO -->
 						<span
-							class="flex items-center h-full text-white font-semibold text-[16px] whitespace-nowrap transition-transform duration-600 ease-(--easing) group-[.-scrolled]:-translate-y-full">
+							class="flex items-center h-full text-white font-semibold text-[15px] whitespace-nowrap">
 							Bridge Group Solutions
 						</span>
-
-						<!-- SMALL ICON LOGO -->
-						<img src="./assets/logo.webp" alt="Logo" width="32" height="32" decoding="async"
-							class="absolute top-0 left-1/2 h-[32px] w-[32px] -translate-x-1/2 translate-y-full object-contain transition-transform duration-600 ease-(--easing) group-[.-scrolled]:translate-y-0"
-							style="mix-blend-mode: multiply;" />
 
 					</a>
 					<nav class="group/links relative isolate hidden lg:block" x-data="{
@@ -281,33 +329,27 @@
 								</a>
 							</li>
 							<li>
-								<!-- <a
-		href="portfolio.html"
-		
-		class="group/link motion-safe:hover:animate-glitch-hover relative isolate"
-	>
-		<div class="flex h-[40px] items-center px-[20px]">
-			<div
-				class="bg-neural-fog size-[10px] -translate-x-[24px] rounded-[3px] opacity-0 blur-[20px] transition-all duration-400 ease-(--easing) group-hover/link:-translate-x-[5px] group-hover/link:opacity-100 group-hover/link:blur-[0px] motion-reduce:hidden"
-			></div>
-			<div
-				class="p2-mono relative isolate flex overflow-hidden transition-transform duration-400 ease-(--easing) motion-safe:-translate-x-[5px] motion-safe:group-hover/link:translate-x-[5px] motion-reduce:duration-[0ms]"
-			>
-				<span
-					class="transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:-translate-y-full motion-reduce:duration-[0ms]"
-				>
-					PORTFOLIO
-				</span>
-				<span
-					class="absolute inset-0 translate-y-full transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:translate-y-0 motion-reduce:duration-[0ms]"
-					aria-hidden="true"
-				>
-					PORTFOLIO
-				</span>
-			</div>
-		</div>
-	</a>
-</li> -->
+								<a href="portfolio.html"
+									class="group/link motion-safe:hover:animate-glitch-hover relative isolate">
+									<div class="flex h-[40px] items-center px-[20px]">
+										<div
+											class="bg-neural-fog size-[10px] -translate-x-[24px] rounded-[3px] opacity-0 blur-[20px] transition-all duration-400 ease-(--easing) group-hover/link:-translate-x-[5px] group-hover/link:opacity-100 group-hover/link:blur-[0px] motion-reduce:hidden">
+										</div>
+										<div
+											class="p2-mono relative isolate flex overflow-hidden transition-transform duration-400 ease-(--easing) motion-safe:-translate-x-[5px] motion-safe:group-hover/link:translate-x-[5px] motion-reduce:duration-[0ms]">
+											<span
+												class="transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:-translate-y-full motion-reduce:duration-[0ms]">
+												PORTFOLIO
+											</span>
+											<span
+												class="absolute inset-0 translate-y-full transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:translate-y-0 motion-reduce:duration-[0ms]"
+												aria-hidden="true">
+												PORTFOLIO
+											</span>
+										</div>
+									</div>
+								</a>
+							</li>
 							<li>
 								<a href="about.html"
 									class="group/link motion-safe:hover:animate-glitch-hover relative isolate">
@@ -347,6 +389,28 @@
 												class="absolute inset-0 translate-y-full transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:translate-y-0 motion-reduce:duration-[0ms]"
 												aria-hidden="true">
 												GALLERY
+											</span>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="blogs.html"
+									class="group/link motion-safe:hover:animate-glitch-hover relative isolate">
+									<div class="flex h-[40px] items-center px-[20px]">
+										<div
+											class="bg-neural-fog size-[10px] -translate-x-[24px] rounded-[3px] opacity-0 blur-[20px] transition-all duration-400 ease-(--easing) group-hover/link:-translate-x-[5px] group-hover/link:opacity-100 group-hover/link:blur-[0px] motion-reduce:hidden">
+										</div>
+										<div
+											class="p2-mono relative isolate flex overflow-hidden transition-transform duration-400 ease-(--easing) motion-safe:-translate-x-[5px] motion-safe:group-hover/link:translate-x-[5px] motion-reduce:duration-[0ms]">
+											<span
+												class="transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:-translate-y-full motion-reduce:duration-[0ms]">
+											BLOGS
+											</span>
+											<span
+												class="absolute inset-0 translate-y-full transition-transform duration-400 ease-(--easing) motion-safe:group-hover/link:translate-y-0 motion-reduce:duration-[0ms]"
+												aria-hidden="true">
+												BLOGS
 											</span>
 										</div>
 									</div>
@@ -541,6 +605,33 @@
 								<a class="w-full text-center" href="gallery.html">
 									<div class="flex h-[60px] items-center justify-center text-center">
 										<span class="p3-mono">GALLERY</span>
+									</div>
+								</a>
+								<svg class="size-[9px] corner-accent duration-400 opacity-40" width="10" height="10"
+									alt="" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0.499951 0.199996L0.499952 9.2M0.199951 0.499995L9.19995 0.499995"
+										stroke="currentColor" />
+								</svg>
+								<svg class="size-[9px] corner-accent duration-400 opacity-40" width="10" height="10"
+									alt="" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0.499951 0.199996L0.499952 9.2M0.199951 0.499995L9.19995 0.499995"
+										stroke="currentColor" />
+								</svg>
+								<svg class="size-[9px] corner-accent duration-400 opacity-40" width="10" height="10"
+									alt="" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0.499951 0.199996L0.499952 9.2M0.199951 0.499995L9.19995 0.499995"
+										stroke="currentColor" />
+								</svg>
+								<svg class="size-[9px] corner-accent duration-400 opacity-40" width="10" height="10"
+									alt="" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0.499951 0.199996L0.499952 9.2M0.199951 0.499995L9.19995 0.499995"
+										stroke="currentColor" />
+								</svg>
+							</li>
+							<li class="relative isolate ">
+								<a class="w-full text-center" href="blogs.html">
+									<div class="flex h-[60px] items-center justify-center text-center">
+										<span class="p3-mono">BLOGS</span>
 									</div>
 								</a>
 								<svg class="size-[9px] corner-accent duration-400 opacity-40" width="10" height="10"
@@ -1502,14 +1593,28 @@
 	}">
 					<div class="container" x-ref="content" id="ethos">
 						<div class="mb-[40px] grid grid-cols-1 gap-x-[24px] gap-y-[24px] md:mb-[60px] md:grid-cols-2">
-							<div class="flex flex-col gap-[12px]">
-								<h2 class="p2-mono">Our ethos</h2>
-								<p class="h5 uppercase">
-									Driven to Deliver. <br />
-									Built to Scale.
+							<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-[24px]">
+								<div class="flex flex-col gap-[12px] shrink-0">
+									<h2 class="p2-mono">Our ethos</h2>
+									<p class="h5 uppercase">
+										Driven to Deliver. <br />
+										Built to Scale.
+									</p>
+								</div>
 
-								</p>
+								<!-- Item 1: Dotted Sine-Wave Motion Bridge -->
+								<div class="hidden md:flex flex-1 items-center justify-center ethos-bridge-wrap pl-[10px]" aria-hidden="true">
+									<svg class="w-full max-w-[280px] h-[72px] text-rich-carbon/45" viewBox="0 0 240 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path class="ethos-wave-1" d="M 0 32 Q 30 8, 60 32 T 120 32 T 180 32 T 240 32" stroke="currentColor" stroke-width="2" stroke-dasharray="3, 7" fill="none" />
+										<path class="ethos-wave-2" d="M 0 32 Q 30 56, 60 32 T 120 32 T 180 32 T 240 32" stroke="currentColor" stroke-width="2" stroke-dasharray="3, 7" fill="none" opacity="0.65" />
+										<path class="ethos-wave-3" d="M 0 32 Q 30 20, 60 32 T 120 32 T 180 32 T 240 32" stroke="currentColor" stroke-width="1.8" stroke-dasharray="2.5, 6" fill="none" opacity="0.4" />
+										<circle cx="60" cy="32" r="3" fill="currentColor" opacity="0.55" />
+										<circle cx="120" cy="32" r="2.5" fill="currentColor" opacity="0.45" />
+										<circle cx="180" cy="32" r="3" fill="currentColor" opacity="0.55" />
+									</svg>
+								</div>
 							</div>
+
 							<div class="flex flex-col items-start">
 								<p class="p1 border-rich-carbon/20 mb-[24px] border-t pt-[20px] md:mb-[32px]">
 									Our comprehensive solutions platform powers your business forward with confidence.
@@ -3024,8 +3129,7 @@
 								<div class="flex flex-col gap-[40px]">
 									<div
 										class="md:h4 h3 partners--title mx-auto hidden max-w-[666px] text-center uppercase md:block">
-										We identify opportunities early and build solutions that define tomorrow. <br />
-										build solutions that define tomorrow.
+										We identify opportunities early and build solutions that define tomorrow.
 										<span class="md:hidden">We turn ideas into high-performance digital
 											solutions.</span>
 									</div>
@@ -3564,7 +3668,20 @@
 						</div>
 
 						<section class="py-[120px] md:py-[200px]" id="investors-section">
-							<div class="container">
+							<div class="container relative">
+								<!-- Item 2: Ambient Drifting Particle Constellation in empty middle space -->
+								<div class="ambient-particle-constellation" aria-hidden="true">
+									<svg class="w-full h-auto" viewBox="0 0 320 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path class="ethos-wave-1" d="M 10 25 C 60 65, 120 10, 180 45 C 240 85, 280 15, 310 35" stroke="#e0e0e0" stroke-width="2.2" stroke-dasharray="3.5, 7" fill="none" />
+										<path class="ethos-wave-2" d="M 10 55 C 60 15, 130 85, 200 35 C 250 10, 280 65, 310 75" stroke="#5C939F" stroke-width="2" stroke-dasharray="3, 7" opacity="0.9" fill="none" />
+										<path class="ethos-wave-3" d="M 10 85 C 80 45, 150 105, 220 65 C 270 45, 290 90, 310 95" stroke="#e0e0e0" stroke-width="1.8" stroke-dasharray="3, 6" opacity="0.65" fill="none" />
+										<circle cx="45" cy="38" r="3.2" fill="#e0e0e0" opacity="0.85" />
+										<circle cx="110" cy="24" r="3.5" fill="#5C939F" opacity="0.95" />
+										<circle cx="170" cy="60" r="3" fill="#e0e0e0" opacity="0.8" />
+										<circle cx="235" cy="32" r="3.5" fill="#5C939F" opacity="0.95" />
+										<circle cx="285" cy="68" r="3.2" fill="#e0e0e0" opacity="0.85" />
+									</svg>
+								</div>
 								<div
 									class="mx-auto grid max-w-[1440px] grid-cols-12 items-start gap-x-[24px] gap-y-[40px]">
 									<div class="col-span-12 flex flex-col items-start gap-[35px] md:col-span-5 xl:col-span-4"
@@ -3626,6 +3743,8 @@
 											Local Expertise, Global Standards: Deep understanding of the Indian market
 											paired with world-class solutions.
 										</p>
+
+
 
 
 
@@ -4499,6 +4618,31 @@
 											aria-hidden="true"
 										>
 											GALLERY
+										</span>
+									</div>
+								</a>
+							</li>
+													<li>
+								<a
+									href="blogs.html"
+									class="group/button h5 relative isolate flex items-center gap-[8px] uppercase"
+								>
+									<div
+										class="bg-rich-carbon -mt-[3.5px] size-[25px] -translate-x-full rounded-[8px] opacity-0 blur-[32px] transition-[transform,translate,opacity,filter] duration-500 ease-(--easing) group-hover/button:translate-x-0 group-hover/button:opacity-100 group-hover/button:blur-[0px]"
+									></div>
+									<div
+										class="relative isolate flex -translate-x-[33px] overflow-hidden transition-transform duration-500 ease-(--easing) group-hover/button:translate-x-0"
+									>
+										<span
+											class="transition-transform duration-500 ease-(--easing) group-hover/button:-translate-y-full"
+										>
+											BLOGS
+										</span>
+										<span
+											class="absolute inset-0 translate-y-full transition-transform duration-500 ease-(--easing) group-hover/button:translate-y-0"
+											aria-hidden="true"
+										>
+											BLOGS
 										</span>
 									</div>
 								</a>
