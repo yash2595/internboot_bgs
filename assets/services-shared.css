@@ -1,0 +1,267 @@
+/* ==========================================================================
+   Bridge Group Solutions - Services Shared Typography System
+   Standardized to match services/web.html design hierarchy
+   ========================================================================== */
+
+:root {
+  --font-roc-grotesk: 'Roc Grotesk', sans-serif;
+  --font-azeret-mono: 'Azeret Mono', monospace;
+  --color-off-white: #e7e7e7;
+  --color-neural-fog: #DADADA;
+  --color-rich-carbon: #111111;
+  --color-electric-teal: #5C939F;
+  --color-infrared: #ED6D40;
+}
+
+/* 1. Base Body */
+body {
+  font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. Hero Headings */
+.hero h1,
+.hero-title {
+  font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif) !important;
+  font-size: clamp(2.8rem, 5.5vw, 5rem) !important;
+  font-weight: 500 !important;
+  line-height: 0.95 !important;
+  letter-spacing: normal !important;
+  text-transform: uppercase !important;
+  color: var(--color-off-white, #e7e7e7) !important;
+}
+
+.hero-desc {
+  font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(218, 218, 218, 0.65);
+  font-weight: 400;
+}
+
+/* 3. Section Titles */
+.section-title,
+.section-h,
+.sec-title {
+  font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif) !important;
+  font-size: clamp(2rem, 4vw, 3.2rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.025em !important;
+  text-transform: uppercase !important;
+  color: var(--color-off-white, #e7e7e7) !important;
+  margin-bottom: 1.25rem;
+}
+
+.section-desc,
+.section-p {
+  font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif);
+  color: rgba(218, 218, 218, 0.6);
+  font-size: 1rem;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+/* 4. Section Tags, Eyebrows & Chips */
+.section-tag,
+.chip,
+.sec-tag,
+.hero-badge,
+.hero-eyebrow,
+.cta-tag {
+  font-family: var(--font-azeret-mono, 'Azeret Mono', monospace) !important;
+  font-size: 0.688rem !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--color-off-white, #e7e7e7) !important;
+  font-weight: 500 !important;
+}
+
+.section-tag::before,
+.sec-tag::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.35);
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* 5. Stat Rows */
+.stat-num,
+.metric-num,
+.stat-value {
+  font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif) !important;
+  font-size: clamp(2.2rem, 4vw, 3.2rem) !important;
+  font-weight: 500 !important;
+  color: #FFFFFF !important;
+  line-height: 1 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.stat-label,
+.stat-lbl {
+  font-family: var(--font-azeret-mono, 'Azeret Mono', monospace) !important;
+  font-size: 0.688rem !important;
+  text-transform: uppercase !important;
+  color: rgba(218, 218, 218, 0.55) !important;
+  letter-spacing: 0.04em !important;
+  font-weight: 400 !important;
+}
+
+/* 6. Card Headings & Titles */
+.service-card h3,
+.service-info h3,
+.why-card h3,
+.card-title,
+.feat-item h4,
+.feat-card h4,
+.feat-body h4,
+.feature-item h4,
+.tl-item h4,
+.proc-step h3,
+.proc-step h4,
+.t-step h3,
+.vis-card-main h3,
+.why-title,
+.ov-title {
+  font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif) !important;
+  font-weight: 500 !important;
+  font-size: 1.05rem !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  color: var(--color-neural-fog, #DADADA) !important;
+}
+
+.service-card p,
+.service-info p,
+.why-card p,
+.feat-item p,
+.feat-card p,
+.feat-body p,
+.feature-item p,
+.tl-item p,
+.proc-step p,
+.ov-text {
+  font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif);
+  font-size: 0.87rem;
+  color: rgba(218, 218, 218, 0.5);
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+/* 7. Numbers (Overview, Why, Process) */
+.ov-num,
+.why-card-num,
+.why-num,
+.service-num,
+.step-num,
+.t-num {
+  font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif) !important;
+  font-size: 3.5rem !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  letter-spacing: -0.04em !important;
+  color: rgba(218, 218, 218, 0.85) !important;
+}
+
+/* 8. Buttons & Action Links */
+.btn-primary,
+.btn-ghost,
+.btn-secondary,
+.btn-outline,
+.button {
+  font-family: var(--font-azeret-mono, 'Azeret Mono', monospace) !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+/* 9. CTA Section */
+.cta-inner h2,
+.cta-title,
+.cta-box h2 {
+  font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif) !important;
+  font-size: clamp(2rem, 4vw, 3.2rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.025em !important;
+  color: var(--color-off-white, #e7e7e7) !important;
+}
+
+.cta-inner p,
+.cta-box p {
+  font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif);
+  color: rgba(218, 218, 218, 0.6);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* 10. Nav & Header */
+.svc-nav-logo {
+  font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif) !important;
+  font-weight: 500 !important;
+  font-size: 1rem !important;
+}
+
+.svc-nav-logo span {
+  font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif) !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
+.svc-nav-links a {
+  font-family: var(--font-azeret-mono, 'Azeret Mono', monospace) !important;
+  font-size: 0.688rem !important;
+  text-transform: uppercase !important;
+  line-height: 0.938rem !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* 11. Footer */
+.svc-footer-brand h2 {
+  font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif) !important;
+  font-size: 1.375rem !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+}
+
+.svc-footer-brand p {
+  font-family: var(--font-azeret-mono, 'Azeret Mono', monospace) !important;
+  font-size: 0.688rem !important;
+  text-transform: uppercase !important;
+  line-height: 130% !important;
+}
+
+.svc-footer-brand .footer-cta {
+  font-family: var(--font-azeret-mono, 'Azeret Mono', monospace) !important;
+  font-size: 0.688rem !important;
+  text-transform: uppercase !important;
+}
+
+.svc-footer-nav a {
+  font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif) !important;
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+}
+
+.svc-footer-legal a {
+  font-family: var(--font-azeret-mono, 'Azeret Mono', monospace) !important;
+  font-size: 0.688rem !important;
+  text-transform: uppercase !important;
+}
+
+.svc-footer-copyright {
+  font-family: var(--font-azeret-mono, 'Azeret Mono', monospace) !important;
+  font-size: 0.688rem !important;
+  text-transform: uppercase !important;
+}

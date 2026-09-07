@@ -6310,10 +6310,10 @@ a.plyr__control:before {
 .section-title {
   font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif);
   font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.1;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: var(--color-off-white, #e7e7e7);
   margin-bottom: 1.25rem;
 }

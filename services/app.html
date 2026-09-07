@@ -8,6 +8,7 @@
 
 <!-- Main site stylesheet (shared with index.html, about.html) -->
 <link rel="preload" href="../assets/main.minc014.css?id=18ba35244216baa33eca27c02bf5db21" as="style" />
+<link rel="stylesheet" href="../assets/services-shared.css" />
 <link rel="stylesheet" href="../assets/main.minc014.css?id=18ba35244216baa33eca27c02bf5db21" />
 
 <!-- Scripts (same as index.html / about.html) -->
@@ -394,9 +395,9 @@ body{
   position: relative;
   z-index: 2;
   display:inline-flex;align-items:center;gap:0.5rem;
-  /* font-size:0.75rem; */
-  font-weight:800;
-  font-size: 20px;
+  font-family: var(--font-azeret-mono, 'Azeret Mono', monospace);
+  font-size: 0.688rem;
+  font-weight: 500;
   letter-spacing:0.12em;
   text-transform:uppercase;
   color:var(--teal);
@@ -691,7 +692,7 @@ h1.hero-title .serif{
   width:100px;height:100px;border-radius:50%;
   background:linear-gradient(135deg,var(--accent2),var(--accent3));
   display:flex;align-items:center;justify-content:center;
-  font-family:'Syne',sans-serif;font-size:12px;font-weight:700;text-align:center;
+  font-family:var(--font-roc-grotesk, 'Roc Grotesk', sans-serif);font-size:12px;font-weight:500;text-align:center;
   box-shadow:0 0 60px rgba(178,79,255,0.5);z-index:2;
 } */
 .orbit-ring{
@@ -765,7 +766,7 @@ h1.hero-title .serif{
 
 .metric-val{
   font-size:1.5rem;
-  font-weight:700;
+  font-weight:500;
   letter-spacing:-0.03em;
   color:var(--ink);
   line-height:1;
@@ -846,7 +847,7 @@ h1.hero-title .serif{
 
 .stat-num{
   font-size:2.4rem;
-  font-weight:700;
+  font-weight:500;
   letter-spacing:-0.04em;
   color:var(--ink);
   line-height:1;
@@ -882,9 +883,10 @@ h1.hero-title .serif{
   background:rgba(92,147,159,0.1);
   border:1px solid rgba(92,147,159,0.25);
   color:var(--teal-dk);
-  /* font-size:0.72rem; */
-  font-weight:700;
-  letter-spacing:0.1em;
+  font-family:var(--font-azeret-mono, 'Azeret Mono', monospace);
+  font-size:0.688rem;
+  font-weight:500;
+  letter-spacing:0.14em;
   text-transform:uppercase;
   padding:0.3rem 0.875rem;
   border-radius:50px;
@@ -957,8 +959,8 @@ h1.hero-title .serif{
 .ic-ink{background:rgba(17,17,17,0.06);}
 
 .svc-card h3{
-  font-size:1rem;
-  font-weight:700;
+  font-size:1.05rem;
+  font-weight:500;
   color:var(--ink);
   margin-bottom:0.6rem;
   letter-spacing:-0.01em;
@@ -992,7 +994,7 @@ h1.hero-title .serif{
 }
 
 .feat-num{
-  font-size:0.7rem;font-weight:700;
+  font-size:0.7rem;font-weight:500;
   color:var(--teal);
   letter-spacing:0.06em;
   background:rgba(92,147,159,0.1);
@@ -1002,7 +1004,7 @@ h1.hero-title .serif{
   margin-top:1px;
 }
 
-.feat-body h4{font-size:0.9rem;font-weight:700;color:var(--ink);margin-bottom:0.3rem;}
+.feat-body h4{font-size:0.9rem;font-weight:500;color:var(--ink);margin-bottom:0.3rem;}
 .feat-body p{font-size:0.82rem;color:var(--muted);line-height:1.6;}
 
 /* Feature right: visual timeline */
@@ -1043,14 +1045,15 @@ h1.hero-title .serif{
 .tl-dot.muted{background:#ddd;box-shadow:0 0 0 2px #ddd;}
 
 .tl-tag{
-  font-size:0.68rem;font-weight:700;letter-spacing:0.08em;
+  font-family:var(--font-azeret-mono, 'Azeret Mono', monospace);
+  font-size:0.688rem;font-weight:500;letter-spacing:0.08em;
   text-transform:uppercase;color:var(--teal);
   margin-bottom:0.35rem;
 }
 
 .tl-tag.coral{color:var(--coral);}
 
-.tl-item h4{font-size:0.9rem;font-weight:700;color:var(--ink);margin-bottom:0.25rem;}
+.tl-item h4{font-size:0.9rem;font-weight:500;color:var(--ink);margin-bottom:0.25rem;}
 .tl-item p{font-size:0.8rem;color:var(--muted);line-height:1.55;}
 
 /* ─── PROCESS ─── */
@@ -1122,7 +1125,7 @@ h1.hero-title .serif{
 
 .proc-step h4{
   font-size:0.9rem;
-  font-weight:700;
+  font-weight:500;
   color:#fff;
   margin-bottom:0.5rem;
 }
@@ -1153,16 +1156,17 @@ h1.hero-title .serif{
 .wc-c{background:rgba(17,17,17,0.04);border:1px solid rgba(17,17,17,0.1);}
 
 .why-card .big-num{
-  font-size:4rem;font-weight:700;letter-spacing:-0.05em;
+  font-size:4rem;font-weight:500;letter-spacing:-0.05em;
   opacity:0.07;color:var(--ink);
   line-height:1;margin-bottom:-1rem;
 }
 
-.why-card h3{font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:0.75rem;}
+.why-card h3{font-size:1.05rem;font-weight:500;color:var(--ink);margin-bottom:0.75rem;}
 .why-card p{font-size:0.875rem;color:var(--muted);line-height:1.7;}
 .why-card .tag{
   display:inline-block;
-  font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  font-family:var(--font-azeret-mono, 'Azeret Mono', monospace);
+  font-size:0.688rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;
   padding:0.25rem 0.7rem;border-radius:50px;
   margin-bottom:1rem;
 }
@@ -1552,7 +1556,7 @@ h1.hero-title .serif{
     </div>
     <div class="sr sr-d2">
       <div class="feat-vis">
-        <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;">Development Lifecycle</p>
+        <p style="font-family:var(--font-azeret-mono, 'Azeret Mono', monospace);font-size:0.688rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;">Development Lifecycle</p>
         <div class="timeline">
           <div class="tl-item" style="animation-delay:0.1s">
             <div class="tl-dot"></div>
