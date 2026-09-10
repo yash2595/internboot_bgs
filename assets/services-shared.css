@@ -54,6 +54,17 @@ body {
   margin-bottom: 1.25rem;
 }
 
+.section-title em,
+.section-h em,
+.sec-title em,
+h1 em,
+h2 em,
+h3 em,
+h4 em {
+  font-style: normal !important;
+  font-weight: inherit !important;
+}
+
 .section-desc,
 .section-p {
   font-family: var(--font-roc-grotesk, 'Roc Grotesk', sans-serif);

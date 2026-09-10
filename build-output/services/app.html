@@ -1,25 +1,24 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Mobile & Web App Development | Bridge Group Solutions</title>
-<meta name="description" content="End-to-end iOS, Android & cross-platform app development. Scalable architectures, offline-first design, fluid 60fps animations. From MVP to millions of users." />
-
+<meta content="End-to-end iOS, Android & cross-platform app development. Scalable cloud architectures, offline-first reliability, and fluid 60fps UX. Build with us." name="description"/>
 <!-- Main site stylesheet (shared with index.html, about.html) -->
-<link rel="preload" href="../assets/main.minc014.css?id=18ba35244216baa33eca27c02bf5db21" as="style" />
-<link rel="stylesheet" href="../assets/services-shared.css" />
-<link rel="stylesheet" href="../assets/main.minc014.css?id=18ba35244216baa33eca27c02bf5db21" />
-
+<link as="style" href="../assets/main.minc014.css?id=18ba35244216baa33eca27c02bf5db21" rel="preload"/>
+<link href="../assets/services-shared.css" rel="stylesheet"/>
+<link href="../assets/main.minc014.css?id=18ba35244216baa33eca27c02bf5db21" rel="stylesheet"/>
 <!-- Scripts (same as index.html / about.html) -->
-<script src="../assets/three.min821a.js?id=43e86ec6d3bddadeaa0980c1dd2e9f7f" defer></script>
-<script src="../assets/swiper.mine501.js?id=73b3ce9caaee2c8cf8bc314a9cd8b5ee" defer></script>
-<script src="../assets/gsap.min4af2.js?id=e5d9d8dcf72b06d2a3cd8125cba04e36" defer></script>
-<script src="../assets/main.min3b67.js?id=5c7df0d47c91902b5cb665c2a0b20b7a" defer></script>
-
+<script defer="" src="../assets/three.min821a.js?id=43e86ec6d3bddadeaa0980c1dd2e9f7f"></script>
+<script defer="" src="../assets/swiper.mine501.js?id=73b3ce9caaee2c8cf8bc314a9cd8b5ee"></script>
+<script defer="" src="../assets/gsap.min4af2.js?id=e5d9d8dcf72b06d2a3cd8125cba04e36"></script>
+<script defer="" src="../assets/main.min3b67.js?id=5c7df0d47c91902b5cb665c2a0b20b7a"></script>
+<!-- Tabler Icons CDN -->
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" rel="stylesheet"/>
 <!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="../assets/logo.webp" />
-
+<link href="../assets/logo.webp" rel="icon" type="image/svg+xml"/>
 <script>
 	(function() {
 		var h = window.location.hostname;
@@ -35,7 +34,6 @@
 		}
 	})();
 </script>
-
 <style>
 
   html, body {
@@ -371,9 +369,9 @@ body{
 .hero{
   position:relative;
   z-index:1;
-  min-height:100vh;
+  min-height:auto;
   display:flex;align-items:center;
-  padding:100px 5% 80px;
+  padding:100px 5% 40px;
 }
 
 .hero-grid{
@@ -829,13 +827,15 @@ h1.hero-title .serif{
   background: var(--color-core-black, #0a0a0a);
   border-top:1px solid rgba(255,255,255,0.08);
   border-bottom:1px solid rgba(255,255,255,0.08);
-  padding:3rem 5%;
+  padding:2.2rem 5%;
 }
 
 .stats-inner{
   max-width:1160px;margin:0 auto;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
+  display:flex;
+  flex-direction:row;
+  align-items:flex-start;
+  justify-content:space-between;
   gap:2rem;
   text-align:center;
 }
@@ -843,6 +843,14 @@ h1.hero-title .serif{
 .stat-item {
   opacity: 1 !important;
   transform: none !important;
+  flex: 1;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  padding-right: 1.5rem;
+}
+
+.stat-item:last-child {
+  border-right: none;
+  padding-right: 0;
 }
 
 .stat-num{
@@ -1326,434 +1334,865 @@ h1.hero-title .serif{
     .stats-inner { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem !important; }
     .stat-num { font-size: 2rem !important; }
   }
+
+  /* ── Comparison Section ── */
+  .comparison-section { padding: 90px 6%; position: relative; }
+  .comparison-table {
+    max-width: 1100px; margin: 0 auto;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  .compare-header {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+    padding: 20px 28px;
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-family: var(--font-azeret-mono, 'Azeret Mono', monospace);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #FFFFFF;
+  }
+  .compare-row {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+    padding: 20px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    align-items: center;
+    transition: background 0.25s ease;
+  }
+  .compare-row:last-child { border-bottom: none; }
+  .compare-row:hover { background: rgba(255,255,255,0.03); }
+  .compare-feature strong { display: block; font-size: 0.92rem; color: #FFFFFF; font-weight: 500; font-family: var(--font-roc-grotesk); margin-bottom: 3px; }
+  .compare-feature span { font-size: 0.78rem; color: rgba(218,218,218,0.55); line-height: 1.4; }
+  .compare-col { display: flex; align-items: center; gap: 10px; font-size: 0.83rem; }
+  .compare-legacy { color: rgba(218,218,218,0.6); }
+  .compare-bgs { color: #FFFFFF; font-weight: 500; }
+  .compare-bgs i { font-size: 1.1rem; flex-shrink: 0; }
+  .compare-legacy i { font-size: 1rem; flex-shrink: 0; }
+
+  /* ── FAQ Section ── */
+  .faq-section { padding: 90px 6%; position: relative; }
+  .faq-list { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+  .faq-item {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+  }
+  .faq-item:hover, .faq-item.active {
+    border-color: rgba(217,98,42,0.35);
+    background: rgba(255,255,255,0.03);
+  }
+  .faq-trigger {
+    width: 100%;
+    padding: 22px 26px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: none; border: none; cursor: pointer; text-align: left;
+    color: #FFFFFF; font-family: var(--font-roc-grotesk); font-size: 1.05rem; font-weight: 500;
+  }
+  .faq-icon {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: center;
+    color: #D9622A; transition: transform 0.3s ease, background 0.3s ease;
+    flex-shrink: 0;
+  }
+  .faq-item.active .faq-icon {
+    transform: rotate(180deg);
+    background: rgba(217,98,42,0.15);
+  }
+  .faq-answer {
+    display: grid; grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .faq-item.active .faq-answer {
+    grid-template-rows: 1fr;
+  }
+  .faq-answer-inner {
+    overflow: hidden;
+    padding: 0 26px 22px;
+    font-size: 0.88rem;
+    color: rgba(218,218,218,0.7);
+    line-height: 1.7;
+  }
+
+  /* ── Related Services Section ── */
+  .related-services-section { padding: 90px 6%; position: relative; }
+  .related-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .related-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    padding: 22px 20px;
+    text-decoration: none;
+    display: flex; flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    position: relative; overflow: hidden;
+  }
+  .related-card:hover {
+    transform: translateY(-6px) !important;
+    border-color: rgba(217,98,42,0.4);
+    background: rgba(217,98,42,0.04);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.4), 0 0 20px rgba(217,98,42,0.1);
+  }
+  .related-card-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 14px;
+  }
+  .related-icon {
+    width: 48px; height: 48px; border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: #D9622A; font-size: 1.8rem;
+  }
+  .related-arrow {
+    color: rgba(218,218,218,0.4); font-size: 1rem;
+    transition: transform 0.25s ease, color 0.25s ease;
+  }
+  .related-card:hover .related-arrow {
+    transform: translate(3px, -3px);
+    color: #FFFFFF;
+  }
+  .related-tag {
+    font-family: var(--font-azeret-mono);
+    font-size: 0.65rem; color: #D9622A; text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 6px;
+  }
+  .related-title {
+    font-family: var(--font-roc-grotesk);
+    font-size: 0.95rem; font-weight: 500; color: #FFFFFF; margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .related-desc {
+    font-size: 0.77rem; color: rgba(218,218,218,0.55); line-height: 1.5;
+    flex-grow: 1;
+  }
+
+  /* ── Ambient Floating Glows ── */
+  .ambient-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.06;
+    background: #D9622A;
+  }
+
+  /* Responsive Rules */
+  @media (max-width: 1024px) {
+    .related-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .compare-header { display: none; }
+    .compare-row { grid-template-columns: 1fr; gap: 10px; padding: 18px 20px; }
+    .related-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .related-grid { grid-template-columns: 1fr; }
+  }
+
+
+  /* 3D Phone Mockup CSS */
+  .hero-phone-container {
+    position: relative;
+    width: 380px;
+    height: 600px;
+    margin: 0 auto;
+    perspective: 1000px;
+  }
+  .phone-device {
+    width: 360px;
+    height: 630px;
+    background: #111;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 44px;
+    padding: 12px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(217, 98, 42, 0.15);
+    position: relative;
+    transform: rotateY(-8deg) rotateX(4deg);
+    transition: transform 0.5s ease;
+    animation: phoneFloat 6s ease-in-out infinite;
+  }
+  .phone-device:hover {
+    transform: rotateY(0deg) rotateX(0deg) translateY(-8px);
+  }
+  @keyframes phoneFloat {
+    0%, 100% { transform: rotateY(-8deg) rotateX(4deg) translateY(0); }
+    50% { transform: rotateY(-4deg) rotateX(2deg) translateY(-12px); }
+  }
+  .phone-notch {
+    position: absolute; top: 18px; left: 50%;
+    transform: translateX(-50%);
+    width: 70px; height: 18px;
+    background: #000; border-radius: 12px;
+    z-index: 10;
+  }
+  .phone-screen {
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, #181a1d 0%, #0d0e10 100%);
+    border-radius: 30px;
+    overflow: hidden;
+    padding: 16px 14px;
+    display: flex; flex-direction: column;
+  }
+  .screen-header {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.65rem; color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 24px; padding: 0 4px;
+  }
+  .status-icons { display: flex; gap: 4px; font-size: 0.75rem; }
+  .screen-content { display: flex; flex-direction: column; gap: 12px; }
+  .app-pill-live {
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(217, 98, 42, 0.15); border: 1px solid rgba(217, 98, 42, 0.4);
+    padding: 3px 8px; border-radius: 12px;
+    font-size: 0.6rem; color: #D9622A; font-family: var(--font-azeret-mono);
+  }
+  .live-dot { width: 5px; height: 5px; border-radius: 50%; background: #D9622A; animation: pulse 1.8s infinite; }
+  .screen-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px; padding: 14px;
+  }
+  .sc-title { font-size: 0.68rem; color: rgba(218, 218, 218, 0.6); font-family: var(--font-azeret-mono); }
+  .sc-val { font-size: 1.25rem; font-weight: 500; color: #FFFFFF; margin: 4px 0; font-family: var(--font-roc-grotesk); }
+  .sc-sub { font-size: 0.62rem; color: #48bb78; }
+  .screen-notification {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px; padding: 10px 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .notif-icon {
+    width: 28px; height: 28px; border-radius: 8px;
+    background: #D9622A; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; flex-shrink: 0;
+  }
+  .notif-title { font-size: 0.72rem; font-weight: 500; color: #FFFFFF; }
+  .notif-text { font-size: 0.62rem; color: rgba(218, 218, 218, 0.6); }
+
+  .phone-badge {
+    position: absolute;
+    background: rgba(17, 17, 17, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 6px 12px; border-radius: 20px;
+    font-size: 0.7rem; font-family: var(--font-azeret-mono);
+    color: #FFFFFF; display: flex; align-items: center; gap: 6px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    z-index: 5;
+  }
+  .phone-badge i { color: #D9622A; }
+  .pb-1 { top: 40px; right: -25px; animation: float1 5s ease-in-out infinite; }
+  .pb-2 { bottom: 120px; left: -30px; animation: float2 6s ease-in-out infinite; }
+  .pb-3 { bottom: 30px; right: -15px; animation: float3 5.5s ease-in-out infinite; }
+
+
+  /* Ensure hover lift specificity */
+  .service-card:hover { transform: translateY(-5px) !important; }
+  .svc-card:hover { transform: translateY(-5px) !important; border-color: rgba(217,98,42,0.35) !important; }
+
+  .svc-card:hover { transform: translateY(-5px) !important; border-color: rgba(217,98,42,0.35) !important; }
+  .why-card:hover { transform: translateY(-5px) !important; }
+  .feat-item:hover { transform: translateX(4px) translateY(-2px) !important; }
+
 </style>
 </head>
 <body class="bg-rich-carbon text-neural-fog font-roc-grotesk">
-
 <canvas id="bg-canvas"></canvas>
 <!-- HEADER & NAV (matches main site header design) -->
 <header class="svc-header">
 <nav class="svc-nav" id="svcNav">
-  <a class="svc-nav-logo" href="../index.html">
-    <img src="../assets/logo.webp" alt="Bridge Group Solutions" />
-    <span>Bridge Group Solutions</span>
-  </a>
-  <ul class="svc-nav-links" id="navLinks">
-    <li><a href="../why-bgs.html">WHY BGS</a></li>
-    <li><a href="../about.html">ABOUT</a></li>
-    <li><a href="../gallery.html">GALLERY</a></li>
-    <li><a href="../blogs.html">BLOGS</a></li>
-    <li><a href="../contact.html">CONTACT</a></li>
-  </ul>
-  <button class="svc-hamburger" id="hamburger" aria-label="Toggle mobile menu">
-    <span></span><span></span><span></span>
-  </button>
+<a class="svc-nav-logo" href="../index.html">
+<img alt="Logo" src="../assets/logo.webp"/>
+<span>Bridge Group Solutions</span>
+</a>
+<ul class="svc-nav-links" id="navLinks">
+<li><a href="../why-bgs.html">WHY BGS</a></li>
+<li><a href="../about.html">ABOUT</a></li>
+<li><a href="../gallery.html">GALLERY</a></li>
+<li><a href="../blogs.html">BLOGS</a></li>
+<li><a href="../contact.html">CONTACT</a></li>
+</ul>
+<button aria-label="Toggle mobile menu" class="svc-hamburger" id="hamburger">
+<span></span><span></span><span></span>
+</button>
 </nav>
 </header>
 <section class="hero">
-  <div class="hero-grid">
-    <div>
-      <div class="hero-label">App Development Services</div>
-      <h1 class="hero-title">Smart App Solutions<span class="serif"> Focused </span>on Measurable Impact</h1>
-      <p class="hero-desc"> Bridge Group Solutions delivers scalable and high-performance mobile applications tailored for startups,
-         enterprises, and global clients. We specialize in Android and cross-platform app 
-         development with a strong focus on user experience, performance, and security. 
-         Our team ensures your app aligns with your business goals while maintaining industry
-          standards. From idea validation to deployment and maintenance, we handle everything
-           end-to-end. We build apps that drive engagement, retention, and revenue growth.</p>
-      <!-- <div class="hero-actions">
+<div class="hero-grid">
+<div>
+<div class="hero-label">App Development Services</div>
+<h1 class="hero-title">Smart App Solutions<span class="serif"> Focused </span>on Measurable Impact</h1>
+<p class="hero-desc">Bridge Group Solutions delivers high-performance mobile apps for iOS, Android, and cross-platform ecosystems. From idea validation to deployment, we build engaging, scalable digital products.</p>
+<!-- <div class="hero-actions">
         <a href="#cta" class="btn-fill">Start Your Project <span>→</span></a>
         <a href="#services" class="btn-outline">Explore Services</a>
       </div> -->
-    </div>
-    <div class="hero-visual" aria-hidden="true">
-      <div class="node-network-wrap">
-        <svg class="node-network-svg" viewBox="0 0 500 450" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="var(--teal, #5C939F)" stop-opacity="0.6"/>
-              <stop offset="100%" stop-color="var(--coral, #ED6D40)" stop-opacity="0.3"/>
-            </linearGradient>
-            <linearGradient id="lineGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="var(--coral, #ED6D40)" stop-opacity="0.5"/>
-              <stop offset="100%" stop-color="var(--teal, #5C939F)" stop-opacity="0.2"/>
-            </linearGradient>
-            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="3" result="blur" />
-              <feComposite in="SourceGraphic" in2="blur" operator="over" />
-            </filter>
-          </defs>
-
-          <!-- Connecting Line Network -->
-          <g class="net-lines" stroke-width="1.2">
-            <line x1="80" y1="100" x2="220" y2="70" stroke="url(#lineGrad1)" stroke-dasharray="4 4" class="dash-line-1" />
-            <line x1="220" y1="70" x2="380" y2="120" stroke="url(#lineGrad1)" />
-            <line x1="380" y1="120" x2="420" y2="260" stroke="url(#lineGrad2)" stroke-dasharray="6 3" class="dash-line-2" />
-            <line x1="420" y1="260" x2="290" y2="350" stroke="url(#lineGrad1)" />
-            <line x1="290" y1="350" x2="140" y2="320" stroke="url(#lineGrad2)" />
-            <line x1="140" y1="320" x2="80" y2="100" stroke="url(#lineGrad1)" stroke-dasharray="4 4" class="dash-line-1" />
-            
-            <!-- Cross connections -->
-            <line x1="220" y1="70" x2="290" y2="350" stroke="url(#lineGrad2)" opacity="0.5" />
-            <line x1="80" y1="100" x2="380" y2="120" stroke="url(#lineGrad1)" opacity="0.4" />
-            <line x1="140" y1="320" x2="420" y2="260" stroke="url(#lineGrad1)" opacity="0.4" />
-            <line x1="220" y1="70" x2="140" y2="320" stroke="url(#lineGrad2)" opacity="0.5" />
-          </g>
-
-          <!-- Network Nodes -->
-          <g class="net-nodes">
-            <!-- Node 1 -->
-            <circle cx="80" cy="100" r="5" fill="var(--teal, #5C939F)" filter="url(#glow)" class="node-pulse-1" />
-            <circle cx="80" cy="100" r="12" stroke="var(--teal, #5C939F)" stroke-opacity="0.4" stroke-width="1" class="node-ring-1" />
-
-            <!-- Node 2 -->
-            <circle cx="220" cy="70" r="6" fill="var(--coral, #ED6D40)" filter="url(#glow)" class="node-pulse-2" />
-            <circle cx="220" cy="70" r="16" stroke="var(--coral, #ED6D40)" stroke-opacity="0.3" stroke-width="1" class="node-ring-2" />
-
-            <!-- Node 3 -->
-            <circle cx="380" cy="120" r="4" fill="var(--teal, #5C939F)" class="node-pulse-3" />
-
-            <!-- Node 4 -->
-            <circle cx="420" cy="260" r="7" fill="var(--coral, #ED6D40)" filter="url(#glow)" class="node-pulse-1" />
-            <circle cx="420" cy="260" r="18" stroke="var(--coral, #ED6D40)" stroke-opacity="0.3" stroke-width="1" class="node-ring-3" />
-
-            <!-- Node 5 -->
-            <circle cx="290" cy="350" r="5" fill="var(--teal, #5C939F)" filter="url(#glow)" class="node-pulse-2" />
-
-            <!-- Node 6 -->
-            <circle cx="140" cy="320" r="6" fill="var(--teal, #5C939F)" filter="url(#glow)" class="node-pulse-3" />
-            <circle cx="140" cy="320" r="14" stroke="var(--teal, #5C939F)" stroke-opacity="0.4" stroke-width="1" class="node-ring-1" />
-
-            <!-- Minor floating particles -->
-            <circle cx="160" cy="180" r="2.5" fill="var(--coral, #ED6D40)" opacity="0.7" class="part-float-1" />
-            <circle cx="320" cy="210" r="3" fill="var(--teal, #5C939F)" opacity="0.8" class="part-float-2" />
-            <circle cx="250" cy="280" r="2" fill="var(--color-neural-fog, #dadada)" opacity="0.6" class="part-float-3" />
-          </g>
-        </svg>
-
-        <!-- Floating Micro UI Card Accents -->
-        <div class="micro-ui-card ui-card-1">
-          <div class="ui-card-dot coral"></div>
-          <div class="ui-card-lines">
-            <div class="ui-line w-60"></div>
-            <div class="ui-line w-40"></div>
-          </div>
-        </div>
-
-        <div class="micro-ui-card ui-card-2">
-          <div class="ui-card-dot teal"></div>
-          <span class="ui-card-badge">API :: 200 OK</span>
-        </div>
-
-        <div class="micro-ui-card ui-card-3">
-          <div class="ui-card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
-          <div class="ui-card-stat">99.9%</div>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
+<div aria-hidden="true" class="hero-visual phone-mockup-3d">
+<div class="hero-phone-container">
+<div class="phone-device">
+<div class="phone-notch"></div>
+<div class="phone-screen">
+<div class="screen-header">
+<span>9:41</span>
+<div class="status-icons">
+<i class="ti ti-wifi"></i>
+<i class="ti ti-battery-4"></i>
+</div>
+</div>
+<div class="screen-content">
+<div class="app-pill-live">
+<span class="live-dot"></span> Live 60fps Native
+              </div>
+<div class="screen-card">
+<div class="sc-title">Transaction Sync</div>
+<div class="sc-val">$48,290.00</div>
+<div class="sc-sub">Offline Queues: Reconciled</div>
+</div>
+<div class="screen-notification">
+<div class="notif-icon"><i class="ti ti-bell"></i></div>
+<div>
+<div class="notif-title">Build Approved</div>
+<div class="notif-text">v2.4.0 Live on App Store</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Badges -->
+<div class="phone-badge pb-1"><i class="ti ti-brand-apple"></i> iOS 18 Swift</div>
+<div class="phone-badge pb-2"><i class="ti ti-brand-android"></i> Android 15 Kotlin</div>
+<div class="phone-badge pb-3"><i class="ti ti-brand-flutter"></i> Flutter 60fps</div>
+</div>
+</div>
+<div class="ui-line w-40"></div>
+</div>
+<div class="micro-ui-card ui-card-2">
+<div class="ui-card-dot teal"></div>
+<span class="ui-card-badge">API :: 200 OK</span>
+</div>
+<div class="micro-ui-card ui-card-3">
+<div class="ui-card-icon"><svg class="inline-block" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+<div class="ui-card-stat">99.9%</div>
+</div>
 </section>
-
 <!-- ═══ STATS ═══ -->
 <div class="stats-strip">
-  <div class="stats-inner">
-    <div class="stat-item">
-      <div class="stat-num" data-n="500">500<span>+</span></div>
-      <div class="stat-lbl">Apps Delivered Worldwide</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num" data-n="98">98<span>%</span></div>
-      <div class="stat-lbl">Client Satisfaction Rate</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num" data-n="12">12<span>+</span></div>
-      <div class="stat-lbl">Years of Experience</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num" data-n="40">40<span>+</span></div>
-      <div class="stat-lbl">Global Markets Served</div>
-    </div>
-  </div>
+<div class="stats-inner">
+<div class="stat-item">
+<div class="stat-num" data-n="500"><span class="count-up" data-target="500">0</span><span>+</span></div>
+<div class="stat-lbl">Apps Delivered Worldwide</div>
 </div>
-
+<div class="stat-item">
+<div class="stat-num" data-n="98"><span class="count-up" data-target="98">0</span><span>%</span></div>
+<div class="stat-lbl">Client Satisfaction Rate</div>
+</div>
+<div class="stat-item">
+<div class="stat-num" data-n="12"><span class="count-up" data-target="12">0</span><span>+</span></div>
+<div class="stat-lbl">Years of Experience</div>
+</div>
+<div class="stat-item">
+<div class="stat-num" data-n="40"><span class="count-up" data-target="40">0</span><span>+</span></div>
+<div class="stat-lbl">Global Markets Served</div>
+</div>
+</div>
+</div>
 <!-- ═══ SERVICES ═══ -->
 <section class="section" id="services">
-  <div class="sr">
-    <div class="chip">What We Offer</div>
-    <h2 class="section-title">Full-Spectrum Mobile<br><span class="accent">Development Services</span></h2>
-    <p class="section-p">Every service designed to deliver business outcomes — not just working software.</p>
-  </div>
-  <div class="svc-grid">
-    <div class="svc-card sr sr-d1">
-      <div class="svc-icon ic-teal"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
-      <h3>Custom Android & iOS Development</h3>
-      <p>Native applications built to take full advantage of each platform's capabilities — delivering the best possible user experience and store performance.</p>
-    </div>
-    <div class="svc-card sr sr-d2">
-      <div class="svc-icon ic-coral"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-      <h3>Cross-Platform Development</h3>
-      <p>Flutter and React Native solutions that deploy to both iOS and Android from a single codebase — cutting time-to-market and maintenance overhead significantly.</p>
-    </div>
-    <div class="svc-card sr sr-d3">
-      <div class="svc-icon ic-ink"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></div>
-      <h3>UI/UX Design & Prototyping</h3>
-      <p>Research-driven, visually refined interfaces that drive engagement and reduce churn. We prototype early, test often, and iterate until it's right.</p>
-    </div>
-    <div class="svc-card sr sr-d4">
-      <div class="svc-icon ic-teal"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-      <h3>Maintenance & Performance Optimization</h3>
-      <p>Ongoing support, OS compatibility updates, performance tuning, crash monitoring, and feature iterations that keep your app competitive long-term.</p>
-    </div>
-  </div>
+<div class="sr">
+<div class="chip">What We Offer</div>
+<h2 class="section-title">Full-Spectrum Mobile<br/><span class="accent">Development Services</span></h2>
+<p class="section-p">Every service designed to deliver business outcomes — not just working software.</p>
+</div>
+<div class="svc-grid">
+<div class="svc-card sr sr-d1">
+<div class="svc-icon ic-teal"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><rect height="20" rx="2" ry="2" width="14" x="5" y="2"></rect><line x1="12" x2="12.01" y1="18" y2="18"></line></svg></div>
+<h3>Custom Android &amp; iOS Development</h3>
+<p>Native applications built to take full advantage of each platform's capabilities —.</p>
+</div>
+<div class="svc-card sr sr-d2">
+<div class="svc-icon ic-coral"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+<h3>Cross-Platform Development</h3>
+<p>Flutter and React Native solutions that deploy to both iOS and Android.</p>
+</div>
+<div class="svc-card sr sr-d3">
+<div class="svc-icon ic-ink"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><circle cx="13.5" cy="6.5" fill="currentColor" r=".5"></circle><circle cx="17.5" cy="10.5" fill="currentColor" r=".5"></circle><circle cx="8.5" cy="7.5" fill="currentColor" r=".5"></circle><circle cx="6.5" cy="12.5" fill="currentColor" r=".5"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path></svg></div>
+<h3>UI/UX Design &amp; Prototyping</h3>
+<p>Research-driven, visually refined interfaces that drive engagement and reduce churn. We prototype.</p>
+</div>
+<div class="svc-card sr sr-d4">
+<div class="svc-icon ic-teal"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
+<h3>Maintenance &amp; Performance Optimization</h3>
+<p>Ongoing support, OS compatibility updates, performance tuning, crash monitoring, and feature iterations.</p>
+</div>
+</div>
 </section>
-
 <!-- ═══ FEATURES ═══ -->
 <section class="section" id="features">
-  <div class="feat-wrap">
-    <div>
-      <div class="sr">
-        <div class="chip">Key Features</div>
-        <h2 class="section-title">Every App We Ship Is<br>Built to <span class="teal">Enterprise Standards</span></h2>
-        <p class="section-p">Scalability, security, and speed aren't premium add-ons — they're defaults in everything we build.</p>
-      </div>
-      <ul class="feat-list">
-        <li class="feat-item sr sr-d1">
-          <span class="feat-num">01</span>
-          <div class="feat-body">
-            <h4>Scalable Architecture for Future Growth</h4>
-            <p>Modular, loosely coupled systems that scale horizontally as your user base expands — without costly rewrites.</p>
-          </div>
-        </li>
-        <li class="feat-item sr sr-d2">
-          <span class="feat-num">02</span>
-          <div class="feat-body">
-            <h4>Seamless API & Third-Party Integrations</h4>
-            <p>Clean integration layer for payment gateways, CRMs, analytics platforms, and any backend services your business needs.</p>
-          </div>
-        </li>
-        <li class="feat-item sr sr-d3">
-          <span class="feat-num">03</span>
-          <div class="feat-body">
-            <h4>High-End Data Security Standards</h4>
-            <p>End-to-end encryption, OAuth2 / biometric authentication, GDPR-compliant data handling, and penetration testing protocols.</p>
-          </div>
-        </li>
-        <li class="feat-item sr sr-d4">
-          <span class="feat-num">04</span>
-          <div class="feat-body">
-            <h4>Fast Loading & Optimized Performance</h4>
-            <p>Sub-second render times, lazy loading, efficient state management, and profiled builds that respect device constraints.</p>
-          </div>
-        </li>
-        <li class="feat-item sr">
-          <span class="feat-num">05</span>
-          <div class="feat-body">
-            <h4>User-Friendly & Intuitive Interface</h4>
-            <p>Accessibility-first, tested with real users — interfaces that minimize friction and maximize session depth.</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="sr sr-d2">
-      <div class="feat-vis">
-        <p style="font-family:var(--font-azeret-mono, 'Azeret Mono', monospace);font-size:0.688rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;">Development Lifecycle</p>
-        <div class="timeline">
-          <div class="tl-item" style="animation-delay:0.1s">
-            <div class="tl-dot"></div>
-            <div class="tl-tag">Week 1–2</div>
-            <h4>Discovery & Requirements</h4>
-            <p>Business goals, user research, technical feasibility, and architecture planning.</p>
-          </div>
-          <div class="tl-item" style="animation-delay:0.2s">
-            <div class="tl-dot coral"></div>
-            <div class="tl-tag coral">Week 3–4</div>
-            <h4>Design & Prototype</h4>
-            <p>Wireframes, high-fidelity UI, interactive prototype, and stakeholder sign-off.</p>
-          </div>
-          <div class="tl-item" style="animation-delay:0.3s">
-            <div class="tl-dot"></div>
-            <div class="tl-tag">Week 5–12</div>
-            <h4>Agile Development Sprints</h4>
-            <p>Two-week sprints with continuous delivery, QA testing, and client demos.</p>
-          </div>
-          <div class="tl-item" style="animation-delay:0.4s">
-            <div class="tl-dot coral"></div>
-            <div class="tl-tag coral">Week 13–14</div>
-            <h4>Testing & Store Deployment</h4>
-            <p>Performance benchmarking, security audit, and app store submission.</p>
-          </div>
-          <div class="tl-item" style="animation-delay:0.5s">
-            <div class="tl-dot muted"></div>
-            <div class="tl-tag" style="color:var(--muted)">Ongoing</div>
-            <h4>Maintenance & Growth</h4>
-            <p>Monitoring, updates, feature development, and performance optimization.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="feat-wrap">
+<div>
+<div class="sr">
+<div class="chip">Key Features</div>
+<h2 class="section-title">Every App We Ship Is<br/>Built to <span class="teal">Enterprise Standards</span></h2>
+<p class="section-p">Scalability, security, and speed aren't premium add-ons — they're defaults in everything.</p>
+</div>
+<ul class="feat-list">
+<li class="feat-item sr sr-d1">
+<span class="feat-num">01</span>
+<div class="feat-body">
+<h4>Scalable Architecture for Future Growth</h4>
+<p>Modular, loosely coupled systems that scale horizontally as your user base expands.</p>
+</div>
+</li>
+<li class="feat-item sr sr-d2">
+<span class="feat-num">02</span>
+<div class="feat-body">
+<h4>Seamless API &amp; Third-Party Integrations</h4>
+<p>Clean integration layer for payment gateways, CRMs, analytics platforms, and any backend.</p>
+</div>
+</li>
+<li class="feat-item sr sr-d3">
+<span class="feat-num">03</span>
+<div class="feat-body">
+<h4>High-End Data Security Standards</h4>
+<p>End-to-end encryption, OAuth2 / biometric authentication, GDPR-compliant data handling, and penetration testing.</p>
+</div>
+</li>
+<li class="feat-item sr sr-d4">
+<span class="feat-num">04</span>
+<div class="feat-body">
+<h4>Fast Loading &amp; Optimized Performance</h4>
+<p>Sub-second render times, lazy loading, efficient state management, and profiled builds that.</p>
+</div>
+</li>
+<li class="feat-item sr">
+<span class="feat-num">05</span>
+<div class="feat-body">
+<h4>User-Friendly &amp; Intuitive Interface</h4>
+<p>Accessibility-first, tested with real users — interfaces that minimize friction and maximize.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="sr sr-d2">
+<div class="feat-vis">
+<p style="font-family:var(--font-azeret-mono, 'Azeret Mono', monospace);font-size:0.688rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;">Development Lifecycle</p>
+<div class="timeline">
+<div class="tl-item" style="animation-delay:0.1s">
+<div class="tl-dot"></div>
+<div class="tl-tag">Week 1–2</div>
+<h4>Discovery &amp; Requirements</h4>
+<p>Business goals, user research, technical feasibility, and architecture planning.</p>
+</div>
+<div class="tl-item" style="animation-delay:0.2s">
+<div class="tl-dot coral"></div>
+<div class="tl-tag coral">Week 3–4</div>
+<h4>Design &amp; Prototype</h4>
+<p>Wireframes, high-fidelity UI, interactive prototype, and stakeholder sign-off.</p>
+</div>
+<div class="tl-item" style="animation-delay:0.3s">
+<div class="tl-dot"></div>
+<div class="tl-tag">Week 5–12</div>
+<h4>Agile Development Sprints</h4>
+<p>Two-week sprints with continuous delivery, QA testing, and client demos.</p>
+</div>
+<div class="tl-item" style="animation-delay:0.4s">
+<div class="tl-dot coral"></div>
+<div class="tl-tag coral">Week 13–14</div>
+<h4>Testing &amp; Store Deployment</h4>
+<p>Performance benchmarking, security audit, and app store submission.</p>
+</div>
+<div class="tl-item" style="animation-delay:0.5s">
+<div class="tl-dot muted"></div>
+<div class="tl-tag" style="color:var(--muted)">Ongoing</div>
+<h4>Maintenance &amp; Growth</h4>
+<p>Monitoring, updates, feature development, and performance optimization.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
+<!-- ARCHITECTURE COMPARISON -->
+<section class="comparison-section" id="comparison">
+<div class="reveal" style="max-width:1100px; margin:0 auto 40px;">
+<div class="section-tag">Architecture Comparison</div>
+<h2 class="section-title">Native Performance vs Hybrid Wrappers</h2>
+</div>
+<div class="comparison-table">
+<div class="compare-header reveal">
+<div class="compare-feature-head">Capability Dimension</div>
+<div class="compare-legacy-head">Generic Hybrid Wrappers</div>
+<div class="compare-bgs-head">BGS Native Performance</div>
+</div>
+<div class="compare-body">
+<div class="compare-row reveal">
+<div class="compare-feature">
+<strong>Frame Rate &amp; UI Smoothness</strong>
+<span>GPU animation and gesture responsiveness</span>
+</div>
+<div class="compare-col compare-legacy">
+<i class="ti ti-x" style="color:#888;"></i>
+<span>Laggy 30-40fps webview frame drops</span>
+</div>
+<div class="compare-col compare-bgs">
+<i class="ti ti-circle-check" style="color:#D9622A;"></i>
+<span>Silky 60-120fps native GPU rendering</span>
+</div>
+</div>
+<div class="compare-row reveal">
+<div class="compare-feature">
+<strong>Offline Data Persistence</strong>
+<span>Operation under zero or spotty connectivity</span>
+</div>
+<div class="compare-col compare-legacy">
+<i class="ti ti-x" style="color:#888;"></i>
+<span>Blank screens and lost user form data</span>
+</div>
+<div class="compare-col compare-bgs">
+<i class="ti ti-circle-check" style="color:#D9622A;"></i>
+<span>Offline-first SQLite &amp; background delta sync</span>
+</div>
+</div>
+<div class="compare-row reveal">
+<div class="compare-feature">
+<strong>Hardware &amp; Sensor Integration</strong>
+<span>Biometrics, Bluetooth, camera, and GPS</span>
+</div>
+<div class="compare-col compare-legacy">
+<i class="ti ti-x" style="color:#888;"></i>
+<span>Fragile wrappers and plugin incompatibilities</span>
+</div>
+<div class="compare-col compare-bgs">
+<i class="ti ti-circle-check" style="color:#D9622A;"></i>
+<span>Direct native APIs with low-latency access</span>
+</div>
+</div>
+<div class="compare-row reveal">
+<div class="compare-feature">
+<strong>Store Deployment &amp; Compliance</strong>
+<span>App Store and Google Play approval SLAs</span>
+</div>
+<div class="compare-col compare-legacy">
+<i class="ti ti-x" style="color:#888;"></i>
+<span>Frequent policy rejections and review delays</span>
+</div>
+<div class="compare-col compare-bgs">
+<i class="ti ti-circle-check" style="color:#D9622A;"></i>
+<span>100% compliant Fastlane automated CI/CD</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ── SECTION DIVIDER ── -->
+<style>.orb-pulse-anim{animation:orbPulseA 3s ease-in-out infinite}@keyframes orbPulseA{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:0.65}}</style>
+<div style="position:relative;height:80px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+  <div style="position:absolute;top:50%;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(217,98,42,0.35),rgba(92,147,159,0.25),transparent);transform:translateY(-50%);"></div>
+  <div class="orb-pulse-anim" style="width:10px;height:10px;border-radius:50%;background:#D9622A;box-shadow:0 0 18px rgba(217,98,42,0.65),0 0 36px rgba(217,98,42,0.3);position:relative;z-index:1;"></div>
+</div>
 <!-- ═══ PROCESS ═══ -->
 <div class="proc-strip" id="process">
-  <div class="proc-inner">
-    <div class="sr">
-      <div class="chip">How We Work</div>
-      <h2 class="section-title">A Proven Process That<br>Delivers on Time</h2>
-    </div>
-    <div class="proc-grid">
-      <div class="proc-step sr sr-d1">
-        <div class="proc-circle"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/></svg></div>
-        <h4>Discover</h4>
-        <p>Deep-dive into your goals, users, and technical landscape before a single line of code is written.</p>
-      </div>
-      <div class="proc-step sr sr-d2">
-        <div class="proc-circle"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></div>
-        <h4>Design</h4>
-        <p>Prototype-first approach — validate UX flows before committing to full development.</p>
-      </div>
-      <div class="proc-step sr sr-d3">
-        <div class="proc-circle"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
-        <h4>Develop</h4>
-        <p>Agile sprints with transparent progress tracking, code reviews, and continuous integration.</p>
-      </div>
-      <div class="proc-step sr sr-d4">
-        <div class="proc-circle"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31M14 2v7.31M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"/></svg></div>
-        <h4>Test</h4>
-        <p>Automated + manual QA, performance profiling, security auditing, and user acceptance testing.</p>
-      </div>
-      <div class="proc-step sr">
-        <div class="proc-circle"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
-        <h4>Launch</h4>
-        <p>Store submissions, phased rollouts, monitoring setup, and post-launch support guarantee.</p>
-      </div>
-    </div>
-  </div>
+<div class="proc-inner">
+<div class="sr">
+<div class="chip">How We Work</div>
+<h2 class="section-title">A Proven Process That<br/>Delivers on Time</h2>
 </div>
-
+<div class="proc-grid">
+<div class="proc-step sr sr-d1">
+<div class="proc-circle"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5"></path></svg></div>
+<h4>Discover</h4>
+<p>Deep-dive into your goals, users, and technical landscape.</p>
+</div>
+<div class="proc-step sr sr-d2">
+<div class="proc-circle"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></div>
+<h4>Design</h4>
+<p>Prototype-first approach — validate UX flows before committing.</p>
+</div>
+<div class="proc-step sr sr-d3">
+<div class="proc-circle"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></div>
+<h4>Develop</h4>
+<p>Agile sprints with transparent progress tracking, code reviews,.</p>
+</div>
+<div class="proc-step sr sr-d4">
+<div class="proc-circle"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><path d="M10 2v7.31M14 2v7.31M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"></path></svg></div>
+<h4>Test</h4>
+<p>Automated + manual QA, performance profiling, security auditing,.</p>
+</div>
+<div class="proc-step sr">
+<div class="proc-circle"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg></div>
+<h4>Launch</h4>
+<p>Store submissions, phased rollouts, monitoring setup, and post-launch.</p>
+</div>
+</div>
+</div>
+</div>
 <!-- ═══ WHY US ═══ -->
 <section class="section" id="why">
-  <div class="sr" style="text-align:center;max-width:600px;margin:0 auto 1rem">
-    <div class="chip">Why Choose Us</div>
-    <h2 class="section-title">The Bridge Group<br><span class="accent">Difference</span></h2>
-    <p class="section-p" style="margin:0 auto">We're not a vendor — we're a long-term technology partner invested in your growth.</p>
-  </div>
-  <div class="why-grid">
-    <div class="why-card wc-a sr sr-d1">
-      <div class="big-num">01</div>
-      <div class="tag tag-teal">Expertise</div>
-      <h3>Global Development Experience</h3>
-      <p>Our engineers have shipped apps across 40+ markets — understanding regional compliance, performance expectations, and user behavior nuances that generic teams miss.</p>
-    </div>
-    <div class="why-card wc-b sr sr-d2">
-      <div class="big-num">02</div>
-      <div class="tag tag-coral">Value</div>
-      <h3>Cost-Effective, High ROI</h3>
-      <p>Transparent pricing, no scope creep surprises. We make architecture decisions that minimize future maintenance costs — maximizing return on your development investment.</p>
-    </div>
-    <div class="why-card wc-c sr sr-d3">
-      <div class="big-num">03</div>
-      <div class="tag tag-ink">Speed</div>
-      <h3>Agile Delivery & Faster Time to Market</h3>
-      <p>Two-week sprint cycles with working demos mean you see real progress constantly — not a six-month black box before your first look at the product.</p>
-    </div>
-  </div>
+<div class="sr" style="text-align:center;max-width:600px;margin:0 auto 1rem">
+<div class="chip">Why Choose Us</div>
+<h2 class="section-title">The Bridge Group<br/><span class="accent">Difference</span></h2>
+<p class="section-p" style="margin:0 auto">We're not a vendor — we're a long-term technology partner invested in.</p>
+</div>
+<div class="why-grid">
+<div class="why-card wc-a sr sr-d1">
+<div class="big-num">01</div>
+<div class="tag tag-teal">Expertise</div>
+<h3>Global Development Experience</h3>
+<p>Our engineers have shipped apps across 40+ markets — understanding regional compliance,.</p>
+</div>
+<div class="why-card wc-b sr sr-d2">
+<div class="big-num">02</div>
+<div class="tag tag-coral">Value</div>
+<h3>Cost-Effective, High ROI</h3>
+<p>Transparent pricing, no scope creep surprises. We make architecture decisions that minimize.</p>
+</div>
+<div class="why-card wc-c sr sr-d3">
+<div class="big-num">03</div>
+<div class="tag tag-ink">Speed</div>
+<h3>Agile Delivery &amp; Faster Time to Market</h3>
+<p>Two-week sprint cycles with working demos mean you see real progress constantly.</p>
+</div>
+</div>
 </section>
-
 <!-- ═══ TECH ═══ -->
 <div class="tech-section">
-  <div class="section-inner">
-    <div class="chip sr">Technologies We Work With</div>
-    <h2 class="section-title sr" style="margin:0 auto;">Modern Stack, Proven Tools</h2>
-    <div class="tech-marquee-wrap sr">
-      <div class="tech-track" id="techTrack">
-        <div class="tech-pill"><span class="tp-dot" style="background:#54c5f8"></span>Flutter</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#61dafb"></span>React Native</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#a4c639"></span>Kotlin / Android</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#f05138"></span>Swift / iOS</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#8cc84b"></span>Node.js</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#ffca28"></span>Firebase</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#ff9900"></span>AWS</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#0db7ed"></span>Docker</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#e10098"></span>GraphQL</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#336791"></span>PostgreSQL</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#4db33d"></span>MongoDB</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#e24329"></span>Redis</div>
-        <!-- Duplicate set for seamless infinite scrolling marquee -->
-        <div class="tech-pill"><span class="tp-dot" style="background:#54c5f8"></span>Flutter</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#61dafb"></span>React Native</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#a4c639"></span>Kotlin / Android</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#f05138"></span>Swift / iOS</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#8cc84b"></span>Node.js</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#ffca28"></span>Firebase</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#ff9900"></span>AWS</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#0db7ed"></span>Docker</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#e10098"></span>GraphQL</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#336791"></span>PostgreSQL</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#4db33d"></span>MongoDB</div>
-        <div class="tech-pill"><span class="tp-dot" style="background:#e24329"></span>Redis</div>
-      </div>
-    </div>
-  </div>
+<div class="section-inner">
+<div class="chip sr">Technologies We Work With</div>
+<h2 class="section-title sr" style="margin:0 auto;">Modern Stack, Proven Tools</h2>
+<div class="tech-marquee-wrap sr">
+<div class="tech-track" id="techTrack">
+<div class="tech-pill"><span class="tp-dot" style="background:#54c5f8"></span>Flutter</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#61dafb"></span>React Native</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#a4c639"></span>Kotlin / Android</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#f05138"></span>Swift / iOS</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#8cc84b"></span>Node.js</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#ffca28"></span>Firebase</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#ff9900"></span>AWS</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#0db7ed"></span>Docker</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#e10098"></span>GraphQL</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#336791"></span>PostgreSQL</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#4db33d"></span>MongoDB</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#e24329"></span>Redis</div>
+<!-- Duplicate set for seamless infinite scrolling marquee -->
+<div class="tech-pill"><span class="tp-dot" style="background:#54c5f8"></span>Flutter</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#61dafb"></span>React Native</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#a4c639"></span>Kotlin / Android</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#f05138"></span>Swift / iOS</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#8cc84b"></span>Node.js</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#ffca28"></span>Firebase</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#ff9900"></span>AWS</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#0db7ed"></span>Docker</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#e10098"></span>GraphQL</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#336791"></span>PostgreSQL</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#4db33d"></span>MongoDB</div>
+<div class="tech-pill"><span class="tp-dot" style="background:#e24329"></span>Redis</div>
 </div>
-
+</div>
+</div>
+</div>
 <!-- ═══ CTA ═══ -->
-<div class="cta-full" id="cta">
-  <div class="cta-box sr">
-    <h2 class="section-title">Build Your Next-Gen<br>Mobile App <span class="accent">With Us</span></h2>
-    <p class="section-p">Tell us your idea. We'll get back within 24 hours with a clear plan and honest timeline — no obligations, no sales pitch.</p>
-    <div class="cta-email">
-      <input type="email" id="cta-app-email" placeholder="Your business email">
-      <a href="../contact.html" id="cta-app-btn" class="btn-fill" onclick="if(document.getElementById('cta-app-email').value.trim()){this.href='../contact.html?email='+encodeURIComponent(document.getElementById('cta-app-email').value.trim());}">Get Started →</a>
-    </div>
-    <p style="font-size:0.75rem;color:var(--muted);margin-top:1rem;">No credit card required · Free initial consultation · Response within 24h</p>
-  </div>
+<!-- FAQ SECTION -->
+<section class="faq-section" id="faq">
+<div class="reveal" style="max-width:1100px; margin:0 auto 40px;">
+<div class="section-tag">Common Questions</div>
+<h2 class="section-title">Frequently Asked Questions</h2>
 </div>
-
+<div class="faq-list">
+<div class="faq-item reveal active">
+<button aria-expanded="true" class="faq-trigger">
+<span class="faq-question">Should we build cross-platform (Flutter/React Native) or separate native apps?</span>
+<span class="faq-icon"><i class="ti ti-chevron-down"></i></span>
+</button>
+<div class="faq-answer">
+<div class="faq-answer-inner">
+<p>For most business apps, Flutter and React Native provide 60fps performance and cut development costs in half. For apps requiring specialized hardware or ARKit, we recommend native Swift and Kotlin.</p>
+</div>
+</div>
+</div>
+<div class="faq-item reveal">
+<button aria-expanded="false" class="faq-trigger">
+<span class="faq-question">How do you handle App Store and Google Play compliance and review approvals?</span>
+<span class="faq-icon"><i class="ti ti-chevron-down"></i></span>
+</button>
+<div class="faq-answer">
+<div class="faq-answer-inner">
+<p>We manage the entire submission lifecycle: privacy manifests, store compliance, screenshots, in-app purchases, and Apple/Google review guidelines to ensure rapid approval.</p>
+</div>
+</div>
+</div>
+<div class="faq-item reveal">
+<button aria-expanded="false" class="faq-trigger">
+<span class="faq-question">Can our mobile app operate seamlessly in low or zero-connectivity offline environments?</span>
+<span class="faq-icon"><i class="ti ti-chevron-down"></i></span>
+</button>
+<div class="faq-answer">
+<div class="faq-answer-inner">
+<p>Yes. We architect offline-first mobile databases using SQLite and WatermelonDB with background queue workers that automatically reconcile transactional data upon reconnecting.</p>
+</div>
+</div>
+</div>
+<div class="faq-item reveal">
+<button aria-expanded="false" class="faq-trigger">
+<span class="faq-question">What post-launch SLA maintenance, security patches, and OS upgrades do you support?</span>
+<span class="faq-icon"><i class="ti ti-chevron-down"></i></span>
+</button>
+<div class="faq-answer">
+<div class="faq-answer-inner">
+<p>We provide continuous SLA monitoring, crash analytics triage, automated regression test runs, and same-day compatibility updates whenever major iOS and Android versions release.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- RELATED SERVICES -->
+<section class="related-services-section" id="related-services">
+<div class="reveal" style="max-width:1100px; margin:0 auto 40px;">
+<div class="section-tag">Explore More</div>
+<h2 class="section-title">Related Capabilities</h2>
+</div>
+<div class="related-grid">
+<a class="related-card reveal" href="../services/web.html">
+<div class="related-card-header">
+<div class="related-icon"><i class="ti ti-world-www"></i></div>
+<span class="related-arrow"><i class="ti ti-arrow-up-right"></i></span>
+</div>
+<div class="related-tag">Modern Headless &amp; Enterprise Web</div>
+<h3 class="related-title">Web Development</h3>
+<p class="related-desc">High-performance web platforms engineered with Next.js, headless CMS, and sub-second edge delivery.</p>
+</a>
+<a class="related-card reveal" href="../services/data.html">
+<div class="related-card-header">
+<div class="related-icon"><i class="ti ti-chart-dots"></i></div>
+<span class="related-arrow"><i class="ti ti-arrow-up-right"></i></span>
+</div>
+<div class="related-tag">Real-Time BI &amp; Machine Learning</div>
+<h3 class="related-title">Data Analytics &amp; AI</h3>
+<p class="related-desc">Enterprise data meshes, predictive ML pipelines, Snowflake architectures, and executive BI dashboards.</p>
+</a>
+<a class="related-card reveal" href="../services/project.html">
+<div class="related-card-header">
+<div class="related-icon"><i class="ti ti-users-group"></i></div>
+<span class="related-arrow"><i class="ti ti-arrow-up-right"></i></span>
+</div>
+<div class="related-tag">Dedicated Agile Engineering Pods</div>
+<h3 class="related-title">Project Outsourcing</h3>
+<p class="related-desc">Elite offshore engineering teams, full-stack sprint execution, and end-to-end technical delivery.</p>
+</a>
+<a class="related-card reveal" href="../services/erp.html">
+<div class="related-card-header">
+<div class="related-icon"><i class="ti ti-building-factory-2"></i></div>
+<span class="related-arrow"><i class="ti ti-arrow-up-right"></i></span>
+</div>
+<div class="related-tag">Intelligent Enterprise Operations</div>
+<h3 class="related-title">ERP &amp; Custom Software</h3>
+<p class="related-desc">Modular cloud ERP solutions unifying finance, supply chain, inventory, and automated business workflows.</p>
+</a>
+<a class="related-card reveal" href="../services/crm.html">
+<div class="related-card-header">
+<div class="related-icon"><i class="ti ti-heart-handshake"></i></div>
+<span class="related-arrow"><i class="ti ti-arrow-up-right"></i></span>
+</div>
+<div class="related-tag">Customer Lifecycle &amp; Sales Velocity</div>
+<h3 class="related-title">CRM Solutions</h3>
+<p class="related-desc">Omnichannel CRM automation, lead scoring engines, pipeline visibility, and automated customer journeys.</p>
+</a>
+</div>
+</section>
+<div class="cta-full" id="cta">
+<div class="cta-box sr">
+<h2 class="section-title">Build Your Next-Gen<br/>Mobile App <span class="accent">With Us</span></h2>
+<p class="section-p">Tell us your idea. We'll get back within 24 hours with a clear plan and honest timeline — no obligations, no sales pitch.</p>
+<div class="cta-email">
+<input id="cta-app-email" placeholder="Your business email" type="email"/>
+<a class="btn-fill" href="../contact.html" id="cta-app-btn" onclick="if(document.getElementById('cta-app-email').value.trim()){this.href='../contact.html?email='+encodeURIComponent(document.getElementById('cta-app-email').value.trim());}">Get Started →</a>
+</div>
+<p style="font-size:0.75rem;color:var(--muted);margin-top:1rem;">No credit card required · Free initial consultation · Response within 24h</p>
+</div>
+</div>
 <!-- ═══ FOOTER ═══ -->
 <!-- FOOTER (matches main site design system: bg-infrared) -->
-<footer class="svc-footer">
-  <div class="svc-footer-inner">
-    <div class="svc-footer-brand">
-      <h2>Next starts with BGS.</h2>
-      <p>We turn ideas into scalable digital solutions—designed to move fast, perform better, and create lasting impact.</p>
-      <a href="../contact.html" class="footer-cta">Contact Us</a>
-    </div>
-    <div class="svc-footer-logo">
-      <a href="../index.html">
-        <img src="../assets/logo.webp" alt="Bridge Group Solutions" />
+<div style="background:#D9622A; border-radius:8px; font-family:var(--font-sans); color:#111; position:relative; z-index:100;">
+  <style>
+    .bgs-footer-link { color:#111; text-decoration:none; transition:opacity 0.2s ease; cursor:pointer; }
+    .bgs-footer-link:hover { opacity:0.65; }
+    .ScrollSmoother-wrapper { pointer-events:none !important; }
+  </style>
+
+  <div style="padding:3rem 3rem 2.5rem; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:0;">
+
+    <div style="padding-right:32px;">
+      <a href="../index.html" class="bgs-footer-link" style="display:flex; align-items:center; gap:10px; margin-bottom:14px; color:#111; text-decoration:none;">
+        <img src="../assets/logo.webp" alt="Logo" style="height:30px; width:auto; display:block;" />
+        <span style="font-size:19px; font-weight:500;">Bridge Group Solutions</span>
       </a>
-    </div>
-    <div class="svc-footer-nav">
-      <nav>
-        <ul>
-          <li><a href="../why-bgs.html">WHY BGS</a></li>
-          <li><a href="../portfolio.html">PORTFOLIO</a></li>
-          <li><a href="../about.html">ABOUT</a></li>
-          <li><a href="../gallery.html">GALLERY</a></li>
-          <li><a href="../blogs.html">BLOGS</a></li>
-          <li><a href="../contact.html">CONTACT</a></li>
-        </ul>
-      </nav>
-      <div class="svc-footer-legal">
-        <ul>
-          <li><a href="../legal/disclaimer.html">Disclaimer</a></li>
-          <li><a href="../legal/privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="../legal/terms-and-conditions.html">Terms and Conditions</a></li>
-          <li><a href="../legal/cookie-policy.html">Cookie Policy</a></li>
-          <li><a href="../legal/whistleblower-protection-statement.html">Whistleblower Protection</a></li>
-        </ul>
+      <div style="font-size:13px; color:#3a1a0a; line-height:1.7; margin-bottom:24px;">Delivering cutting-edge digital transformation, custom software development, ERP systems, data analytics, and cloud solutions to empower growing businesses.</div>
+      <div style="font-size:13px; color:#111; line-height:2;">
+        <div><i class="ti ti-map-pin" style="font-size:14px; vertical-align:-2px; margin-right:8px;" aria-hidden="true"></i>Noida, Uttar Pradesh, India</div>
+        <div><i class="ti ti-mail" style="font-size:14px; vertical-align:-2px; margin-right:8px;" aria-hidden="true"></i>hello@bridgegroupsolutions.com</div>
       </div>
     </div>
-    <div class="svc-footer-copyright">
-      <p>© 2026 Bridge Group Solutions. All rights reserved.</p>
+
+    <div style="padding:0 24px; border-left:1px solid rgba(17,17,17,0.2);">
+      <div style="font-size:12px; color:#3a1a0a; font-weight:500; margin-bottom:18px; text-transform:uppercase; letter-spacing:0.04em;">Services</div>
+      <div style="display:flex; flex-direction:column; gap:13px; font-size:13px; color:#111;">
+        <a href="../services/web.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Web Development</a>
+        <a href="../services/app.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Application Development</a>
+        <a href="../services/data.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Data Analytics</a>
+        <a href="../services/project.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Project Outsourcing</a>
+        <a href="../services/erp.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">ERP and Custom Software</a>
+        <a href="../services/crm.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">CRM</a>
+      </div>
+    </div>
+
+    <div style="padding:0 24px; border-left:1px solid rgba(17,17,17,0.2);">
+      <div style="font-size:12px; color:#3a1a0a; font-weight:500; margin-bottom:18px; text-transform:uppercase; letter-spacing:0.04em;">Company</div>
+      <div style="display:flex; flex-direction:column; gap:13px; font-size:13px; color:#111;">
+        <a href="../why-bgs.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Why BGS</a>
+        <a href="../portfolio.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Portfolio</a>
+        <a href="../about.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">About Us</a>
+        <a href="../gallery.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Gallery</a>
+        <a href="../blogs.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Blogs</a>
+        <a href="../contact.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Contact</a>
+      </div>
+    </div>
+
+    <div style="padding-left:24px; border-left:1px solid rgba(17,17,17,0.2);">
+      <div style="font-size:12px; color:#3a1a0a; font-weight:500; margin-bottom:18px; text-transform:uppercase; letter-spacing:0.04em;">Legal</div>
+      <div style="display:flex; flex-direction:column; gap:13px; font-size:13px; color:#111;">
+        <a href="../legal/disclaimer.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Disclaimer</a>
+        <a href="../legal/privacy-policy.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Privacy Policy</a>
+        <a href="../legal/terms-and-conditions.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Terms and Conditions</a>
+        <a href="../legal/cookie-policy.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Cookie Policy</a>
+        <a href="../legal/whistleblower-protection-statement.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Whistleblower Protection</a>
+      </div>
     </div>
   </div>
-</footer>
+
+  <div style="border-top:1px solid rgba(17,17,17,0.3); padding:20px 3rem; display:flex; justify-content:space-between; align-items:center; font-size:12px; color:#3a1a0a;">
+    <span>Copyright &copy; 2026 <a href="https://testing.bridgegroupsolutions.com/" style="color:inherit; text-decoration:underline;">Bridge Group Solutions</a>. All rights reserved.</span>
+    <div style="display:flex; gap:16px; align-items:center;">
+      <a href="#" target="_blank" rel="noopener noreferrer" class="bgs-footer-link" style="color:#111; text-decoration:none; line-height:0;" aria-label="LinkedIn"><i class="ti ti-brand-linkedin" style="font-size:16px; color:#111;" aria-hidden="true"></i></a>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="bgs-footer-link" style="color:#111; text-decoration:none; line-height:0;" aria-label="X"><i class="ti ti-brand-x" style="font-size:16px; color:#111;" aria-hidden="true"></i></a>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="bgs-footer-link" style="color:#111; text-decoration:none; line-height:0;" aria-label="Instagram"><i class="ti ti-brand-instagram" style="font-size:16px; color:#111;" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</div>
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
-
 <script>
 // ANIMATED CANVAS BACKGROUND
 const canvas = document.getElementById('bg-canvas');
@@ -1858,6 +2297,24 @@ function animate() {
   requestAnimationFrame(animate);
 }
 animate();
+
+
+// FAQ ACCORDION INTERACTION
+document.querySelectorAll('.faq-trigger').forEach(trigger => {
+  trigger.addEventListener('click', () => {
+    const item = trigger.closest('.faq-item');
+    const wasActive = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('active');
+      const tr = i.querySelector('.faq-trigger');
+      if (tr) tr.setAttribute('aria-expanded', 'false');
+    });
+    if (!wasActive) {
+      item.classList.add('active');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
 
 // CUSTOM CURSOR
 const cursor = document.getElementById('cursor');

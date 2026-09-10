@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Data Analytics & AI Solutions | Bridge Group Solutions</title>
-<meta name="description" content="Transform complex business data into automated intelligence. End-to-end data analytics, machine learning models, and real-time executive dashboards." />
-
+<meta content="Transform complex business data into automated intelligence. Enterprise ML pipelines, real-time analytics, and executive dashboards. Schedule a consult." name="description"/>
 <!-- Main site stylesheet (shared with index.html, about.html) -->
 <link rel="preload" href="../assets/main.minc014.css?id=18ba35244216baa33eca27c02bf5db21" as="style" />
 <link rel="stylesheet" href="../assets/services-shared.css" />
@@ -16,6 +15,9 @@
 <script src="../assets/swiper.mine501.js?id=73b3ce9caaee2c8cf8bc314a9cd8b5ee" defer></script>
 <script src="../assets/gsap.min4af2.js?id=e5d9d8dcf72b06d2a3cd8125cba04e36" defer></script>
 <script src="../assets/main.min3b67.js?id=5c7df0d47c91902b5cb665c2a0b20b7a" defer></script>
+
+<!-- Tabler Icons CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="../assets/logo.webp" />
@@ -491,10 +493,11 @@
 
   /* ── HERO ── */
   .hero {
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     align-items: center;
-    padding-top: 5rem;
+    padding-top: calc(var(--header-height, 80px) + 1.5rem);
+    padding-bottom: 2.5rem;
     position: relative;
   }
 
@@ -813,15 +816,25 @@
   }
 
   .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
     gap: 2rem;
   }
 
   .stat-item {
     text-align: center;
+    flex: 1;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    padding-right: 1.5rem;
     opacity: 0;
     animation: fadeUp 0.6s forwards;
+  }
+
+  .stat-item:last-child {
+    border-right: none;
+    padding-right: 0;
   }
 
   .stat-item:nth-child(1) { animation-delay: 0.1s; }
@@ -853,6 +866,13 @@
     position: relative;
     z-index: 2;
   }
+
+  /* ── SECTION DIVIDER ── */
+  .section-divider { position: relative; height: 80px; display: flex; align-items: center; justify-content: center; margin: 0; overflow: hidden; }
+  .section-divider::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(217,98,42,0.35), rgba(92,147,159,0.25), transparent); transform: translateY(-50%); }
+  .section-divider-orb { width: 10px; height: 10px; border-radius: 50%; background: #D9622A; box-shadow: 0 0 18px rgba(217,98,42,0.65), 0 0 36px rgba(217,98,42,0.3); animation: orbPulse 3s ease-in-out infinite; position: relative; z-index: 1; }
+  @keyframes orbPulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.5);opacity:0.65} }
+
 
   .section-label {
     display: inline-flex;
@@ -1342,6 +1362,246 @@
 
   
 
+
+  /* ── Comparison Section ── */
+  .comparison-section { padding: 90px 6%; position: relative; }
+  .comparison-table {
+    max-width: 1100px; margin: 0 auto;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  .compare-header {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+    padding: 20px 28px;
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-family: var(--font-azeret-mono, 'Azeret Mono', monospace);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #FFFFFF;
+  }
+  .compare-row {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+    padding: 20px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    align-items: center;
+    transition: background 0.25s ease;
+  }
+  .compare-row:last-child { border-bottom: none; }
+  .compare-row:hover { background: rgba(255,255,255,0.03); }
+  .compare-feature strong { display: block; font-size: 0.92rem; color: #FFFFFF; font-weight: 500; font-family: var(--font-roc-grotesk); margin-bottom: 3px; }
+  .compare-feature span { font-size: 0.78rem; color: rgba(218,218,218,0.55); line-height: 1.4; }
+  .compare-col { display: flex; align-items: center; gap: 10px; font-size: 0.83rem; }
+  .compare-legacy { color: rgba(218,218,218,0.6); }
+  .compare-bgs { color: #FFFFFF; font-weight: 500; }
+  .compare-bgs i { font-size: 1.1rem; flex-shrink: 0; }
+  .compare-legacy i { font-size: 1rem; flex-shrink: 0; }
+
+  /* ── FAQ Section ── */
+  .faq-section { padding: 90px 6%; position: relative; }
+  .faq-list { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+  .faq-item {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+  }
+  .faq-item:hover, .faq-item.active {
+    border-color: rgba(217,98,42,0.35);
+    background: rgba(255,255,255,0.03);
+  }
+  .faq-trigger {
+    width: 100%;
+    padding: 22px 26px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: none; border: none; cursor: pointer; text-align: left;
+    color: #FFFFFF; font-family: var(--font-roc-grotesk); font-size: 1.05rem; font-weight: 500;
+  }
+  .faq-icon {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: center;
+    color: #D9622A; transition: transform 0.3s ease, background 0.3s ease;
+    flex-shrink: 0;
+  }
+  .faq-item.active .faq-icon {
+    transform: rotate(180deg);
+    background: rgba(217,98,42,0.15);
+  }
+  .faq-answer {
+    display: grid; grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .faq-item.active .faq-answer {
+    grid-template-rows: 1fr;
+  }
+  .faq-answer-inner {
+    overflow: hidden;
+    padding: 0 26px 22px;
+    font-size: 0.88rem;
+    color: rgba(218,218,218,0.7);
+    line-height: 1.7;
+  }
+
+  /* ── Related Services Section ── */
+  .related-services-section { padding: 90px 6%; position: relative; }
+  .related-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .related-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    padding: 22px 20px;
+    text-decoration: none;
+    display: flex; flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    position: relative; overflow: hidden;
+  }
+  .related-card:hover {
+    transform: translateY(-6px) !important;
+    border-color: rgba(217,98,42,0.4);
+    background: rgba(217,98,42,0.04);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.4), 0 0 20px rgba(217,98,42,0.1);
+  }
+  .related-card-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 14px;
+  }
+  .related-icon {
+    width: 48px; height: 48px; border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: #D9622A; font-size: 1.8rem;
+  }
+  .related-arrow {
+    color: rgba(218,218,218,0.4); font-size: 1rem;
+    transition: transform 0.25s ease, color 0.25s ease;
+  }
+  .related-card:hover .related-arrow {
+    transform: translate(3px, -3px);
+    color: #FFFFFF;
+  }
+  .related-tag {
+    font-family: var(--font-azeret-mono);
+    font-size: 0.65rem; color: #D9622A; text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 6px;
+  }
+  .related-title {
+    font-family: var(--font-roc-grotesk);
+    font-size: 0.95rem; font-weight: 500; color: #FFFFFF; margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .related-desc {
+    font-size: 0.77rem; color: rgba(218,218,218,0.55); line-height: 1.5;
+    flex-grow: 1;
+  }
+
+  /* ── Ambient Floating Glows ── */
+  .ambient-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.06;
+    background: #D9622A;
+  }
+
+  /* Responsive Rules */
+  @media (max-width: 1024px) {
+    .related-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .compare-header { display: none; }
+    .compare-row { grid-template-columns: 1fr; gap: 10px; padding: 18px 20px; }
+    .related-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .related-grid { grid-template-columns: 1fr; }
+  }
+
+
+  /* Data Pipeline Hero Visual */
+  .hero-pipeline-container {
+    position: relative;
+    padding: 26px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    max-width: 600px;
+    width: 100%;
+    transform: scale(1.12);
+    transform-origin: center right;
+  }
+  .pipeline-flow {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .pipeline-node {
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(17, 17, 17, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px; padding: 12px 16px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .pipeline-node:hover {
+    transform: translateX(4px);
+    border-color: rgba(217, 98, 42, 0.4);
+  }
+  .pn-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: rgba(217, 98, 42, 0.12); color: #D9622A;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .pn-info { display: flex; flex-direction: column; }
+  .pn-tag { font-size: 0.65rem; color: #D9622A; font-family: var(--font-azeret-mono); text-transform: uppercase; letter-spacing: 0.05em; }
+  .pn-name { font-size: 0.88rem; font-weight: 500; color: #FFFFFF; font-family: var(--font-roc-grotesk); }
+
+  .pipeline-connector {
+    height: 14px; width: 2px; margin-left: 32px;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative; overflow: hidden;
+  }
+  .pulse-line {
+    position: absolute; top: 0; left: 0; width: 100%; height: 6px;
+    background: #D9622A;
+    animation: flowPulse 2s linear infinite;
+  }
+  @keyframes flowPulse {
+    0% { top: -100%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+  .data-float-pill {
+    position: absolute;
+    background: rgba(17, 17, 17, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 6px 12px; border-radius: 20px;
+    font-size: 0.7rem; font-family: var(--font-azeret-mono);
+    color: #FFFFFF; display: flex; align-items: center; gap: 6px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.4);
+  }
+  .data-float-pill i { color: #D9622A; }
+  .dfp-1 { top: -15px; right: 20px; animation: float1 5s ease-in-out infinite; }
+  .dfp-2 { bottom: 40px; right: -20px; animation: float2 6s ease-in-out infinite; }
+  .dfp-3 { bottom: -15px; left: 30px; animation: float3 5.5s ease-in-out infinite; }
+
+
+  /* Ensure hover lift specificity */
+  .service-card:hover { transform: translateY(-5px) !important; border-color: rgba(217,98,42,0.35) !important; }
+  .why-card:hover { transform: translateY(-5px) !important; }
+  .feature-item:hover { transform: translateX(4px) !important; }
+
 </style>
 </head>
 <body class="bg-rich-carbon text-neural-fog font-roc-grotesk">
@@ -1351,7 +1611,7 @@
 <header class="svc-header">
 <nav class="svc-nav" id="svcNav">
   <a class="svc-nav-logo" href="../index.html">
-    <img src="../assets/logo.webp" alt="Bridge Group Solutions" />
+    <img src="../assets/logo.webp" alt="Logo" />
     <span>Bridge Group Solutions</span>
   </a>
   <ul class="svc-nav-links" id="navLinks">
@@ -1383,48 +1643,54 @@
         </div>
       </div>
       <div class="hero-visual">
-        <div class="dashboard-mockup">
-          <div class="mock-header">
-            <div class="mock-dot"></div>
-            <div class="mock-dot"></div>
-            <div class="mock-dot"></div>
-            <span class="mock-title">Analytics Dashboard — Live</span>
+
+    <!-- Animated Data Pipeline Visual -->
+    <div class="hero-pipeline-container data-pipeline-visual reveal">
+      <div class="pipeline-flow">
+        <div class="pipeline-node pn-1">
+          <div class="pn-icon"><i class="ti ti-database-import"></i></div>
+          <div class="pn-info">
+            <span class="pn-tag">Ingest</span>
+            <span class="pn-name">Kafka &amp; APIs</span>
           </div>
-          <div class="mock-stats">
-            <div class="mock-stat">
-              <div class="mock-stat-label">Revenue</div>
-              <div class="mock-stat-value orange">$2.4M</div>
-              <div class="mock-stat-change">↑ 18.2%</div>
-            </div>
-            <div class="mock-stat">
-              <div class="mock-stat-label">Efficiency</div>
-              <div class="mock-stat-value teal">94.7%</div>
-              <div class="mock-stat-change">↑ 6.1%</div>
-            </div>
-            <div class="mock-stat">
-              <div class="mock-stat-label">Insights</div>
-              <div class="mock-stat-value white">1,284</div>
-              <div class="mock-stat-change">↑ 32.4%</div>
-            </div>
+        </div>
+        <div class="pipeline-connector">
+          <div class="pulse-line"></div>
+        </div>
+        <div class="pipeline-node pn-2">
+          <div class="pn-icon"><i class="ti ti-database"></i></div>
+          <div class="pn-info">
+            <span class="pn-tag">Warehouse</span>
+            <span class="pn-name">Snowflake &amp; dbt</span>
           </div>
-          <div class="mock-chart">
-            <div class="chart-label">Monthly Performance Index</div>
-            <div class="chart-bars">
-              <div class="chart-bar"></div><div class="chart-bar"></div>
-              <div class="chart-bar"></div><div class="chart-bar"></div>
-              <div class="chart-bar"></div><div class="chart-bar"></div>
-              <div class="chart-bar"></div><div class="chart-bar"></div>
-              <div class="chart-bar"></div><div class="chart-bar"></div>
-            </div>
+        </div>
+        <div class="pipeline-connector">
+          <div class="pulse-line"></div>
+        </div>
+        <div class="pipeline-node pn-3">
+          <div class="pn-icon"><i class="ti ti-brain"></i></div>
+          <div class="pn-info">
+            <span class="pn-tag">AI Engine</span>
+            <span class="pn-name">PyTorch &amp; ML</span>
           </div>
-          <div class="hero-tags">
-            <span class="hero-tag"><span class="tag-dot" style="background:#ed6d40"></span>Real-time</span>
-            <span class="hero-tag"><span class="tag-dot" style="background:#5c939f"></span>AI-Powered</span>
-            <span class="hero-tag"><span class="tag-dot" style="background:#5c939f"></span>Predictive</span>
-            <span class="hero-tag"><span class="tag-dot" style="background:#dadada"></span>Multi-source</span>
+        </div>
+        <div class="pipeline-connector">
+          <div class="pulse-line"></div>
+        </div>
+        <div class="pipeline-node pn-4">
+          <div class="pn-icon"><i class="ti ti-chart-bar"></i></div>
+          <div class="pn-info">
+            <span class="pn-tag">BI Output</span>
+            <span class="pn-name">Power BI Dashboards</span>
           </div>
         </div>
       </div>
+      <!-- Live Metrics Floating Cards -->
+      <div class="data-float-pill dfp-1"><i class="ti ti-bolt"></i> 1.2B+ Daily Events</div>
+      <div class="data-float-pill dfp-2"><i class="ti ti-check"></i> 99.4% Pipeline SLA</div>
+      <div class="data-float-pill dfp-3"><i class="ti ti-clock"></i> &lt;100ms Query Latency</div>
+    </div>
+
     </div>
   </div>
 </section>
@@ -1434,19 +1700,19 @@
   <div class="container">
     <div class="stats-grid">
       <div class="stat-item reveal">
-        <div class="stat-num" data-n="500">500+</div>
+        <div class="stat-num count-up" data-target="500" data-n="500">500+</div>
         <div class="stat-label">Clients Served</div>
       </div>
       <div class="stat-item reveal">
-        <div class="stat-num" data-n="98">98%</div>
+        <div class="stat-num count-up" data-target="98" data-n="98">98%</div>
         <div class="stat-label">Client Satisfaction</div>
       </div>
       <div class="stat-item reveal">
-        <div class="stat-num" data-n="10">10B+</div>
+        <div class="stat-num count-up" data-target="10" data-n="10">10B+</div>
         <div class="stat-label">Data Points Processed</div>
       </div>
       <div class="stat-item reveal">
-        <div class="stat-num" data-n="3.2">3.2×</div>
+        <div class="stat-num count-up" data-target="3.2" data-n="3.2">3.2×</div>
         <div class="stat-label">Avg. Decision Speed</div>
       </div>
     </div>
@@ -1586,6 +1852,81 @@
   </div>
 </section>
 
+
+<!-- ARCHITECTURE COMPARISON -->
+<section class="comparison-section" id="comparison">
+  <div style="max-width:1100px; margin:0 auto 40px;" class="reveal">
+    <div class="section-tag">Architecture Comparison</div>
+    <h2 class="section-title">Data Mesh vs Siloed Legacy BI</h2>
+  </div>
+  <div class="comparison-table">
+    <div class="compare-header reveal">
+      <div class="compare-feature-head">Capability Dimension</div>
+      <div class="compare-legacy-head">Siloed Legacy BI</div>
+      <div class="compare-bgs-head">BGS Real-Time Data Mesh</div>
+    </div>
+    <div class="compare-body">
+      
+      <div class="compare-row reveal">
+        <div class="compare-feature">
+          <strong>Data Freshness & Streaming</strong>
+          <span>Latency between event creation and insight</span>
+        </div>
+        <div class="compare-col compare-legacy">
+          <i class="ti ti-x" style="color:#888;"></i>
+          <span>24-hour delayed CSV & batch exports</span>
+        </div>
+        <div class="compare-col compare-bgs">
+          <i class="ti ti-circle-check" style="color:#D9622A;"></i>
+          <span>Sub-second real-time streaming pipelines</span>
+        </div>
+      </div>
+      <div class="compare-row reveal">
+        <div class="compare-feature">
+          <strong>Query Latency at Scale</strong>
+          <span>Performance across millions of rows</span>
+        </div>
+        <div class="compare-col compare-legacy">
+          <i class="ti ti-x" style="color:#888;"></i>
+          <span>Table timeouts and slow database locks</span>
+        </div>
+        <div class="compare-col compare-bgs">
+          <i class="ti ti-circle-check" style="color:#D9622A;"></i>
+          <span>Sub-second petabyte queries on Snowflake</span>
+        </div>
+      </div>
+      <div class="compare-row reveal">
+        <div class="compare-feature">
+          <strong>Data Governance & Lineage</strong>
+          <span>Auditability, testing, and documentation</span>
+        </div>
+        <div class="compare-col compare-legacy">
+          <i class="ti ti-x" style="color:#888;"></i>
+          <span>Untracked spreadsheet chaos and discrepancies</span>
+        </div>
+        <div class="compare-col compare-bgs">
+          <i class="ti ti-circle-check" style="color:#D9622A;"></i>
+          <span>Automated dbt data contracts and lineage</span>
+        </div>
+      </div>
+      <div class="compare-row reveal">
+        <div class="compare-feature">
+          <strong>Predictive AI Readiness</strong>
+          <span>Operationalizing machine learning models</span>
+        </div>
+        <div class="compare-col compare-legacy">
+          <i class="ti ti-x" style="color:#888;"></i>
+          <span>Static backward-looking historical charts</span>
+        </div>
+        <div class="compare-col compare-bgs">
+          <i class="ti ti-circle-check" style="color:#D9622A;"></i>
+          <span>Integrated machine learning & predictive forecasting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- WHY US -->
 <section id="why">
   <div class="container">
@@ -1615,6 +1956,10 @@
     </div>
   </div>
 </section>
+
+
+<!-- ── SECTION DIVIDER ── -->
+<div class="section-divider"><div class="section-divider-orb"></div></div>
 
 <!-- PROCESS -->
 <section id="process">
@@ -1648,6 +1993,119 @@
   </div>
 </section>
 
+
+<!-- FAQ SECTION -->
+<section class="faq-section" id="faq">
+  <div style="max-width:1100px; margin:0 auto 40px;" class="reveal">
+    <div class="section-tag">Common Questions</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+  </div>
+  <div class="faq-list">
+    
+    <div class="faq-item reveal active">
+      <button class="faq-trigger" aria-expanded="true">
+        <span class="faq-question">How do you ensure enterprise data privacy, HIPAA, and GDPR compliance?</span>
+        <span class="faq-icon"><i class="ti ti-chevron-down"></i></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>We engineer strict data governance frameworks featuring column-level role-based masking, AES-256 encryption at rest and in transit, automated audit trails, and zero-trust data access policies compliant with SOC2 and GDPR.</p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-trigger" aria-expanded="false">
+        <span class="faq-question">Can you modernize and connect our legacy on-premise database systems?</span>
+        <span class="faq-icon"><i class="ti ti-chevron-down"></i></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Yes. We build hybrid migration pipelines utilizing automated change data capture (CDC) to stream data from legacy SQL Server, Oracle, or MySQL databases directly into modern cloud lakehouses without operational disruption.</p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-trigger" aria-expanded="false">
+        <span class="faq-question">What is the difference between batch ETL and real-time streaming architectures?</span>
+        <span class="faq-icon"><i class="ti ti-chevron-down"></i></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Batch ETL collects data over intervals (hourly/daily) for periodic reporting. Real-time streaming uses event brokers like Apache Kafka to process and analyze data in milliseconds, enabling instant fraud detection and dynamic pricing.</p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-trigger" aria-expanded="false">
+        <span class="faq-question">Which BI tool do you recommend between Power BI, Tableau, and Looker?</span>
+        <span class="faq-icon"><i class="ti ti-chevron-down"></i></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>We evaluate based on your ecosystem: Power BI offers seamless Microsoft integration, Tableau excels at complex exploratory analytics, and Looker / Metabase provides governed semantic modeling for SaaS products.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- RELATED SERVICES -->
+<section class="related-services-section" id="related-services">
+  <div style="max-width:1100px; margin:0 auto 40px;" class="reveal">
+    <div class="section-tag">Explore More</div>
+    <h2 class="section-title">Related Capabilities</h2>
+  </div>
+  <div class="related-grid">
+    
+      <a href="../services/web.html" class="related-card reveal">
+        <div class="related-card-header">
+          <div class="related-icon"><i class="ti ti-world-www"></i></div>
+          <span class="related-arrow"><i class="ti ti-arrow-up-right"></i></span>
+        </div>
+        <div class="related-tag">Modern Headless & Enterprise Web</div>
+        <h3 class="related-title">Web Development</h3>
+        <p class="related-desc">High-performance web platforms engineered with Next.js, headless CMS, and sub-second edge delivery.</p>
+      </a>
+      <a href="../services/app.html" class="related-card reveal">
+        <div class="related-card-header">
+          <div class="related-icon"><i class="ti ti-device-mobile"></i></div>
+          <span class="related-arrow"><i class="ti ti-arrow-up-right"></i></span>
+        </div>
+        <div class="related-tag">iOS, Android & Cross-Platform Apps</div>
+        <h3 class="related-title">Application Development</h3>
+        <p class="related-desc">Native-engineered mobile experiences with Flutter, React Native, real-time sync, and fluid 60fps UX.</p>
+      </a>
+      <a href="../services/project.html" class="related-card reveal">
+        <div class="related-card-header">
+          <div class="related-icon"><i class="ti ti-users-group"></i></div>
+          <span class="related-arrow"><i class="ti ti-arrow-up-right"></i></span>
+        </div>
+        <div class="related-tag">Dedicated Agile Engineering Pods</div>
+        <h3 class="related-title">Project Outsourcing</h3>
+        <p class="related-desc">Elite offshore engineering teams, full-stack sprint execution, and end-to-end technical delivery.</p>
+      </a>
+      <a href="../services/erp.html" class="related-card reveal">
+        <div class="related-card-header">
+          <div class="related-icon"><i class="ti ti-building-factory-2"></i></div>
+          <span class="related-arrow"><i class="ti ti-arrow-up-right"></i></span>
+        </div>
+        <div class="related-tag">Intelligent Enterprise Operations</div>
+        <h3 class="related-title">ERP & Custom Software</h3>
+        <p class="related-desc">Modular cloud ERP solutions unifying finance, supply chain, inventory, and automated business workflows.</p>
+      </a>
+      <a href="../services/crm.html" class="related-card reveal">
+        <div class="related-card-header">
+          <div class="related-icon"><i class="ti ti-heart-handshake"></i></div>
+          <span class="related-arrow"><i class="ti ti-arrow-up-right"></i></span>
+        </div>
+        <div class="related-tag">Customer Lifecycle & Sales Velocity</div>
+        <h3 class="related-title">CRM Solutions</h3>
+        <p class="related-desc">Omnichannel CRM automation, lead scoring engines, pipeline visibility, and automated customer journeys.</p>
+      </a>
+  </div>
+</section>
+
 <!-- CTA -->
 <section id="cta" class="cta-section">
   <div class="container">
@@ -1664,44 +2122,72 @@
 
 <!-- FOOTER -->
 <!-- FOOTER (matches main site design system: bg-infrared) -->
-<footer class="svc-footer">
-  <div class="svc-footer-inner">
-    <div class="svc-footer-brand">
-      <h2>Next starts with BGS.</h2>
-      <p>We turn ideas into scalable digital solutions—designed to move fast, perform better, and create lasting impact.</p>
-      <a href="../contact.html" class="footer-cta">Contact Us</a>
-    </div>
-    <div class="svc-footer-logo">
-      <a href="../index.html">
-        <img src="../assets/logo.webp" alt="Bridge Group Solutions" />
+<div style="background:#D9622A; border-radius:8px; font-family:var(--font-sans); color:#111; position:relative; z-index:100;">
+  <style>
+    .bgs-footer-link { color:#111; text-decoration:none; transition:opacity 0.2s ease; cursor:pointer; }
+    .bgs-footer-link:hover { opacity:0.65; }
+    .ScrollSmoother-wrapper { pointer-events:none !important; }
+  </style>
+
+  <div style="padding:3rem 3rem 2.5rem; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:0;">
+
+    <div style="padding-right:32px;">
+      <a href="../index.html" class="bgs-footer-link" style="display:flex; align-items:center; gap:10px; margin-bottom:14px; color:#111; text-decoration:none;">
+        <img src="../assets/logo.webp" alt="Logo" style="height:30px; width:auto; display:block;" />
+        <span style="font-size:19px; font-weight:500;">Bridge Group Solutions</span>
       </a>
-    </div>
-    <div class="svc-footer-nav">
-      <nav>
-        <ul>
-          <li><a href="../why-bgs.html">WHY BGS</a></li>
-          <li><a href="../portfolio.html">PORTFOLIO</a></li>
-          <li><a href="../about.html">ABOUT</a></li>
-          <li><a href="../gallery.html">GALLERY</a></li>
-          <li><a href="../blogs.html">BLOGS</a></li>
-          <li><a href="../contact.html">CONTACT</a></li>
-        </ul>
-      </nav>
-      <div class="svc-footer-legal">
-        <ul>
-          <li><a href="../legal/disclaimer.html">Disclaimer</a></li>
-          <li><a href="../legal/privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="../legal/terms-and-conditions.html">Terms and Conditions</a></li>
-          <li><a href="../legal/cookie-policy.html">Cookie Policy</a></li>
-          <li><a href="../legal/whistleblower-protection-statement.html">Whistleblower Protection</a></li>
-        </ul>
+      <div style="font-size:13px; color:#3a1a0a; line-height:1.7; margin-bottom:24px;">Delivering cutting-edge digital transformation, custom software development, ERP systems, data analytics, and cloud solutions to empower growing businesses.</div>
+      <div style="font-size:13px; color:#111; line-height:2;">
+        <div><i class="ti ti-map-pin" style="font-size:14px; vertical-align:-2px; margin-right:8px;" aria-hidden="true"></i>Noida, Uttar Pradesh, India</div>
+        <div><i class="ti ti-mail" style="font-size:14px; vertical-align:-2px; margin-right:8px;" aria-hidden="true"></i>hello@bridgegroupsolutions.com</div>
       </div>
     </div>
-    <div class="svc-footer-copyright">
-      <p>© 2026 Bridge Group Solutions. All rights reserved.</p>
+
+    <div style="padding:0 24px; border-left:1px solid rgba(17,17,17,0.2);">
+      <div style="font-size:12px; color:#3a1a0a; font-weight:500; margin-bottom:18px; text-transform:uppercase; letter-spacing:0.04em;">Services</div>
+      <div style="display:flex; flex-direction:column; gap:13px; font-size:13px; color:#111;">
+        <a href="../services/web.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Web Development</a>
+        <a href="../services/app.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Application Development</a>
+        <a href="../services/data.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Data Analytics</a>
+        <a href="../services/project.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Project Outsourcing</a>
+        <a href="../services/erp.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">ERP and Custom Software</a>
+        <a href="../services/crm.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">CRM</a>
+      </div>
+    </div>
+
+    <div style="padding:0 24px; border-left:1px solid rgba(17,17,17,0.2);">
+      <div style="font-size:12px; color:#3a1a0a; font-weight:500; margin-bottom:18px; text-transform:uppercase; letter-spacing:0.04em;">Company</div>
+      <div style="display:flex; flex-direction:column; gap:13px; font-size:13px; color:#111;">
+        <a href="../why-bgs.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Why BGS</a>
+        <a href="../portfolio.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Portfolio</a>
+        <a href="../about.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">About Us</a>
+        <a href="../gallery.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Gallery</a>
+        <a href="../blogs.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Blogs</a>
+        <a href="../contact.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Contact</a>
+      </div>
+    </div>
+
+    <div style="padding-left:24px; border-left:1px solid rgba(17,17,17,0.2);">
+      <div style="font-size:12px; color:#3a1a0a; font-weight:500; margin-bottom:18px; text-transform:uppercase; letter-spacing:0.04em;">Legal</div>
+      <div style="display:flex; flex-direction:column; gap:13px; font-size:13px; color:#111;">
+        <a href="../legal/disclaimer.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Disclaimer</a>
+        <a href="../legal/privacy-policy.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Privacy Policy</a>
+        <a href="../legal/terms-and-conditions.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Terms and Conditions</a>
+        <a href="../legal/cookie-policy.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Cookie Policy</a>
+        <a href="../legal/whistleblower-protection-statement.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Whistleblower Protection</a>
+      </div>
     </div>
   </div>
-</footer>
+
+  <div style="border-top:1px solid rgba(17,17,17,0.3); padding:20px 3rem; display:flex; justify-content:space-between; align-items:center; font-size:12px; color:#3a1a0a;">
+    <span>Copyright &copy; 2026 <a href="https://testing.bridgegroupsolutions.com/" style="color:inherit; text-decoration:underline;">Bridge Group Solutions</a>. All rights reserved.</span>
+    <div style="display:flex; gap:16px; align-items:center;">
+      <a href="#" target="_blank" rel="noopener noreferrer" class="bgs-footer-link" style="color:#111; text-decoration:none; line-height:0;" aria-label="LinkedIn"><i class="ti ti-brand-linkedin" style="font-size:16px; color:#111;" aria-hidden="true"></i></a>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="bgs-footer-link" style="color:#111; text-decoration:none; line-height:0;" aria-label="X"><i class="ti ti-brand-x" style="font-size:16px; color:#111;" aria-hidden="true"></i></a>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="bgs-footer-link" style="color:#111; text-decoration:none; line-height:0;" aria-label="Instagram"><i class="ti ti-brand-instagram" style="font-size:16px; color:#111;" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</div>
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
@@ -1872,6 +2358,57 @@ document.querySelectorAll('.svc-nav-links a').forEach(a => {
     navLinks.classList.remove('open');
   });
 });
+
+
+// FAQ ACCORDION INTERACTION
+document.querySelectorAll('.faq-trigger').forEach(trigger => {
+  trigger.addEventListener('click', () => {
+    const item = trigger.closest('.faq-item');
+    const wasActive = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('active');
+      const tr = i.querySelector('.faq-trigger');
+      if (tr) tr.setAttribute('aria-expanded', 'false');
+    });
+    if (!wasActive) {
+      item.classList.add('active');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+// KPI Count-up animation
+const countElements = document.querySelectorAll('.count-up');
+if (countElements.length > 0) {
+  const countObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseFloat(el.getAttribute('data-target') || el.innerText);
+        const isDecimal = String(target).includes('.');
+        const duration = 1500;
+        const startTime = performance.now();
+        const startVal = 0;
+        function updateCount(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easeProgress = 1 - (1 - progress) * (1 - progress);
+          const currentVal = startVal + (target - startVal) * easeProgress;
+          el.innerText = isDecimal ? currentVal.toFixed(1) : Math.floor(currentVal);
+          if (progress < 1) {
+            requestAnimationFrame(updateCount);
+          } else {
+            el.innerText = target;
+          }
+        }
+        requestAnimationFrame(updateCount);
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.2 });
+  countElements.forEach(el => countObserver.observe(el));
+}
+
 </script>
 </body>
 </html>

@@ -1,0 +1,752 @@
+/**
+ * Bridge Group Solutions (BGS) Unified Design System
+ * Extracted from the authoritative BGS footer template and applied consistently
+ * across all service pages and future website components.
+ */
+
+:root {
+  /* ── Core Brand Colors ── */
+  --bgs-primary: #D9622A;           /* Burnt Orange primary brand color */
+  --bgs-primary-hover: #BF5320;     /* Refined dark hover burnt orange */
+  --bgs-text-main: #111111;         /* Primary text / Headings */
+  --bgs-text-muted: #3a1a0a;        /* Secondary / muted text, labels, descriptions */
+
+  /* ── Border & Dividers ── */
+  --bgs-border-light: rgba(17, 17, 17, 0.2);   /* Light dividers */
+  --bgs-border-strong: rgba(17, 17, 17, 0.3);  /* Stronger separators / borders */
+
+  /* ── Surfaces & Backgrounds ── */
+  --bgs-bg-offwhite: #FAF6F2;       /* Warm neutral off-white background */
+  --bgs-bg-white: #FFFFFF;          /* Pure white card surface */
+  --bgs-bg-brand: #D9622A;          /* Burnt orange surface */
+
+  /* ── Shape & Typography Tokens ── */
+  --bgs-radius: 8px;                /* Consistent 8px radius on all cards/containers */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* ── Spacing & Layout Tokens ── */
+  --bgs-padding-outer: 3rem;        /* 3rem horizontal padding on outer containers */
+  --bgs-gap: 24px;                  /* 24-32px gaps between columns */
+  --bgs-max-width: 1280px;          /* Clean desktop container boundary */
+}
+
+/* ── Global Resets & Base Typography ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bgs-bg-offwhite);
+  color: var(--bgs-text-main);
+  line-height: 1.7;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Container Wrapper ── */
+.bgs-container {
+  width: 100%;
+  max-width: var(--bgs-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* ── Icons Global Standard ── */
+i.ti, [class^="ti ti-"], [class*=" ti ti-"] {
+  font-size: 15px;
+  vertical-align: -2px;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* ── Header & Navigation ── */
+.bgs-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(250, 246, 242, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--bgs-border-light);
+  margin-bottom: 2rem;
+}
+
+.bgs-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.5rem;
+}
+
+.bgs-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--bgs-text-main);
+}
+
+.bgs-brand-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.bgs-brand-name {
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--bgs-text-main);
+  letter-spacing: -0.01em;
+}
+
+.bgs-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  list-style: none;
+}
+
+.bgs-nav-link {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--bgs-text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  padding: 6px 0;
+}
+
+.bgs-nav-link:hover,
+.bgs-nav-link.active {
+  color: var(--bgs-primary);
+}
+
+.bgs-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bgs-primary);
+  color: #FFFFFF !important;
+  padding: 8px 18px;
+  border-radius: var(--bgs-radius);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.bgs-nav-cta:hover {
+  background: var(--bgs-primary-hover);
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+}
+
+.bgs-nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--bgs-border-light);
+  border-radius: var(--bgs-radius);
+  padding: 8px 12px;
+  color: var(--bgs-text-main);
+  cursor: pointer;
+}
+
+/* ── Typography Classes ── */
+.bgs-section-label {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--bgs-text-muted);
+  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bgs-section-label i {
+  color: var(--bgs-primary);
+  font-size: 14px;
+}
+
+.bgs-heading-display {
+  font-size: clamp(28px, 3.8vw, 42px);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--bgs-text-main);
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.bgs-heading-section {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--bgs-text-main);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+
+.bgs-heading {
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--bgs-text-main);
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.bgs-subheading {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--bgs-text-main);
+  margin-bottom: 8px;
+}
+
+.bgs-desc {
+  font-size: 13px;
+  color: var(--bgs-text-muted);
+  line-height: 1.8;
+}
+
+.bgs-lead {
+  font-size: 14px;
+  color: var(--bgs-text-muted);
+  line-height: 1.85;
+}
+
+/* ── Card Containers ── */
+.bgs-card {
+  background: var(--bgs-bg-white);
+  border-radius: var(--bgs-radius);
+  border: 1px solid var(--bgs-border-light);
+  padding: var(--bgs-padding-outer);
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(17, 17, 17, 0.04);
+}
+
+.bgs-card-offwhite {
+  background: var(--bgs-bg-offwhite);
+  border-radius: var(--bgs-radius);
+  border: 1px solid var(--bgs-border-light);
+  padding: var(--bgs-padding-outer);
+  margin-bottom: 2rem;
+}
+
+.bgs-card-brand {
+  background: var(--bgs-primary);
+  border-radius: var(--bgs-radius);
+  color: var(--bgs-text-main);
+  padding: var(--bgs-padding-outer);
+  margin-bottom: 2rem;
+}
+
+/* ── Buttons & CTA Styles ── */
+.bgs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: var(--bgs-radius);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1.2;
+}
+
+/* When CTA button sits on light / off-white background */
+.bgs-btn-primary {
+  background: var(--bgs-primary);
+  color: #FFFFFF !important;
+  border: 1px solid var(--bgs-primary);
+}
+
+.bgs-btn-primary:hover {
+  background: var(--bgs-primary-hover);
+  border-color: var(--bgs-primary-hover);
+  transform: translateY(-1px);
+}
+
+.bgs-btn-outline {
+  background: transparent;
+  color: var(--bgs-primary);
+  border: 1px solid var(--bgs-primary);
+}
+
+.bgs-btn-outline:hover {
+  background: var(--bgs-primary);
+  color: #FFFFFF !important;
+}
+
+.bgs-btn-subtle {
+  background: transparent;
+  color: var(--bgs-text-main);
+  border: 1px solid var(--bgs-border-light);
+}
+
+.bgs-btn-subtle:hover {
+  background: rgba(17, 17, 17, 0.05);
+  border-color: var(--bgs-border-strong);
+}
+
+/* When CTA button sits on #D9622A (orange) background -> text color = #FFFFFF */
+.bgs-btn-on-brand {
+  background: #111111;
+  color: #FFFFFF !important;
+  border: 1px solid #111111;
+}
+
+.bgs-btn-on-brand:hover {
+  background: #2a2a2a;
+  border-color: #2a2a2a;
+}
+
+.bgs-btn-on-brand-white {
+  background: #FFFFFF;
+  color: #111111 !important;
+  border: 1px solid #FFFFFF;
+}
+
+.bgs-btn-on-brand-white:hover {
+  background: #FAF6F2;
+  color: #111111 !important;
+}
+
+.bgs-btn-on-brand-outline {
+  background: transparent;
+  color: #FFFFFF !important;
+  border: 1px solid #FFFFFF;
+}
+
+.bgs-btn-on-brand-outline:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF !important;
+}
+
+/* ── Section 1: Hero Section Layout ── */
+.bgs-hero-section {
+  background: var(--bgs-bg-white);
+  border-radius: var(--bgs-radius);
+  border: 1px solid var(--bgs-border-light);
+  padding: 3rem 3rem 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.bgs-hero-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.bgs-hero-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.bgs-hero-sidecard {
+  background: var(--bgs-bg-offwhite);
+  border-radius: var(--bgs-radius);
+  border: 1px solid var(--bgs-border-light);
+  padding: 24px;
+}
+
+.bgs-hero-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.bgs-highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--bgs-text-main);
+  line-height: 1.5;
+}
+
+.bgs-highlight-item i {
+  color: var(--bgs-primary);
+  font-size: 16px;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+/* ── Section 2: Overview Section Layout ── */
+.bgs-overview-section {
+  background: var(--bgs-bg-white);
+  border-radius: var(--bgs-radius);
+  border: 1px solid var(--bgs-border-light);
+  padding: 3rem 3rem 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.bgs-overview-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 32px;
+}
+
+.bgs-overview-content p {
+  font-size: 14px;
+  color: var(--bgs-text-muted);
+  line-height: 1.85;
+  margin-bottom: 16px;
+}
+
+.bgs-overview-content p:last-child {
+  margin-bottom: 0;
+}
+
+.bgs-overview-panel {
+  border-left: 1px solid var(--bgs-border-light);
+  padding-left: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.bgs-metric-card {
+  background: var(--bgs-bg-offwhite);
+  border-radius: var(--bgs-radius);
+  border: 1px solid var(--bgs-border-light);
+  padding: 16px 20px;
+}
+
+.bgs-metric-val {
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--bgs-primary);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.bgs-metric-lbl {
+  font-size: 12px;
+  color: var(--bgs-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+
+/* ── Section 3: Key Features / Benefits Grid (3-4 Columns with Footer-style Divider) ── */
+.bgs-features-section {
+  background: var(--bgs-bg-white);
+  border-radius: var(--bgs-radius);
+  border: 1px solid var(--bgs-border-light);
+  padding: 3rem 3rem 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.bgs-features-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 24px;
+}
+
+.bgs-features-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 24px;
+}
+
+.bgs-col-item {
+  padding: 0 24px;
+  border-left: 1px solid var(--bgs-border-light);
+}
+
+.bgs-col-item:first-child {
+  padding-left: 0;
+  padding-right: 24px;
+  border-left: none;
+}
+
+.bgs-col-item:last-child {
+  padding-right: 0;
+}
+
+.bgs-feature-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--bgs-radius);
+  background: rgba(217, 98, 42, 0.12);
+  color: var(--bgs-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.bgs-feature-icon i {
+  font-size: 16px;
+}
+
+.bgs-feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.bgs-feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--bgs-text-main);
+  line-height: 1.5;
+}
+
+.bgs-feature-list li i {
+  color: var(--bgs-primary);
+  font-size: 14px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Section 4: Process / How We Work Section ── */
+.bgs-process-section {
+  background: var(--bgs-bg-white);
+  border-radius: var(--bgs-radius);
+  border: 1px solid var(--bgs-border-light);
+  padding: 3rem 3rem 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.bgs-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 24px;
+}
+
+.bgs-step-num {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--bgs-primary);
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+/* ── Section 5: CTA Banner (Matching Footer Bottom Bar Style) ── */
+.bgs-cta-banner {
+  background: var(--bgs-bg-offwhite);
+  border-radius: var(--bgs-radius);
+  border: 1px solid var(--bgs-border-strong);
+  padding: 2.5rem 3rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+.bgs-cta-banner-brand {
+  background: var(--bgs-primary);
+  border-radius: var(--bgs-radius);
+  border: 1px solid rgba(17, 17, 17, 0.15);
+  padding: 2.5rem 3rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  color: #FFFFFF;
+}
+
+.bgs-cta-content {
+  max-width: 680px;
+}
+
+.bgs-cta-content .bgs-heading {
+  color: var(--bgs-text-main);
+  margin-bottom: 6px;
+}
+
+.bgs-cta-banner-brand .bgs-heading {
+  color: #FFFFFF;
+  margin-bottom: 6px;
+}
+
+.bgs-cta-banner-brand .bgs-desc {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.bgs-cta-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+/* ── Section 6: Authoritative Footer Container ── */
+.bgs-footer-wrap {
+  margin-bottom: 2.5rem;
+}
+
+/* ── Responsive Adaptations ── */
+@media (max-width: 992px) {
+  :root {
+    --bgs-padding-outer: 2rem;
+  }
+
+  .bgs-hero-grid,
+  .bgs-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .bgs-overview-panel {
+    border-left: none;
+    border-top: 1px solid var(--bgs-border-light);
+    padding-left: 0;
+    padding-top: 24px;
+    flex-direction: row;
+  }
+
+  .bgs-features-grid-4,
+  .bgs-process-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 28px;
+  }
+
+  .bgs-features-grid-4 .bgs-col-item,
+  .bgs-process-grid .bgs-col-item {
+    border-left: none;
+    padding: 0 16px;
+  }
+
+  .bgs-features-grid-4 .bgs-col-item:nth-child(odd),
+  .bgs-process-grid .bgs-col-item:nth-child(odd) {
+    padding-left: 0;
+    border-right: 1px solid var(--bgs-border-light);
+  }
+
+  .bgs-features-grid-4 .bgs-col-item:nth-child(even),
+  .bgs-process-grid .bgs-col-item:nth-child(even) {
+    padding-right: 0;
+  }
+
+  .bgs-cta-banner,
+  .bgs-cta-banner-brand {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --bgs-padding-outer: 1.5rem;
+  }
+
+  .bgs-hero-section,
+  .bgs-overview-section,
+  .bgs-features-section,
+  .bgs-process-section,
+  .bgs-card,
+  .bgs-card-offwhite,
+  .bgs-card-brand {
+    padding: 1.5rem;
+  }
+
+  .bgs-nav-links {
+    display: none;
+    position: absolute;
+    top: 4.5rem;
+    left: 0;
+    right: 0;
+    background: var(--bgs-bg-offwhite);
+    border-bottom: 1px solid var(--bgs-border-strong);
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  .bgs-nav-links.is-open {
+    display: flex;
+  }
+
+  .bgs-nav-toggle {
+    display: inline-flex;
+  }
+
+  .bgs-features-grid-4,
+  .bgs-features-grid-3,
+  .bgs-process-grid {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+  }
+
+  .bgs-features-grid-4 .bgs-col-item,
+  .bgs-features-grid-3 .bgs-col-item,
+  .bgs-process-grid .bgs-col-item {
+    border-left: none !important;
+    border-right: none !important;
+    border-top: 1px solid var(--bgs-border-light);
+    padding: 20px 0 0 0 !important;
+  }
+
+  .bgs-features-grid-4 .bgs-col-item:first-child,
+  .bgs-features-grid-3 .bgs-col-item:first-child,
+  .bgs-process-grid .bgs-col-item:first-child {
+    border-top: none;
+    padding-top: 0 !important;
+  }
+
+  .bgs-overview-panel {
+    flex-direction: column;
+  }
+
+  /* Responsive styling for footer grid without altering the embedded footer code */
+  .bgs-footer-wrap > div > div:first-child {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    padding: 2rem 1.5rem !important;
+  }
+
+  .bgs-footer-wrap > div > div:first-child > div {
+    border-left: none !important;
+    padding: 0 !important;
+    border-top: 1px solid rgba(17, 17, 17, 0.2);
+    padding-top: 20px !important;
+  }
+
+  .bgs-footer-wrap > div > div:first-child > div:first-child {
+    border-top: none;
+    padding-top: 0 !important;
+  }
+
+  .bgs-footer-wrap > div > div:last-child {
+    padding: 16px 1.5rem !important;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start !important;
+  }
+}

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{PAGE_TITLE}} | Bridge Group Solutions</title>
+  <meta name="description" content="{{META_DESCRIPTION}}" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="../assets/logo.webp" />
+
+  <!-- Tabler Icons CDN (All icons ti ti-*) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
+  <!-- BGS Unified Design System -->
+  <link rel="stylesheet" href="../assets/bgs-design-system.css" />
+</head>
+<body>
+
+  <!-- ═══ HEADER & NAVIGATION ═══ -->
+  <header class="bgs-header">
+    <div class="bgs-container">
+      <nav class="bgs-nav" aria-label="Main Navigation">
+        <a href="../index.html" class="bgs-brand">
+          <img src="../assets/logo.webp" alt="Bridge Group Solutions Logo" class="bgs-brand-logo" />
+          <span class="bgs-brand-name">Bridge Group Solutions</span>
+        </a>
+        <ul class="bgs-nav-links" id="bgsNavLinks">
+          <li><a href="../index.html" class="bgs-nav-link">Home</a></li>
+          <li><a href="../why-bgs.html" class="bgs-nav-link">Why BGS</a></li>
+          <li><a href="../portfolio.html" class="bgs-nav-link">Portfolio</a></li>
+          <li><a href="../about.html" class="bgs-nav-link">About Us</a></li>
+          <li><a href="../gallery.html" class="bgs-nav-link">Gallery</a></li>
+          <li><a href="../blogs.html" class="bgs-nav-link">Blogs</a></li>
+          <li><a href="../contact.html" class="bgs-nav-link">Contact</a></li>
+          <li><a href="../contact.html" class="bgs-nav-cta"><i class="ti ti-arrow-right" aria-hidden="true"></i>Get Started</a></li>
+        </ul>
+        <button class="bgs-nav-toggle" id="bgsNavToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <i class="ti ti-menu-2" aria-hidden="true"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="bgs-container">
+
+    <!-- ═══ 1. HERO SECTION ═══ -->
+    <section class="bgs-hero-section">
+      <div class="bgs-hero-grid">
+        <div class="bgs-hero-content">
+          <div class="bgs-section-label">
+            <i class="ti {{HERO_ICON}}" aria-hidden="true"></i>
+            {{SERVICE_CATEGORY}}
+          </div>
+          <h1 class="bgs-heading-display">{{SERVICE_TITLE}}</h1>
+          <p class="bgs-lead">{{SERVICE_TAGLINE}}</p>
+          <div class="bgs-hero-actions">
+            <a href="../contact.html" class="bgs-btn bgs-btn-primary">
+              <i class="ti ti-calendar-event" aria-hidden="true"></i>
+              {{HERO_PRIMARY_CTA_TEXT}}
+            </a>
+            <a href="#features" class="bgs-btn bgs-btn-outline">
+              <i class="ti ti-list-check" aria-hidden="true"></i>
+              Explore Capabilities
+            </a>
+          </div>
+        </div>
+
+        <div class="bgs-hero-sidecard">
+          <div class="bgs-section-label">
+            <i class="ti ti-sparkles" aria-hidden="true"></i>
+            Core Impact
+          </div>
+          <div class="bgs-heading">{{HERO_SIDE_HEADING}}</div>
+          <p class="bgs-desc">{{HERO_SIDE_DESC}}</p>
+          <div class="bgs-hero-highlights">
+            <div class="bgs-highlight-item">
+              <i class="ti ti-circle-check-filled" aria-hidden="true"></i>
+              <span>{{HIGHLIGHT_1}}</span>
+            </div>
+            <div class="bgs-highlight-item">
+              <i class="ti ti-circle-check-filled" aria-hidden="true"></i>
+              <span>{{HIGHLIGHT_2}}</span>
+            </div>
+            <div class="bgs-highlight-item">
+              <i class="ti ti-circle-check-filled" aria-hidden="true"></i>
+              <span>{{HIGHLIGHT_3}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 2. OVERVIEW SECTION ═══ -->
+    <section class="bgs-overview-section" id="overview">
+      <div class="bgs-overview-grid">
+        <div class="bgs-overview-content">
+          <div class="bgs-section-label">
+            <i class="ti ti-info-circle" aria-hidden="true"></i>
+            Overview & Approach
+          </div>
+          <h2 class="bgs-heading-section">{{OVERVIEW_HEADING}}</h2>
+          <p>{{OVERVIEW_P1}}</p>
+          <p>{{OVERVIEW_P2}}</p>
+          <p>{{OVERVIEW_P3}}</p>
+        </div>
+
+        <div class="bgs-overview-panel">
+          <div class="bgs-metric-card">
+            <div class="bgs-metric-val">{{METRIC_1_VAL}}</div>
+            <div class="bgs-metric-lbl">{{METRIC_1_LBL}}</div>
+          </div>
+          <div class="bgs-metric-card">
+            <div class="bgs-metric-val">{{METRIC_2_VAL}}</div>
+            <div class="bgs-metric-lbl">{{METRIC_2_LBL}}</div>
+          </div>
+          <div class="bgs-metric-card">
+            <div class="bgs-metric-val">{{METRIC_3_VAL}}</div>
+            <div class="bgs-metric-lbl">{{METRIC_3_LBL}}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 3. KEY FEATURES / BENEFITS GRID ═══ -->
+    <section class="bgs-features-section" id="features">
+      <div class="bgs-section-label">
+        <i class="ti ti-apps" aria-hidden="true"></i>
+        Key Features & Capabilities
+      </div>
+      <h2 class="bgs-heading-section">{{FEATURES_HEADING}}</h2>
+      <p class="bgs-desc">{{FEATURES_SUBHEADING}}</p>
+
+      <div class="bgs-features-grid-4">
+        <!-- Feature Col 1 -->
+        <div class="bgs-col-item">
+          <div class="bgs-feature-icon">
+            <i class="ti {{FEAT_1_ICON}}" aria-hidden="true"></i>
+          </div>
+          <div class="bgs-section-label">{{FEAT_1_LABEL}}</div>
+          <div class="bgs-heading">{{FEAT_1_TITLE}}</div>
+          <p class="bgs-desc">{{FEAT_1_DESC}}</p>
+          <ul class="bgs-feature-list">
+            <li><i class="ti ti-check" aria-hidden="true"></i><span>{{FEAT_1_BULLET_1}}</span></li>
+            <li><i class="ti ti-check" aria-hidden="true"></i><span>{{FEAT_1_BULLET_2}}</span></li>
+            <li><i class="ti ti-check" aria-hidden="true"></i><span>{{FEAT_1_BULLET_3}}</span></li>
+          </ul>
+        </div>
+
+        <!-- Feature Col 2 -->
+        <div class="bgs-col-item">
+          <div class="bgs-feature-icon">
+            <i class="ti {{FEAT_2_ICON}}" aria-hidden="true"></i>
+          </div>
+          <div class="bgs-section-label">{{FEAT_2_LABEL}}</div>
+          <div class="bgs-heading">{{FEAT_2_TITLE}}</div>
+          <p class="bgs-desc">{{FEAT_2_DESC}}</p>
+          <ul class="bgs-feature-list">
+            <li><i class="ti ti-check" aria-hidden="true"></i><span>{{FEAT_2_BULLET_1}}</span></li>
+            <li><i class="ti ti-check" aria-hidden="true"></i><span>{{FEAT_2_BULLET_2}}</span></li>
+            <li><i class="ti ti-check" aria-hidden="true"></i><span>{{FEAT_2_BULLET_3}}</span></li>
+          </ul>
+        </div>
+
+        <!-- Feature Col 3 -->
+        <div class="bgs-col-item">
+          <div class="bgs-feature-icon">
+            <i class="ti {{FEAT_3_ICON}}" aria-hidden="true"></i>
+          </div>
+          <div class="bgs-section-label">{{FEAT_3_LABEL}}</div>
+          <div class="bgs-heading">{{FEAT_3_TITLE}}</div>
+          <p class="bgs-desc">{{FEAT_3_DESC}}</p>
+          <ul class="bgs-feature-list">
+            <li><i class="ti ti-check" aria-hidden="true"></i><span>{{FEAT_3_BULLET_1}}</span></li>
+            <li><i class="ti ti-check" aria-hidden="true"></i><span>{{FEAT_3_BULLET_2}}</span></li>
+            <li><i class="ti ti-check" aria-hidden="true"></i><span>{{FEAT_3_BULLET_3}}</span></li>
+          </ul>
+        </div>
+
+        <!-- Feature Col 4 -->
+        <div class="bgs-col-item">
+          <div class="bgs-feature-icon">
+            <i class="ti {{FEAT_4_ICON}}" aria-hidden="true"></i>
+          </div>
+          <div class="bgs-section-label">{{FEAT_4_LABEL}}</div>
+          <div class="bgs-heading">{{FEAT_4_TITLE}}</div>
+          <p class="bgs-desc">{{FEAT_4_DESC}}</p>
+          <ul class="bgs-feature-list">
+            <li><i class="ti ti-check" aria-hidden="true"></i><span>{{FEAT_4_BULLET_1}}</span></li>
+            <li><i class="ti ti-check" aria-hidden="true"></i><span>{{FEAT_4_BULLET_2}}</span></li>
+            <li><i class="ti ti-check" aria-hidden="true"></i><span>{{FEAT_4_BULLET_3}}</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 4. PROCESS / HOW WE WORK SECTION ═══ -->
+    <section class="bgs-process-section" id="process">
+      <div class="bgs-section-label">
+        <i class="ti ti-git-branch" aria-hidden="true"></i>
+        Delivery Methodology
+      </div>
+      <h2 class="bgs-heading-section">How We Engineer Excellence</h2>
+      <p class="bgs-desc">A deterministic, milestone-driven execution framework ensuring zero-friction delivery from concept to production.</p>
+
+      <div class="bgs-process-grid">
+        <div class="bgs-col-item">
+          <div class="bgs-step-num">Step 01</div>
+          <div class="bgs-section-label">{{STEP_1_LABEL}}</div>
+          <div class="bgs-heading">{{STEP_1_TITLE}}</div>
+          <p class="bgs-desc">{{STEP_1_DESC}}</p>
+        </div>
+
+        <div class="bgs-col-item">
+          <div class="bgs-step-num">Step 02</div>
+          <div class="bgs-section-label">{{STEP_2_LABEL}}</div>
+          <div class="bgs-heading">{{STEP_2_TITLE}}</div>
+          <p class="bgs-desc">{{STEP_2_DESC}}</p>
+        </div>
+
+        <div class="bgs-col-item">
+          <div class="bgs-step-num">Step 03</div>
+          <div class="bgs-section-label">{{STEP_3_LABEL}}</div>
+          <div class="bgs-heading">{{STEP_3_TITLE}}</div>
+          <p class="bgs-desc">{{STEP_3_DESC}}</p>
+        </div>
+
+        <div class="bgs-col-item">
+          <div class="bgs-step-num">Step 04</div>
+          <div class="bgs-section-label">{{STEP_4_LABEL}}</div>
+          <div class="bgs-heading">{{STEP_4_TITLE}}</div>
+          <p class="bgs-desc">{{STEP_4_DESC}}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 5. CTA BANNER (MATCHES FOOTER BOTTOM BAR STYLE) ═══ -->
+    <section class="bgs-cta-banner">
+      <div class="bgs-cta-content">
+        <div class="bgs-section-label">
+          <i class="ti ti-rocket" aria-hidden="true"></i>
+          Next Steps
+        </div>
+        <div class="bgs-heading">{{CTA_BANNER_TITLE}}</div>
+        <p class="bgs-desc">{{CTA_BANNER_DESC}}</p>
+      </div>
+      <div class="bgs-cta-actions">
+        <a href="../contact.html" class="bgs-btn bgs-btn-primary">
+          <i class="ti ti-send" aria-hidden="true"></i>
+          Schedule a Technical Discovery
+        </a>
+        <a href="../portfolio.html" class="bgs-btn bgs-btn-subtle">
+          <i class="ti ti-briefcase" aria-hidden="true"></i>
+          View Portfolio
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══ 6. FOOTER (EXACT CODE PROVIDED UNCHANGED) ═══ -->
+    <footer class="bgs-footer-wrap">
+<div style="background:#D9622A; border-radius:8px; font-family:var(--font-sans); color:#111; position:relative; z-index:100;">
+  <style>
+    .bgs-footer-link { color:#111; text-decoration:none; transition:opacity 0.2s ease; cursor:pointer; }
+    .bgs-footer-link:hover { opacity:0.65; }
+    .ScrollSmoother-wrapper { pointer-events:none !important; }
+  </style>
+
+  <div style="padding:3rem 3rem 2.5rem; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:0;">
+
+    <div style="padding-right:32px;">
+      <a href="../index.html" class="bgs-footer-link" style="display:flex; align-items:center; gap:10px; margin-bottom:14px; color:#111; text-decoration:none;">
+        <img src="../assets/logo.webp" alt="Bridge Group Solutions Logo" style="height:30px; width:auto; display:block;" />
+        <span style="font-size:19px; font-weight:500;">Bridge Group Solutions</span>
+      </a>
+      <div style="font-size:13px; color:#3a1a0a; line-height:1.7; margin-bottom:24px;">Delivering cutting-edge digital transformation, custom software development, ERP systems, data analytics, and cloud solutions to empower growing businesses.</div>
+      <div style="font-size:13px; color:#111; line-height:2;">
+        <div><i class="ti ti-map-pin" style="font-size:14px; vertical-align:-2px; margin-right:8px;" aria-hidden="true"></i>Noida, Uttar Pradesh, India</div>
+        <div><i class="ti ti-mail" style="font-size:14px; vertical-align:-2px; margin-right:8px;" aria-hidden="true"></i>hello@bridgegroupsolutions.com</div>
+      </div>
+    </div>
+
+    <div style="padding:0 24px; border-left:1px solid rgba(17,17,17,0.2);">
+      <div style="font-size:12px; color:#3a1a0a; font-weight:500; margin-bottom:18px; text-transform:uppercase; letter-spacing:0.04em;">Services</div>
+      <div style="display:flex; flex-direction:column; gap:13px; font-size:13px; color:#111;">
+        <a href="../services/web.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Web Development</a>
+        <a href="../services/app.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Application Development</a>
+        <a href="../services/data.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Data Analytics</a>
+        <a href="../services/project.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Project Outsourcing</a>
+        <a href="../services/erp.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">ERP and Custom Software</a>
+        <a href="../services/crm.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">CRM</a>
+      </div>
+    </div>
+
+    <div style="padding:0 24px; border-left:1px solid rgba(17,17,17,0.2);">
+      <div style="font-size:12px; color:#3a1a0a; font-weight:500; margin-bottom:18px; text-transform:uppercase; letter-spacing:0.04em;">Company</div>
+      <div style="display:flex; flex-direction:column; gap:13px; font-size:13px; color:#111;">
+        <a href="../why-bgs.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Why BGS</a>
+        <a href="../portfolio.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Portfolio</a>
+        <a href="../about.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">About Us</a>
+        <a href="../gallery.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Gallery</a>
+        <a href="../blogs.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Blogs</a>
+        <a href="../contact.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Contact</a>
+      </div>
+    </div>
+
+    <div style="padding-left:24px; border-left:1px solid rgba(17,17,17,0.2);">
+      <div style="font-size:12px; color:#3a1a0a; font-weight:500; margin-bottom:18px; text-transform:uppercase; letter-spacing:0.04em;">Legal</div>
+      <div style="display:flex; flex-direction:column; gap:13px; font-size:13px; color:#111;">
+        <a href="../legal/disclaimer.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Disclaimer</a>
+        <a href="../legal/privacy-policy.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Privacy Policy</a>
+        <a href="../legal/terms-and-conditions.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Terms and Conditions</a>
+        <a href="../legal/cookie-policy.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Cookie Policy</a>
+        <a href="../legal/whistleblower-protection-statement.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Whistleblower Protection</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid rgba(17,17,17,0.3); padding:20px 3rem; display:flex; justify-content:space-between; align-items:center; font-size:12px; color:#3a1a0a;">
+    <span>Copyright © 2026 Bridge Group Solutions. All rights reserved.</span>
+    <div style="display:flex; gap:16px; align-items:center;">
+      <a href="#" target="_blank" rel="noopener noreferrer" class="bgs-footer-link" style="color:#111; text-decoration:none; line-height:0;" aria-label="LinkedIn"><i class="ti ti-brand-linkedin" style="font-size:16px; color:#111;" aria-hidden="true"></i></a>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="bgs-footer-link" style="color:#111; text-decoration:none; line-height:0;" aria-label="X"><i class="ti ti-brand-x" style="font-size:16px; color:#111;" aria-hidden="true"></i></a>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="bgs-footer-link" style="color:#111; text-decoration:none; line-height:0;" aria-label="Instagram"><i class="ti ti-brand-instagram" style="font-size:16px; color:#111;" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</div>
+    </footer>
+
+  </main>
+
+  <script>
+    // Responsive Mobile Menu Toggle
+    const navToggle = document.getElementById('bgsNavToggle');
+    const navLinks = document.getElementById('bgsNavLinks');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('is-open');
+        navToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+  </script>
+</body>
+</html>

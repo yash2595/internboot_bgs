@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>CRM Services — Bridge Group Solutions</title>
+<title>CRM Services � Bridge Group Solutions</title>
 <link rel="icon" type="image/webp" href="../assets/logo.webp">
 <link rel="preload" href="../assets/main.minc014.css?id=18ba35244216baa33eca27c02bf5db21" as="style">
+<!-- Tabler Icons CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
 <link rel="stylesheet" href="../assets/services-shared.css" />
 <link rel="stylesheet" href="../assets/main.minc014.css?id=18ba35244216baa33eca27c02bf5db21">
 <style>
@@ -173,8 +175,8 @@
   .hero {
     position: relative;
     z-index: 1;
-    min-height: 100vh;
-    padding: calc(var(--header-height) + 3rem) 2.5rem 5rem;
+    min-height: auto;
+    padding: calc(var(--header-height) + 1.5rem) 2.5rem 2.5rem;
     display: flex;
     align-items: center;
     max-width: 1400px;
@@ -183,8 +185,8 @@
 
   .hero-content {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1fr 1.32fr;
+    gap: 3.5rem;
     align-items: center;
     width: 100%;
   }
@@ -881,6 +883,184 @@
     .mock-stats { grid-template-columns: 1fr !important; }
     .cta-input { width: 100% !important; }
   }
+
+  /* ── Comparison Section ── */
+  .comparison-section { padding: 90px 6%; position: relative; }
+  .comparison-table {
+    max-width: 1100px; margin: 0 auto;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  .compare-header {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+    padding: 20px 28px;
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-family: var(--font-azeret-mono, 'Azeret Mono', monospace);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #FFFFFF;
+  }
+  .compare-row {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+    padding: 20px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    align-items: center;
+    transition: background 0.25s ease;
+  }
+  .compare-row:last-child { border-bottom: none; }
+  .compare-row:hover { background: rgba(255,255,255,0.03); }
+  .compare-feature strong { display: block; font-size: 0.92rem; color: #FFFFFF; font-weight: 500; font-family: var(--font-roc-grotesk); margin-bottom: 3px; }
+  .compare-feature span { font-size: 0.78rem; color: rgba(218,218,218,0.55); line-height: 1.4; }
+  .compare-col { display: flex; align-items: center; gap: 10px; font-size: 0.83rem; }
+  .compare-legacy { color: rgba(218,218,218,0.6); }
+  .compare-bgs { color: #FFFFFF; font-weight: 500; }
+  .compare-bgs i { font-size: 1.1rem; flex-shrink: 0; }
+  .compare-legacy i { font-size: 1rem; flex-shrink: 0; }
+
+  /* ── FAQ Section ── */
+  .faq-section { padding: 90px 6%; position: relative; }
+  .faq-list { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+  .faq-item {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+  }
+  .faq-item:hover, .faq-item.active {
+    border-color: rgba(217,98,42,0.35);
+    background: rgba(255,255,255,0.03);
+  }
+  .faq-trigger {
+    width: 100%;
+    padding: 22px 26px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: none; border: none; cursor: pointer; text-align: left;
+    color: #FFFFFF; font-family: var(--font-roc-grotesk); font-size: 1.05rem; font-weight: 500;
+  }
+  .faq-icon {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: center;
+    color: #D9622A; transition: transform 0.3s ease, background 0.3s ease;
+    flex-shrink: 0;
+  }
+  .faq-item.active .faq-icon {
+    transform: rotate(180deg);
+    background: rgba(217,98,42,0.15);
+  }
+  .faq-answer {
+    display: grid; grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .faq-item.active .faq-answer {
+    grid-template-rows: 1fr;
+  }
+  .faq-answer-inner {
+    overflow: hidden;
+    padding: 0 26px 22px;
+    font-size: 0.88rem;
+    color: rgba(218,218,218,0.7);
+    line-height: 1.7;
+  }
+
+  /* ── Related Services Section ── */
+  .related-services-section { padding: 90px 6%; position: relative; }
+  .related-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .related-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    padding: 22px 20px;
+    text-decoration: none;
+    display: flex; flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    position: relative; overflow: hidden;
+  }
+  .related-card:hover {
+    transform: translateY(-6px) !important;
+    border-color: rgba(217,98,42,0.4);
+    background: rgba(217,98,42,0.04);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.4), 0 0 20px rgba(217,98,42,0.1);
+  }
+  .related-card-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 14px;
+  }
+  .related-icon {
+    width: 48px; height: 48px; border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: #D9622A; font-size: 1.8rem;
+  }
+  .related-arrow {
+    color: rgba(218,218,218,0.4); font-size: 1rem;
+    transition: transform 0.25s ease, color 0.25s ease;
+  }
+  .related-card:hover .related-arrow {
+    transform: translate(3px, -3px);
+    color: #FFFFFF;
+  }
+  .related-tag {
+    font-family: var(--font-azeret-mono);
+    font-size: 0.65rem; color: #D9622A; text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 6px;
+  }
+  .related-title {
+    font-family: var(--font-roc-grotesk);
+    font-size: 0.95rem; font-weight: 500; color: #FFFFFF; margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .related-desc {
+    font-size: 0.77rem; color: rgba(218,218,218,0.55); line-height: 1.5;
+    flex-grow: 1;
+  }
+
+  /* ── Ambient Floating Glows ── */
+  .ambient-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.06;
+    background: #D9622A;
+  }
+
+  /* Responsive Rules */
+  @media (max-width: 1024px) {
+    .related-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .compare-header { display: none; }
+    .compare-row { grid-template-columns: 1fr; gap: 10px; padding: 18px 20px; }
+    .related-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .related-grid { grid-template-columns: 1fr; }
+  }
+
+
+  .tech-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 5px 12px; border-radius: 20px; font-family: var(--font-azeret-mono);
+    font-size: 0.68rem; color: #DADADA; transition: all 0.25s ease;
+  }
+  .tech-pill i { color: #D9622A; }
+  .tech-pill:hover { background: rgba(217, 98, 42, 0.08); border-color: rgba(217, 98, 42, 0.4); transform: translateY(-2px); }
+  .service-card:hover, .svc-card:hover { transform: translateY(-5px) !important; border-color: rgba(217,98,42,0.35) !important; }
+  .stage-col:hover { transform: translateY(-5px) !important; }
+
 </style>
 
 <script>
@@ -909,7 +1089,7 @@
 <header class="svc-header">
   <nav class="svc-nav" id="svcNav">
     <a class="svc-nav-logo" href="../index.html">
-      <img src="../assets/logo.webp" alt="Bridge Group Solutions" />
+      <img src="../assets/logo.webp" alt="Logo" />
       <span>Bridge Group Solutions</span>
     </a>
     <ul class="svc-nav-links" id="navLinks">
@@ -942,62 +1122,159 @@ business workflow and requirements. From lead management to customer engagement 
 our CRM systems provide complete visibility. Our solutions help improve customer
 relationships, automate processes, and increase conversions. We ensure seamless
 integration with your existing systems.</p>
+      
+      <!-- Tech Stack Pills -->
+      <div class="hero-tech-pills reveal" style="display:flex; flex-wrap:wrap; gap:8px; margin-top:1.2rem; margin-bottom:1.5rem;">
+        <span class="tech-pill"><i class="ti ti-brand-hubspot"></i>HubSpot API</span>
+        <span class="tech-pill"><i class="ti ti-brand-salesforce"></i>Salesforce REST</span>
+        <span class="tech-pill"><i class="ti ti-brand-nodejs"></i>Node.js</span>
+        <span class="tech-pill"><i class="ti ti-database"></i>PostgreSQL</span>
+        <span class="tech-pill"><i class="ti ti-phone-call"></i>Twilio Voice/SMS</span>
+        <span class="tech-pill"><i class="ti ti-brand-stripe"></i>Stripe Billing</span>
+        <span class="tech-pill"><i class="ti ti-api"></i>GraphQL &amp; Webhooks</span>
+      </div>
+
       <div class="hero-actions">
         <a href="#cta" class="btn-filled">Start Free Trial</a>
         <a href="#features" class="btn-outline">See Features →</a>
       </div>
-    </div>
-    <div class="hero-right">
-      <!-- CRM MOCKUP -->
-      <div class="crm-mockup">
-        <div class="mockup-bar">
-          <div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div>
-          <div class="mockup-url">www.bridgegroupsolutions.com/crm</div>
+
+      <!-- ── HERO STATS BAR (HORIZONTAL ROW) ── -->
+      <div class="hero-metrics" style="display:flex; flex-direction:row; align-items:flex-start; gap:2.5rem; flex-wrap:wrap; padding-top:1.5rem; margin-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08);">
+        <div class="metric" style="display:flex; flex-direction:column; align-items:flex-start; border-right:1px solid rgba(255,255,255,0.15); padding-right:2.5rem;">
+          <div class="metric-num" style="font-family:var(--font-roc-grotesk); font-size:2.1rem; font-weight:500; color:var(--color-off-white); line-height:1;"><span class="count-up" data-target="350">350</span>+</div>
+          <div class="metric-label" style="font-size:0.72rem; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.08em; margin-top:0.4rem;">CRMs Deployed</div>
         </div>
-        <div class="mockup-body">
-          <div class="mock-header">
-            <div class="mock-title">CRM Overview</div>
-            <div class="mock-badge">● LIVE</div>
-          </div>
-          <div class="mock-stats">
-            <div class="mock-stat"><div class="mock-stat-num" data-n="2847">2,847</div><div class="mock-stat-lbl">Total Contacts</div></div>
-            <div class="mock-stat"><div class="mock-stat-num" data-n="1.4">$1.4M</div><div class="mock-stat-lbl">Pipeline Value</div></div>
-            <div class="mock-stat"><div class="mock-stat-num" data-n="84">84%</div><div class="mock-stat-lbl">Win Rate</div></div>
-          </div>
-          <div class="mock-pipeline">
-            <div class="mock-pipe-label">Deal Pipeline Health</div>
-            <div style="display:flex;justify-content:space-between;font-size:.65rem;color:rgba(255,255,255,0.5);margin-bottom:.3rem;"><span>Prospecting</span><span>72%</span></div>
-            <div class="pipe-track"><div class="pipe-fill" style="width:72%"></div></div>
-            <div style="display:flex;justify-content:space-between;font-size:.65rem;color:rgba(255,255,255,0.5);margin-bottom:.3rem;"><span>Negotiation</span><span>55%</span></div>
-            <div class="pipe-track"><div class="pipe-fill" style="width:55%"></div></div>
-            <div style="display:flex;justify-content:space-between;font-size:.65rem;color:rgba(255,255,255,0.5);margin-bottom:.3rem;"><span>Closed Won</span><span>88%</span></div>
-            <div class="pipe-track"><div class="pipe-fill" style="width:88%"></div></div>
-          </div>
-          <div class="mock-contacts">
-            <div class="mock-contacts-hdr">Recent Contacts</div>
-            <div class="contact-row">
-              <div class="avatar" style="background:#e07b39;">AM</div>
-              <div class="contact-name">Aryan Mehta</div>
-              <div class="contact-stage stage-hot">Hot Lead</div>
-            </div>
-            <div class="contact-row">
-              <div class="avatar" style="background:#3468dc;">SR</div>
-              <div class="contact-name">Sarah Reynolds</div>
-              <div class="contact-stage stage-closed">Closed</div>
-            </div>
-            <div class="contact-row">
-              <div class="avatar" style="background:#1a9b5c;">NK</div>
-              <div class="contact-name">Nikhil Kumar</div>
-              <div class="contact-stage stage-new">New</div>
-            </div>
-            <div class="contact-row">
-              <div class="avatar" style="background:#888888;">LP</div>
-              <div class="contact-name">Laura Pierce</div>
-              <div class="contact-stage stage-cold">Cold</div>
-            </div>
-          </div>
+        <div class="metric" style="display:flex; flex-direction:column; align-items:flex-start; border-right:1px solid rgba(255,255,255,0.15); padding-right:2.5rem;">
+          <div class="metric-num" style="font-family:var(--font-roc-grotesk); font-size:2.1rem; font-weight:500; color:var(--color-off-white); line-height:1;"><span class="count-up" data-target="98">98</span>%</div>
+          <div class="metric-label" style="font-size:0.72rem; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.08em; margin-top:0.4rem;">Retention Rate</div>
+        </div>
+        <div class="metric" style="display:flex; flex-direction:column; align-items:flex-start;">
+          <div class="metric-num" style="font-family:var(--font-roc-grotesk); font-size:2.1rem; font-weight:500; color:var(--color-off-white); line-height:1;"><span class="count-up" data-target="40">40</span>+</div>
+          <div class="metric-label" style="font-size:0.72rem; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.08em; margin-top:0.4rem;">Custom Integrations</div>
         </div>
       </div>
+    </div>
+    <div class="hero-right">
+
+      <!-- CRM INTERACTIVE SALES VELOCITY PIPELINE -->
+      <div class="crm-mockup reveal">
+        <div class="mockup-bar">
+          <div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div>
+          <div class="mockup-url">crm.bridgegroupsolutions.com/live-pipeline</div>
+        </div>
+        <div class="mockup-body">
+          <div class="mock-header" style="border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.85rem; margin-bottom:1rem;">
+            <div>
+              <div class="mock-title" style="font-size:0.95rem; letter-spacing:0.04em;">Sales Velocity Engine</div>
+              <div style="font-size:0.65rem; color:rgba(218,218,218,0.5); font-family:var(--font-azeret-mono);">REAL-TIME PIPELINE TELEMETRY</div>
+            </div>
+            <div class="mock-badge" style="background:rgba(16,185,129,0.12); color:#10b981; border-color:rgba(16,185,129,0.25); display:inline-flex; align-items:center; gap:5px;">
+              <span style="width:6px; height:6px; background:#10b981; border-radius:50%; display:inline-block; animation:pulseDot 1.5s infinite;"></span> LIVE ACTIVE
+            </div>
+          </div>
+
+          <!-- Quick Metrics Ribbon -->
+          <div class="mock-stats" style="grid-template-columns:repeat(3, 1fr); gap:0.6rem; margin-bottom:1.2rem;">
+            <div class="mock-stat" style="padding:0.7rem 0.5rem; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:8px; text-align:center;">
+              <div class="mock-stat-num count-up" data-target="2847" style="font-size:1.15rem; font-weight:600; color:#FFFFFF;">0</div>
+              <div class="mock-stat-lbl" style="font-size:0.62rem; color:rgba(218,218,218,0.5); text-transform:uppercase; margin-top:2px;">Active Leads</div>
+            </div>
+            <div class="mock-stat" style="padding:0.7rem 0.5rem; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:8px; text-align:center;">
+              <div class="mock-stat-num" style="font-size:1.15rem; font-weight:600; color:#ED6D40;">$<span class="count-up" data-target="14">0</span>.<span class="count-up" data-target="8">0</span>M</div>
+              <div class="mock-stat-lbl" style="font-size:0.62rem; color:rgba(218,218,218,0.5); text-transform:uppercase; margin-top:2px;">Deal Pipeline</div>
+            </div>
+            <div class="mock-stat" style="padding:0.7rem 0.5rem; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:8px; text-align:center;">
+              <div class="mock-stat-num" style="font-size:1.15rem; font-weight:600; color:#5C939F;"><span class="count-up" data-target="84">0</span>%</div>
+              <div class="mock-stat-lbl" style="font-size:0.62rem; color:rgba(218,218,218,0.5); text-transform:uppercase; margin-top:2px;">Win Velocity</div>
+            </div>
+          </div>
+
+          <!-- 5-Stage Visual Velocity Pipeline -->
+          <div class="pipeline-velocity-container" style="background:rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.07); border-radius:10px; padding:0.9rem; margin-bottom:1.1rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+              <span style="font-size:0.7rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--color-electric-teal);">5-Stage Deal Funnel Health</span>
+              <span style="font-size:0.62rem; color:#ED6D40; font-family:var(--font-azeret-mono);">Avg Cycle: 14 Days</span>
+            </div>
+
+            <!-- Stage 1 -->
+            <div style="margin-bottom:0.5rem;">
+              <div style="display:flex; justify-content:space-between; font-size:0.68rem; margin-bottom:3px; color:rgba(218,218,218,0.8);">
+                <span>01. Ingestion &amp; Webhooks</span>
+                <span style="color:#5C939F; font-family:var(--font-azeret-mono);">98% Match</span>
+              </div>
+              <div class="pipe-track" style="height:5px; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden;">
+                <div class="pipe-fill" style="width:98%; height:100%; background:linear-gradient(90deg, #5C939F, #10b981); border-radius:6px;"></div>
+              </div>
+            </div>
+
+            <!-- Stage 2 -->
+            <div style="margin-bottom:0.5rem;">
+              <div style="display:flex; justify-content:space-between; font-size:0.68rem; margin-bottom:3px; color:rgba(218,218,218,0.8);">
+                <span>02. AI Intent Scoring</span>
+                <span style="color:#ED6D40; font-family:var(--font-azeret-mono);">88% High Intent</span>
+              </div>
+              <div class="pipe-track" style="height:5px; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden;">
+                <div class="pipe-fill" style="width:88%; height:100%; background:linear-gradient(90deg, #ED6D40, #D9622A); border-radius:6px;"></div>
+              </div>
+            </div>
+
+            <!-- Stage 3 -->
+            <div style="margin-bottom:0.5rem;">
+              <div style="display:flex; justify-content:space-between; font-size:0.68rem; margin-bottom:3px; color:rgba(218,218,218,0.8);">
+                <span>03. Dynamic CPQ Quote</span>
+                <span style="color:#5C939F; font-family:var(--font-azeret-mono);">76% Generated</span>
+              </div>
+              <div class="pipe-track" style="height:5px; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden;">
+                <div class="pipe-fill" style="width:76%; height:100%; background:linear-gradient(90deg, #5C939F, #ED6D40); border-radius:6px;"></div>
+              </div>
+            </div>
+
+            <!-- Stage 4 -->
+            <div style="margin-bottom:0.5rem;">
+              <div style="display:flex; justify-content:space-between; font-size:0.68rem; margin-bottom:3px; color:rgba(218,218,218,0.8);">
+                <span>04. Contract Redlining</span>
+                <span style="color:#10b981; font-family:var(--font-azeret-mono);">64% Approved</span>
+              </div>
+              <div class="pipe-track" style="height:5px; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden;">
+                <div class="pipe-fill" style="width:64%; height:100%; background:linear-gradient(90deg, #ED6D40, #10b981); border-radius:6px;"></div>
+              </div>
+            </div>
+
+            <!-- Stage 5 -->
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:0.68rem; margin-bottom:3px; color:rgba(218,218,218,0.8);">
+                <span>05. Closed-Won &amp; ERP Sync</span>
+                <span style="color:#10b981; font-family:var(--font-azeret-mono);">84% Conversion</span>
+              </div>
+              <div class="pipe-track" style="height:5px; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden;">
+                <div class="pipe-fill" style="width:84%; height:100%; background:linear-gradient(90deg, #10b981, #5C939F); border-radius:6px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Account Signals -->
+          <div class="mock-contacts" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); border-radius:8px; padding:0.75rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <span style="font-size:0.68rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--color-off-white);">Live Opportunity Feed</span>
+              <span style="font-size:0.6rem; color:rgba(218,218,218,0.4);">Updated 2m ago</span>
+            </div>
+            <div class="contact-row" style="display:flex; align-items:center; gap:0.6rem; padding:0.35rem 0; border-bottom:1px solid rgba(255,255,255,0.04);">
+              <div class="avatar" style="background:#D9622A; width:24px; height:24px; font-size:0.6rem;">AM</div>
+              <div class="contact-name" style="font-size:0.72rem; flex:1;">Aryan Mehta <span style="color:rgba(218,218,218,0.4); font-size:0.62rem;">• Cloud Logistics</span></div>
+              <div class="contact-stage stage-hot" style="font-size:0.58rem; padding:2px 6px;">Hot Deal</div>
+            </div>
+            <div class="contact-row" style="display:flex; align-items:center; gap:0.6rem; padding:0.35rem 0;">
+              <div class="avatar" style="background:#5C939F; width:24px; height:24px; font-size:0.6rem;">SR</div>
+              <div class="contact-name" style="font-size:0.72rem; flex:1;">Sarah Reynolds <span style="color:rgba(218,218,218,0.4); font-size:0.62rem;">• Global FinTech</span></div>
+              <div class="contact-stage stage-closed" style="font-size:0.58rem; padding:2px 6px;">Closed-Won</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
     </div>
   </div>
 </section>
@@ -1061,6 +1338,21 @@ integration with your existing systems.</p>
       <h3>Analytics & Reporting Dashboards</h3>
       <p>Gain real-time visibility into sales metrics, revenue forecasts, and team performance with customizable reporting dashboards.</p>
     </div>
+    <div class="svc-card sr sr-d1">
+      <div class="svc-icon ic-coral">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <h3>Omnichannel Telephony &amp; SMS Hub</h3>
+      <p>Synchronize outbound VoIP dialers, WhatsApp conversational threads, and two-way SMS directly inside client contact logs with automated transcript indexing.</p>
+    </div>
+    <div class="svc-card sr sr-d2">
+      <div class="svc-icon ic-teal">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <h3>Predictive Churn &amp; CLV Telemetry</h3>
+      <p>Identify account drop-off risk factors weeks before renewal dates. Automated retention alerts empower customer success managers to proactively preserve account health.</p>
+    </div>
+
   </div>
 </section>
 
@@ -1075,12 +1367,95 @@ integration with your existing systems.</p>
   <div class="pipeline-stages reveal">
     <div class="stage-col">
       <div class="stage-head">Fully Customizable Solutions</div>
+      <p style="font-size:0.85rem; line-height:1.7; color:rgba(218,218,218,0.7); margin-top:0.75rem;">Engineered around your exact qualification criteria, commission structures, and multi-branch organizational hierarchy rather than forced generic SaaS schemas.</p>
     </div>
     <div class="stage-col">
       <div class="stage-head">Scalable for Growing Businesses</div>
+      <p style="font-size:0.85rem; line-height:1.7; color:rgba(218,218,218,0.7); margin-top:0.75rem;">High-concurrency cloud architecture built on PostgreSQL and Redis clusters that smoothly support millions of customer accounts and rapid transaction scaling.</p>
     </div>
     <div class="stage-col">
       <div class="stage-head">Easy-to-Use Interface</div>
+      <p style="font-size:0.85rem; line-height:1.7; color:rgba(218,218,218,0.7); margin-top:0.75rem;">Intuitive user experience with contextual keyboard navigation, dark mode ergonomics, and frictionless data entry that sales reps actually love adopting.</p>
+    </div>
+    <div class="stage-col reveal reveal-delay-4">
+      <div class="stage-head">Bi-Directional ERP &amp; Financial Integration</div>
+      <p style="font-size:0.85rem; line-height:1.7; color:rgba(218,218,218,0.7); margin-top:0.75rem;">Eliminate manual reconciliation by seamlessly bridging closed deals with downstream automated invoice generation, payment gateways, and inventory provisioning.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ARCHITECTURE COMPARISON -->
+<section class="comparison-section" id="comparison">
+  <div style="max-width:1100px; margin:0 auto 40px;" class="reveal">
+    <div class="section-tag">Architecture Comparison</div>
+    <h2 class="section-title">Sales Velocity Architecture vs Fragmented Legacy Systems</h2>
+  </div>
+  <div class="comparison-table">
+    <div class="compare-header reveal">
+      <div class="compare-feature-head">Capability Dimension</div>
+      <div class="compare-legacy-head">Fragmented Siloed Tools</div>
+      <div class="compare-bgs-head">BGS Unified AI CRM Engine</div>
+    </div>
+    <div class="compare-body">
+      
+      <div class="compare-row reveal">
+        <div class="compare-feature">
+          <strong>Lead Ingestion & Response Speed</strong>
+          <span>Speed to lead and initial outreach velocity</span>
+        </div>
+        <div class="compare-col compare-legacy">
+          <i class="ti ti-x" style="color:#888;"></i>
+          <span>Manual spreadsheet entry taking hours or days to assign</span>
+        </div>
+        <div class="compare-col compare-bgs">
+          <i class="ti ti-circle-check" style="color:#D9622A;"></i>
+          <span>Sub-2-minute automated AI lead routing and instant outreach</span>
+        </div>
+      </div>
+      <div class="compare-row reveal">
+        <div class="compare-feature">
+          <strong>Omnichannel Customer Visibility</strong>
+          <span>Complete 360-degree timeline of client interactions</span>
+        </div>
+        <div class="compare-col compare-legacy">
+          <i class="ti ti-x" style="color:#888;"></i>
+          <span>Fragmented notes scattered across personal emails and chats</span>
+        </div>
+        <div class="compare-col compare-bgs">
+          <i class="ti ti-circle-check" style="color:#D9622A;"></i>
+          <span>Unified real-time timeline across email, calls, meetings, and tickets</span>
+        </div>
+      </div>
+      <div class="compare-row reveal">
+        <div class="compare-feature">
+          <strong>Pipeline Forecasting & Intelligence</strong>
+          <span>Predictive accuracy for revenue and win rates</span>
+        </div>
+        <div class="compare-col compare-legacy">
+          <i class="ti ti-x" style="color:#888;"></i>
+          <span>Subjective manual guesses with high forecast volatility</span>
+        </div>
+        <div class="compare-col compare-bgs">
+          <i class="ti ti-circle-check" style="color:#D9622A;"></i>
+          <span>Machine-learning win probability scoring and health telemetry</span>
+        </div>
+      </div>
+      <div class="compare-row reveal">
+        <div class="compare-feature">
+          <strong>ERP & Financial Ecosystem Sync</strong>
+          <span>Seamless handoff from Closed-Won to billing</span>
+        </div>
+        <div class="compare-col compare-legacy">
+          <i class="ti ti-x" style="color:#888;"></i>
+          <span>Manual re-entry into invoicing software causing billing lag</span>
+        </div>
+        <div class="compare-col compare-bgs">
+          <i class="ti ti-circle-check" style="color:#D9622A;"></i>
+          <span>Instant automated contract generation and live ERP ledger sync</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1093,6 +1468,126 @@ integration with your existing systems.</p>
 </section>
 
 <!-- ═══ CTA SECTION ═══ -->
+
+<!-- ── SECTION DIVIDER ── -->
+<style>.orb-pulse-crm{animation:orbPulseCrm 3s ease-in-out infinite}@keyframes orbPulseCrm{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:0.65}}</style>
+<div style="position:relative;height:80px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+  <div style="position:absolute;top:50%;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(217,98,42,0.35),rgba(92,147,159,0.25),transparent);transform:translateY(-50%);"></div>
+  <div class="orb-pulse-crm" style="width:10px;height:10px;border-radius:50%;background:#D9622A;box-shadow:0 0 18px rgba(217,98,42,0.65),0 0 36px rgba(217,98,42,0.3);position:relative;z-index:1;"></div>
+</div>
+
+<!-- FAQ SECTION -->
+<section class="faq-section" id="faq">
+  <div style="max-width:1100px; margin:0 auto 40px;" class="reveal">
+    <div class="section-tag">Common Questions</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+  </div>
+  <div class="faq-list">
+    
+    <div class="faq-item reveal active">
+      <button class="faq-trigger" aria-expanded="true">
+        <span class="faq-question">How does BGS CRM integrate with our existing ERP, email, and marketing tools?</span>
+        <span class="faq-icon"><i class="ti ti-chevron-down"></i></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Our CRM solutions are built with open API-first architectures. We provide bi-directional pre-built connectors for Outlook, Gmail, HubSpot, ERP software, and marketing automation suites to maintain uninterrupted data flow.</p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-trigger" aria-expanded="false">
+        <span class="faq-question">Can we migrate our historical client records and past communications safely?</span>
+        <span class="faq-icon"><i class="ti ti-chevron-down"></i></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Yes. We execute sanitized data migrations with automated deduplication and field mapping. Historical customer notes, call logs, and lifecycle stages are cleanly transferred with complete audit validation.</p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-trigger" aria-expanded="false">
+        <span class="faq-question">How does AI qualification help our sales reps close deals faster?</span>
+        <span class="faq-icon"><i class="ti ti-chevron-down"></i></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>The built-in AI engine evaluates lead behavioral signals, website engagement, and demographic parameters to score each lead. It automatically prioritizes high-intent prospects and suggests next-best actions for reps.</p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-trigger" aria-expanded="false">
+        <span class="faq-question">Can custom sales pipelines and role-based permissions be configured?</span>
+        <span class="faq-icon"><i class="ti ti-chevron-down"></i></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Every business unit can maintain bespoke pipelines, approval thresholds, and currency settings. Role-based access controls (RBAC) ensure reps only see relevant accounts while leadership gains enterprise-wide visibility.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- RELATED SERVICES -->
+<section class="related-services-section" id="related-services">
+  <div style="max-width:1100px; margin:0 auto 40px;" class="reveal">
+    <div class="section-tag">Explore More</div>
+    <h2 class="section-title">Related Capabilities</h2>
+  </div>
+  <div class="related-grid">
+    
+      <a href="../services/web.html" class="related-card reveal">
+        <div class="related-card-header">
+          <div class="related-icon"><i class="ti ti-world-www"></i></div>
+          <span class="related-arrow"><i class="ti ti-arrow-up-right"></i></span>
+        </div>
+        <div class="related-tag">Modern Headless & Enterprise Web</div>
+        <h3 class="related-title">Web Development</h3>
+        <p class="related-desc">High-performance web platforms engineered with Next.js, headless CMS, and sub-second edge delivery.</p>
+      </a>
+      <a href="../services/app.html" class="related-card reveal">
+        <div class="related-card-header">
+          <div class="related-icon"><i class="ti ti-device-mobile"></i></div>
+          <span class="related-arrow"><i class="ti ti-arrow-up-right"></i></span>
+        </div>
+        <div class="related-tag">iOS, Android & Cross-Platform Apps</div>
+        <h3 class="related-title">Application Development</h3>
+        <p class="related-desc">Native-engineered mobile experiences with Flutter, React Native, real-time sync, and fluid 60fps UX.</p>
+      </a>
+      <a href="../services/data.html" class="related-card reveal">
+        <div class="related-card-header">
+          <div class="related-icon"><i class="ti ti-chart-dots"></i></div>
+          <span class="related-arrow"><i class="ti ti-arrow-up-right"></i></span>
+        </div>
+        <div class="related-tag">Real-Time BI & Machine Learning</div>
+        <h3 class="related-title">Data Analytics & AI</h3>
+        <p class="related-desc">Enterprise data meshes, predictive ML pipelines, Snowflake architectures, and executive BI dashboards.</p>
+      </a>
+      <a href="../services/project.html" class="related-card reveal">
+        <div class="related-card-header">
+          <div class="related-icon"><i class="ti ti-users-group"></i></div>
+          <span class="related-arrow"><i class="ti ti-arrow-up-right"></i></span>
+        </div>
+        <div class="related-tag">Dedicated Agile Engineering Pods</div>
+        <h3 class="related-title">Project Outsourcing</h3>
+        <p class="related-desc">Elite offshore engineering teams, full-stack sprint execution, and end-to-end technical delivery.</p>
+      </a>
+      <a href="../services/erp.html" class="related-card reveal">
+        <div class="related-card-header">
+          <div class="related-icon"><i class="ti ti-building-factory-2"></i></div>
+          <span class="related-arrow"><i class="ti ti-arrow-up-right"></i></span>
+        </div>
+        <div class="related-tag">Intelligent Enterprise Operations</div>
+        <h3 class="related-title">ERP & Custom Software</h3>
+        <p class="related-desc">Modular cloud ERP solutions unifying finance, supply chain, inventory, and automated business workflows.</p>
+      </a>
+  </div>
+</section>
+
 <section id="cta">
   <div class="eyebrow reveal">// Get Started Today</div>
     <h2 class="section-title reveal">Ready to Transform<br>Your <em>Customer Relationships?</em></h2>
@@ -1105,44 +1600,72 @@ integration with your existing systems.</p>
 </section>
 
 <!-- ═══ STANDARDIZED FOOTER (bg-infrared) ═══ -->
-<footer class="svc-footer">
-  <div class="svc-footer-inner">
-    <div class="svc-footer-brand">
-      <h2>Next starts with BGS.</h2>
-      <p>We turn ideas into scalable digital solutions—designed to move fast, perform better, and create lasting impact.</p>
-      <a href="../contact.html" class="footer-cta">Contact Us</a>
-    </div>
-    <div class="svc-footer-logo">
-      <a href="../index.html">
-        <img src="../assets/logo.webp" alt="Bridge Group Solutions" />
+<div style="background:#D9622A; border-radius:8px; font-family:var(--font-sans); color:#111; position:relative; z-index:100;">
+  <style>
+    .bgs-footer-link { color:#111; text-decoration:none; transition:opacity 0.2s ease; cursor:pointer; }
+    .bgs-footer-link:hover { opacity:0.65; }
+    .ScrollSmoother-wrapper { pointer-events:none !important; }
+  </style>
+
+  <div style="padding:3rem 3rem 2.5rem; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:0;">
+
+    <div style="padding-right:32px;">
+      <a href="../index.html" class="bgs-footer-link" style="display:flex; align-items:center; gap:10px; margin-bottom:14px; color:#111; text-decoration:none;">
+        <img src="../assets/logo.webp" alt="Logo" style="height:30px; width:auto; display:block;" />
+        <span style="font-size:19px; font-weight:500;">Bridge Group Solutions</span>
       </a>
-    </div>
-    <div class="svc-footer-nav">
-      <nav>
-        <ul>
-          <li><a href="../why-bgs.html">WHY BGS</a></li>
-          <li><a href="../portfolio.html">PORTFOLIO</a></li>
-          <li><a href="../about.html">ABOUT</a></li>
-          <li><a href="../gallery.html">GALLERY</a></li>
-          <li><a href="../blogs.html">BLOGS</a></li>
-          <li><a href="../contact.html">CONTACT</a></li>
-        </ul>
-      </nav>
-      <div class="svc-footer-legal">
-        <ul>
-          <li><a href="../legal/disclaimer.html">Disclaimer</a></li>
-          <li><a href="../legal/privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="../legal/terms-and-conditions.html">Terms and Conditions</a></li>
-          <li><a href="../legal/cookie-policy.html">Cookie Policy</a></li>
-          <li><a href="../legal/whistleblower-protection-statement.html">Whistleblower Protection</a></li>
-        </ul>
+      <div style="font-size:13px; color:#3a1a0a; line-height:1.7; margin-bottom:24px;">Delivering cutting-edge digital transformation, custom software development, ERP systems, data analytics, and cloud solutions to empower growing businesses.</div>
+      <div style="font-size:13px; color:#111; line-height:2;">
+        <div><i class="ti ti-map-pin" style="font-size:14px; vertical-align:-2px; margin-right:8px;" aria-hidden="true"></i>Noida, Uttar Pradesh, India</div>
+        <div><i class="ti ti-mail" style="font-size:14px; vertical-align:-2px; margin-right:8px;" aria-hidden="true"></i>hello@bridgegroupsolutions.com</div>
       </div>
     </div>
-    <div class="svc-footer-copyright">
-      <p>© 2026 Bridge Group Solutions. All rights reserved.</p>
+
+    <div style="padding:0 24px; border-left:1px solid rgba(17,17,17,0.2);">
+      <div style="font-size:12px; color:#3a1a0a; font-weight:500; margin-bottom:18px; text-transform:uppercase; letter-spacing:0.04em;">Services</div>
+      <div style="display:flex; flex-direction:column; gap:13px; font-size:13px; color:#111;">
+        <a href="../services/web.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Web Development</a>
+        <a href="../services/app.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Application Development</a>
+        <a href="../services/data.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Data Analytics</a>
+        <a href="../services/project.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Project Outsourcing</a>
+        <a href="../services/erp.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">ERP and Custom Software</a>
+        <a href="../services/crm.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">CRM</a>
+      </div>
+    </div>
+
+    <div style="padding:0 24px; border-left:1px solid rgba(17,17,17,0.2);">
+      <div style="font-size:12px; color:#3a1a0a; font-weight:500; margin-bottom:18px; text-transform:uppercase; letter-spacing:0.04em;">Company</div>
+      <div style="display:flex; flex-direction:column; gap:13px; font-size:13px; color:#111;">
+        <a href="../why-bgs.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Why BGS</a>
+        <a href="../portfolio.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Portfolio</a>
+        <a href="../about.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">About Us</a>
+        <a href="../gallery.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Gallery</a>
+        <a href="../blogs.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Blogs</a>
+        <a href="../contact.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Contact</a>
+      </div>
+    </div>
+
+    <div style="padding-left:24px; border-left:1px solid rgba(17,17,17,0.2);">
+      <div style="font-size:12px; color:#3a1a0a; font-weight:500; margin-bottom:18px; text-transform:uppercase; letter-spacing:0.04em;">Legal</div>
+      <div style="display:flex; flex-direction:column; gap:13px; font-size:13px; color:#111;">
+        <a href="../legal/disclaimer.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Disclaimer</a>
+        <a href="../legal/privacy-policy.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Privacy Policy</a>
+        <a href="../legal/terms-and-conditions.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Terms and Conditions</a>
+        <a href="../legal/cookie-policy.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Cookie Policy</a>
+        <a href="../legal/whistleblower-protection-statement.html" class="bgs-footer-link" style="color:#111; text-decoration:none;">Whistleblower Protection</a>
+      </div>
     </div>
   </div>
-</footer>
+
+  <div style="border-top:1px solid rgba(17,17,17,0.3); padding:20px 3rem; display:flex; justify-content:space-between; align-items:center; font-size:12px; color:#3a1a0a;">
+    <span>Copyright &copy; 2026 <a href="https://testing.bridgegroupsolutions.com/" style="color:inherit; text-decoration:underline;">Bridge Group Solutions</a>. All rights reserved.</span>
+    <div style="display:flex; gap:16px; align-items:center;">
+      <a href="#" target="_blank" rel="noopener noreferrer" class="bgs-footer-link" style="color:#111; text-decoration:none; line-height:0;" aria-label="LinkedIn"><i class="ti ti-brand-linkedin" style="font-size:16px; color:#111;" aria-hidden="true"></i></a>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="bgs-footer-link" style="color:#111; text-decoration:none; line-height:0;" aria-label="X"><i class="ti ti-brand-x" style="font-size:16px; color:#111;" aria-hidden="true"></i></a>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="bgs-footer-link" style="color:#111; text-decoration:none; line-height:0;" aria-label="Instagram"><i class="ti ti-brand-instagram" style="font-size:16px; color:#111;" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</div>
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
@@ -1217,6 +1740,24 @@ function animate() {
   requestAnimationFrame(animate);
 }
 animate();
+
+
+// FAQ ACCORDION INTERACTION
+document.querySelectorAll('.faq-trigger').forEach(trigger => {
+  trigger.addEventListener('click', () => {
+    const item = trigger.closest('.faq-item');
+    const wasActive = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('active');
+      const tr = i.querySelector('.faq-trigger');
+      if (tr) tr.setAttribute('aria-expanded', 'false');
+    });
+    if (!wasActive) {
+      item.classList.add('active');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
 
 // ── CUSTOM CURSOR ──
 const cur = document.getElementById('cursor');
